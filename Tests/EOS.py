@@ -2,11 +2,10 @@ import os
 from active_model import *
 import matplotlib.pyplot as plt
 import numpy as np
-from file_io import read
-from models import GAP, ACE
+from Utils.file_io import read
 from tqdm import tqdm, trange
 from ase.optimize import BFGSLineSearch
-from jsondata import add_info
+from Utils.jsondata import add_info
 import json
 
 def _get_dft_data():
@@ -99,7 +98,7 @@ d = {
     "E_WZ" : list(e_wz)
 }
 
-with open("../Saved_Data/DFT/EOS.json", "w") as f:
+with open("../Test_Results/DFT/EOS.json", "w") as f:
     json.dump(d, f, indent=4)
 
 dft_zb_V0 = v_zb[np.argmin(e_zb)]
@@ -136,7 +135,7 @@ d = {
     "E_WZ" : list(e_wz)
 }
 
-with open(f"../Saved_Data/{active_model_name}/EOS.json", "w") as f:
+with open(f"../Test_Results/{active_model_name}/EOS.json", "w") as f:
     json.dump(d, f, indent=4)
 
 

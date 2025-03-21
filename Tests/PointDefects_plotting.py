@@ -11,7 +11,7 @@ model_names = [model for model in plot_models if model != "DFT"]
 
 
 
-dir = "../Saved_Data/PointDefects"
+dir = "../Test_Results/PointDefects"
 
 files = []
 
@@ -127,4 +127,4 @@ ax[0].axhline(0, color="k")
 
 ax[0].set_title("Formation Energies of Various Point Defects")
 plt.tight_layout()
-plt.savefig("../Plots/PointDefects.png", dpi=200)
+plt.savefig("..Test_Plots/PointDefects.png", dpi=200)

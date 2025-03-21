@@ -1,5 +1,5 @@
 from active_model import *
-from file_io import read
+from Utils.file_io import read
 import numpy as np
 from matscipy.elasticity import fit_elastic_constants, elastic_moduli
 from ase.optimize.precon import PreconLBFGS
@@ -8,7 +8,7 @@ from ase.constraints import ExpCellFilter
 import matplotlib.pyplot as plt
 import os
 from ase.units import GPa
-from jsondata import add_info
+from Utils.jsondata import add_info
 
 def test_calc(calc, calc_name):
     ats = read("Bulk/ZB_Bulk.xyz", index="-1")
@@ -37,7 +37,7 @@ def test_calc(calc, calc_name):
     Cs, C_errs = fit_elastic_constants(
         at, N_steps=nsteps, delta=2*delta_max/nsteps, optimizer=BFGSLineSearch, fmax=1e-3, graphics=True)
 
-    plt.savefig("../Plots" + os.sep + calc_name + os.sep + "C_fit.png")
+    plt.savefig("..Test_Plots" + os.sep + calc_name + os.sep + "C_fit.png")
     
     # C11, C12, C44 in GPa
     c = np.array([Cs[0, 0], Cs[0, 1], Cs[-1, -1]]) / GPa

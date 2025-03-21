@@ -1,15 +1,14 @@
 from active_model import *
-from file_io import read
-from models import ACE, GAP
+from Utils.file_io import read
 from tqdm import tqdm
 import numpy as np
 import json
 import os
 from ase.units import GPa
-from jsondata import add_info
+from Utils.jsondata import add_info
 from time import time
 
-data_dir = "../Saved_Data"
+data_dir = "../Test_Results"
 
 def _setup():
 
@@ -201,7 +200,7 @@ def save(calc_name, config_types_rmses, conf_raw_data):
 
 x = _setup()
 
-config_types_rmses, conf_raw_data = test_calc(get_model(), x)
+config_types_rmses, conf_raw_data = test_calc(get_model(active_model_name), x)
 
 save(active_model_name, config_types_rmses, conf_raw_data)
 
@@ -215,7 +214,7 @@ data = {
 x = _setup()
 
 t0 = time()
-config_types_rmses, conf_raw_data = test_calc(get_model(), x)
+config_types_rmses, conf_raw_data = test_calc(get_model(active_model_name), x)
 t1 = time() - t0
 
 data["TT_Runtime"] = t1

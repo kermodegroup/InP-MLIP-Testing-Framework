@@ -10,7 +10,7 @@ calcs = [model for model in plot_models if model != "DFT"]
 markers = [".", "x", "o", "s", "*", "+", "D", "^", "<", ">", "v", "H", "d"]
 
 ## DFT
-with open("../Saved_Data/DFT/EOS.json", "r") as f:
+with open("../Test_Results/DFT/EOS.json", "r") as f:
     d = json.load(f)
 
 fig, ax = plt.subplots(2, figsize=(10, 8), sharex=True)
@@ -49,9 +49,9 @@ print(v_zb)
 print(Es_zb)
 
 for i, calc in enumerate(calcs):
-    if not os.path.exists(f"../Saved_Data/{calc}/EOS.json"):
+    if not os.path.exists(f"../Test_Results/{calc}/EOS.json"):
         continue
-    with open(f"../Saved_Data/{calc}/EOS.json", "r") as f:
+    with open(f"../Test_Results/{calc}/EOS.json", "r") as f:
         d = json.load(f)
     ax[0].plot(d["V_ZB"], d["E_ZB"], label=f"{calc}", color=f"C{i}")
     ax[1].plot(d["V_WZ"], d["E_WZ"], label=f"{calc}", color=f"C{i}")
@@ -69,7 +69,7 @@ ax[1].set_ylim(-0.1, 6.3)
 plt.legend()
 
 plt.tight_layout()
-plt.savefig("../Plots/EOS.png", dpi=200)
+plt.savefig("..Test_Plots/EOS.png", dpi=200)
 
 plt.clf()
 
@@ -77,7 +77,7 @@ plt.clf()
 zoomed_vol_lims = [23.5, 27]
 ylims = [-1, 44]
 
-with open("../Saved_Data/DFT/EOS.json", "r") as f:
+with open("../Test_Results/DFT/EOS.json", "r") as f:
     d = json.load(f)
 
 fig, ax = plt.subplots(2, figsize=(8, 10), sharex=True)
@@ -97,9 +97,9 @@ ax[1].scatter(v_wz, Es_wz*1000, label="LDA DFT", color="k", marker=".", s=40)
 
 
 for i, calc in enumerate(calcs):
-    if not os.path.exists(f"../Saved_Data/{calc}/EOS.json"):
+    if not os.path.exists(f"../Test_Results/{calc}/EOS.json"):
         continue
-    with open(f"../Saved_Data/{calc}/EOS.json", "r") as f:
+    with open(f"../Test_Results/{calc}/EOS.json", "r") as f:
         d = json.load(f)
     ax[0].plot(d["V_ZB"], np.array(d["E_ZB"]) * 1000, label=f"{calc}", color=f"C{i}")
     ax[1].plot(d["V_WZ"], np.array(d["E_WZ"]) * 1000, label=f"{calc}", color=f"C{i}")
@@ -124,5 +124,5 @@ fig.suptitle("Equation of State comparison of several potentials")
 
 ax[0].legend()
 plt.tight_layout()
-plt.savefig("../Plots/EOS_Zoomed.png", dpi=200)
+plt.savefig("..Test_Plots/EOS_Zoomed.png", dpi=200)
 

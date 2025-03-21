@@ -1,18 +1,15 @@
-from models import GAP_committee
 from active_model import *
-from file_io import read
+from Utils.file_io import read
 import numpy as np
-from matscipy.elasticity import fit_elastic_constants, elastic_moduli
-from models import GAP, ACE
 from ase.optimize.precon import PreconLBFGS
-from ase.optimize import BFGSLineSearch, BFGS
+from ase.optimize import BFGSLineSearch
 import os
 from ase.io import read as ase_read
 import json
 from ase.constraints import ExpCellFilter
-from jsondata import add_info
+from Utils.jsondata import add_info
 
-data_dir = "../Saved_Data"
+data_dir = "../Test_Results"
 
 fmax = 1E-4
 
@@ -40,10 +37,10 @@ def test_calc(calc, calc_name, err_func=None):
 
     data = {}
 
-    with open(f"../Saved_Data/PointDefects/{calc_name}_ChemPot.json") as f:
+    with open(f"../Test_Results/PointDefects/{calc_name}_ChemPot.json") as f:
         chempot = json.load(f)
 
-    os.makedirs(f"../Saved_Data/{calc_name}/PointDefectTraj", exist_ok=True)
+    os.makedirs(f"../Test_Results/{calc_name}/PointDefectTraj", exist_ok=True)
     files = os.listdir("PointDefectStructs")
 
     formation_energies = {"zb_E0":{}, "wz_E0":{}}
@@ -158,7 +155,7 @@ def test_calc(calc, calc_name, err_func=None):
             if sub_calc is not None:
                 ats.set_cell(cell, scale_atoms=True)
                 ats.calc = sub_calc
-                opt = BFGSLineSearch(ats, trajectory=f"../Saved_Data/{calc_name}/PointDefectTraj/{file[:-4]}.traj")
+                opt = BFGSLineSearch(ats, trajectory=f"../Test_Results/{calc_name}/PointDefectTraj/{file[:-4]}.traj")
                 opt.run(fmax)
 
             E_bind = ats.get_potential_energy()

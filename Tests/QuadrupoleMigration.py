@@ -1,14 +1,9 @@
 from matscipy.dislocation import Quadrupole, DiamondGlide30degreePartial, DiamondGlide90degreePartial, DiamondGlide60Degree, DiamondGlideScrew
-from utils import get_bulk
-from models import *
-from quippy.nye_tensor import nye_tensor
-from ase.optimize.precon import PreconLBFGS
+from Utils.utils import get_bulk
 from ase.io import read, write
-import numpy as np
-from jsondata import add_info
+from Utils.jsondata import add_info
 from active_model import *
-from matscipy.neighbours import mic
-from neb_core import do_NEB
+from Utils.neb_core import do_NEB
 
 calc_name = active_model_name
 calc = get_model(active_model_name)
@@ -30,17 +25,17 @@ for k, disloc in enumerate([DiamondGlide30degreePartial, DiamondGlide90degreePar
     ref_bulk = a[0]
     d = Quadrupole(disloc, *a)
 
-    fname = f"../Saved_Data/{calc_name}/{short_names[k]}_Quadrupole_Migration_structs.xyz"
+    fname = f"../Test_Results/{calc_name}/{short_names[k]}_Quadrupole_Migration_structs.xyz"
 
     if os.path.exists(fname):
         ims = read(fname, index=":")
     else:
         ims = d.build_glide_quadrupoles(nims, glide_left=False, glide_right=True, glide_separation=4, self_consistent=False)
-        #ims = read(f"../Saved_Data/ACE13/{short_names[k]}_Quadrupole_Migration_structs.xyz", index=":")
+        #ims = read(f"../Test_Results/ACE13/{short_names[k]}_Quadrupole_Migration_structs.xyz", index=":")
     neb, e = do_NEB(calc, ims, ims[-1], nims=nims, ci=False, ftol=1e-3, neb_ftol=7e-2, max_nsteps=500, mic=True, idpp=False, refine=False)
 
     structs.extend(ims) 
 
-    write(f"../Saved_Data/{calc_name}/{short_names[k]}_Quadrupole_Migration_structs.xyz", neb.images)
+    write(f"../Test_Results/{calc_name}/{short_names[k]}_Quadrupole_Migration_structs.xyz", neb.images)
 
 add_info(calc_name, calc_data)

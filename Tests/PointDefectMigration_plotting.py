@@ -1,11 +1,9 @@
 
 from active_model import *
-from StructGen import interstitial
-from file_io import ase_read as read
+from Utils.file_io import ase_read as read
 import numpy as np
-from models import *
 import matplotlib.pyplot as plt
-from neb_core import do_NEB, plot_neb
+from Utils.neb_core import do_NEB
 import os
 from ase.units import kB
 from itertools import combinations
@@ -47,7 +45,7 @@ for i, defect in enumerate(defects):
     print(defect)
     for j, calc_name in enumerate(calc_names):
         calc = calcs[j]
-        infile = "../Saved_Data/" + calc_name + os.sep + "PDMigration/" + defect + "_final_ims.xyz"
+        infile = "../Test_Results/" + calc_name + os.sep + "PDMigration/" + defect + "_final_ims.xyz"
 
         if os.path.exists(infile):
             ats = read(infile, index=":")
@@ -89,5 +87,5 @@ for i, defect in enumerate(defects):
 
     plt.ylabel("Energy (eV)")
     plt.legend()
-    plt.savefig(f"../Plots/PDMigration/{defect}.png")
+    plt.savefig(f"..Test_Plots/PDMigration/{defect}.png")
     plt.clf()

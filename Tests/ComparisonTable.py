@@ -95,12 +95,12 @@ for key, tkey in index_dict.items():
         new_key = ("", tkey)
     new_keys[key] = new_key
 
-with open("../Saved_Data/DFT.json", "r") as f:
+with open("../Test_Results/DFT.json", "r") as f:
     dft_data = json.load(f)
 
 for model in models:
     mod_data = {}
-    with open(f"../Saved_Data/{model}.json", "r") as f:
+    with open(f"../Test_Results/{model}.json", "r") as f:
         data = json.load(f)
     if model == "DFT":
         for key in index_dict.keys():

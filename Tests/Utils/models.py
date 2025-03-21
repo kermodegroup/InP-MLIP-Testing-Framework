@@ -1,13 +1,14 @@
 import os
-from quippy.potential import Potential
-from quippy.gap_tools import get_calc_committee
 from ase.calculators.lammpslib import LAMMPSlib
-#from ACEHAL.bias_calc import BiasCalculator
 import torch
 from ase.calculators.calculator import BaseCalculator
 
 
 class LMPMIX(BaseCalculator):
+    '''
+    Wrapper calculator for dealing with LAMMPS calculators aplied to structures with missing elements
+    (e.g. InP potential applied to isolated P)
+    '''
     def __init__(self, base_func, *funcargs, **funckwargs):
         self.calcs = {
             "In" : base_func(*funcargs, In=True, P=False, **funckwargs),
@@ -36,40 +37,8 @@ class LMPMIX(BaseCalculator):
 
 fpath = "/home/eng/phrbqc/GitHub/InPDislocs/Potentials/"
 
-
-def GAP(version: int, local_var = False,  *args):
-    path = fpath + f"GAP{version}/InP_GAP.xml"
-    
-    if local_var:
-        cargs = "local_gap_variance " 
-    else:
-        cargs = ""
-
-    calc = Potential(param_filename=path,
-                     calc_args=cargs + " ".join(args))
-    return calc
-
-def GAP_committee(version: int, *args, committee_size=20):
-    path = fpath + f"GAP{version}/InP_GAP.xml"
-    calcs = get_calc_committee(path, committee_size, *args)
-    return calcs
-
-def GAP_Bias_Calc(version: int, committee_size=20, tau=1E3):
-    comm = GAP_committee(version, committee_size)
-
-    comm = [CommitteeMember(c) for c in comm]
-
-    comm = Committee(comm)
-
-
-    calc = BiasCalculator(CommitteeUncertainty(comm), tau)
-
-    return calc
-
-
-def ACE(version: int, lammps=True):
-    path = fpath + f"ACE{version}"
-    
+def ACE(lammps=True):
+    path = fpath + f"ACE"
     
     if lammps:
         lammps_commands = [
@@ -84,27 +53,24 @@ def ACE(version: int, lammps=True):
         calc = pyjulip.ACE1(path + os.sep + "InP_ACE.json")
         return calc
 
-def MACE(macenum):
+def MACE():
     from mace.calculators import MACECalculator
-    #from mace_jax import MACE
 
     if torch.cuda.is_available():
-        print(f"MACE{macenum} using GPU")
+        print(f"MACE using GPU")
         device = "cuda"
     else:
-        print(f"MACE{macenum} using CPU")
+        print(f"MACE using CPU")
         device = "cpu"
 
-    if os.path.exists(f'/home/eng/phrbqc/GitHub/InPDislocs/Potentials/MACE{macenum}/InP_MACE_swa.model'):
-        calculator = MACECalculator(model_paths=f'/home/eng/phrbqc/GitHub/InPDislocs/Potentials/MACE{macenum}/InP_MACE_swa.model', device=device)
-    else:
-        calculator = MACECalculator(model_paths=f'/home/eng/phrbqc/GitHub/InPDislocs/Potentials/MACE{macenum}/InP_MACE_stagetwo.model', device=device)
+    pot_path = fpath + os.sep + "MACE/InP_MACE_stagetwo.model"
+
+    calculator = MACECalculator(model_paths=pot_path, device=device)
     return calculator
 
 
 def MP0():
     from mace.calculators import mace_mp
-    #from mace_jax import MACE
 
     if torch.cuda.is_available():
         print(f"MP0 using GPU")
@@ -128,19 +94,6 @@ def MPA():
 
     return mace_mp(model="medium-mpa-0", default_dtype="float64", device=device)
 
-def OMAT():
-    from mace.calculators import mace_mp
-    #from mace_jax import MACE
-
-    if torch.cuda.is_available():
-        print(f"MP0 using GPU")
-        device = "cuda"
-    else:
-        print(f"MP0 using CPU")
-        device = "cpu"
-
-    return mace_mp(model="medium-mpa-0", default_dtype="float64", device=device)
-
 def Vashishta_Base(In=True, P=True):
     elem = ""
     if In:
@@ -154,16 +107,16 @@ def Vashishta_Base(In=True, P=True):
                     "In": 1, "P": 2})
     return lmp
 
-def Vashishta():
-    lmpcmds = ["pair_style vashishta",
-               f"pair_coeff * * {fpath}/Vashishta/InP.vashishta In P"]
-    lmp = LAMMPSlib(lmpcmds=lmpcmds, log_file="run.log", keep_alive=True, atom_types={
-                    "In": 1, "P": 2})
-    return lmp
-
-
 # def Vashishta():
-#     return LMPMIX(Vashishta_Base)
+#     lmpcmds = ["pair_style vashishta",
+#                f"pair_coeff * * {fpath}/Vashishta/InP.vashishta In P"]
+#     lmp = LAMMPSlib(lmpcmds=lmpcmds, log_file="run.log", keep_alive=True, atom_types={
+#                     "In": 1, "P": 2})
+#     return lmp
+
+
+def Vashishta():
+    return LMPMIX(Vashishta_Base)
 
 def MLIAP_Base(In=True, P=True):
     elem = ""

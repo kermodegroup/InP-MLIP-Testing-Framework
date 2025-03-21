@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from get_true_values import *
 
-data_src = "../Saved_Data/TT_RMSE"
+data_src = "../Test_Results/TT_RMSE"
 
 with open(data_src + os.sep + "True_Vals.json") as f:
     true_vals = json.load(f)
@@ -25,7 +25,6 @@ scatter_colours_markers = []
 for marker in markers:
     for colour in colours:
         scatter_colours_markers.append((colour, marker))
-
 
 def gen_plots(raw_data, calc_name):
     config_types = [t for t in raw_data["energy"].keys()
@@ -197,11 +196,14 @@ def gen_plots_individual(raw_data, calc_name):
         plt.tight_layout()
         plt.title(config_type)
 
-        plt.savefig("../Plots/" + os.sep + calc_name + os.sep + "TT_Config_Types" +
+        plt.savefig("../Test_Plots/" + os.sep + calc_name + os.sep + "TT_Config_Types" +
                     os.sep + "TT_{}_Plot".format(config_type))
 
 
 calc = active_model_name
+
+os.makedirs("../Test_Plots/" + os.sep + calc +
+                os.sep + "TT_Config_Types", exist_ok=True)
 
 with open(data_src + os.sep + calc + "_RAW_TT_DIFFS.json") as f:
     raw_data = json.load(f)
@@ -209,6 +211,6 @@ with open(data_src + os.sep + calc + "_RAW_TT_DIFFS.json") as f:
 fig, ax = gen_plots(raw_data, calc)
 
 plt.tight_layout()
-plt.savefig("../Plots/" + calc + os.sep + "TT_Errs.png")
+plt.savefig("../Test_Plots/" + calc + os.sep + "TT_Errs.png")
 
 gen_plots_individual(raw_data, calc)

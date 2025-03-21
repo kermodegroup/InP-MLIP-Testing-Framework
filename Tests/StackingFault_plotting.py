@@ -1,18 +1,13 @@
-from file_io import read, write, ase_read
+from Utils.file_io import read, ase_read
 from matscipy.gamma_surface import StackingFault
 import matplotlib.pyplot as plt
-import os
-from ase.constraints import ExpCellFilter
-#from ase.neb import NEB, NEBOptimizer
 from ase.units import _e
 import numpy as np
-from jsondata import add_info
+from Utils.jsondata import add_info
 from active_model import *
-from plot_atoms import plot_atoms
+from Utils.plot_atoms import plot_atoms
 from matscipy.utils import get_structure_types
-#from ase.visualize.plot import plot_atoms
 import numpy as np
-import matplotlib.patches as mpatches
 from ase.build import rotate
 import matplotlib.gridspec as gridspec
 
@@ -124,7 +119,7 @@ for i in range(len(planes)):
 
     for idx in range(len(calc_names)):
         active_model_name = calc_names[idx]
-        ims = ase_read(f"../Saved_Data/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", index=":")
+        ims = ase_read(f"../Test_Results/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", index=":")
 
         Es = []
         for image in ims:
@@ -216,9 +211,9 @@ for i in range(len(planes)):
 #plt.tight_layout()
 
 if si:
-    plt.savefig(f"../Plots/StackingFaultPlot_SI.png", dpi=200)
+    plt.savefig(f"..Test_Plots/StackingFaultPlot_SI.png", dpi=200)
 else:
-    plt.savefig(f"../Plots/StackingFaultPlot.png", dpi=200)
+    plt.savefig(f"..Test_Plots/StackingFaultPlot.png", dpi=200)
 
 
 add_info("DFT", dft_data)

@@ -1,15 +1,9 @@
-import matplotlib.pyplot as plt  # noqa
-from ase.dft.kpoints import BandPath
+import matplotlib.pyplot as plt
 from scipy.constants import h, e
 import numpy as np
-from ase.constraints import UnitCellFilter
-from ase.io import read as ase_read, write
-from file_io import read
+from ase.io import read as ase_read
 from ase.phonons import Phonons
-from models import *
-from ase.optimize import BFGSLineSearch
-from active_model import *
-import matplotlib.gridspec as gridspec
+from active_model import *W
 
 calc_names = plot_models[1:]
 
@@ -43,7 +37,7 @@ for c, calc_name in enumerate(calc_names):
     calc = None
     #calc = get_model(calc_name)
     #bulk.calc = calc
-    name = f"../Saved_Data/{calc_name}/Phonons"
+    name = f"../Test_Results/{calc_name}/Phonons"
     print(calc_name, name)
     ph = Phonons(bulk, calc, supercell=[mul]*3, delta=delta, name=name)
     ph.read(acoustic=True)
@@ -223,4 +217,4 @@ handles, labels = z
 legax.legend(handles, labels, fontsize=12)
 
 plt.tight_layout()
-fig.savefig("../Plots/Phonons.png")
+fig.savefig("..Test_Plots/Phonons.png")

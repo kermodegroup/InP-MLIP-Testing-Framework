@@ -24,4 +24,6 @@ models = {
 }
 
 def get_model(model_name):
+    os.makedirs("../Test_Plots" + os.sep + model_name, exist_ok=True)
+    os.makedirs("../Test_Results" + os.sep + model_name, exist_ok=True)    
     return models[model_name]()

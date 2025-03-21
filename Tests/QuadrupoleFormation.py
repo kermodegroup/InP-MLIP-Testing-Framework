@@ -1,11 +1,9 @@
 from matscipy.dislocation import Quadrupole, DiamondGlide30degreePartial, DiamondGlide90degreePartial, DiamondGlide60Degree, DiamondGlideScrew
-from utils import get_bulk
-from models import *
-from quippy.nye_tensor import nye_tensor
+from Utils.utils import get_bulk
 from ase.optimize.precon import PreconLBFGS
 from ase.io import read, write
 import numpy as np
-from jsondata import add_info
+from Utils.jsondata import add_info
 from active_model import *
 from matscipy.neighbours import mic
 
@@ -59,6 +57,6 @@ for k, disloc in enumerate([DiamondGlide30degreePartial, DiamondGlide90degreePar
     struct.arrays["total_err"] = np.linalg.norm(errs, axis=-1)
     structs.append(struct)
 
-write(f"../Saved_Data/{calc_name}/Quadrupole_structs.xyz", structs)
+write(f"../Test_Results/{calc_name}/Quadrupole_structs.xyz", structs)
 
 add_info(calc_name, calc_data)

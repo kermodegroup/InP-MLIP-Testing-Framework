@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from active_model import *
-from plot_atoms import plot_atoms
+from Utils.plot_atoms import plot_atoms
 from ase.io import read
 import numpy as np
 from matscipy.utils import get_structure_types
@@ -34,7 +34,7 @@ for j in range(2):
 
     for i, model in enumerate(model_names):
 
-        quads = read(f"../Saved_Data/{model}/Quadrupole_structs.xyz", index=":")
+        quads = read(f"../Test_Results/{model}/Quadrupole_structs.xyz", index=":")
 
         atom_labels, struct_names, colors = get_structure_types(quads[j], diamond_structure=True)
         atom_colors = [colors[atom_label] for atom_label in atom_labels]
@@ -56,4 +56,4 @@ for j in range(2):
     fig.suptitle(latex_names[j] + " Dislocation Quadrupole", color="k", size=20)
     #plt.tight_layout()
 
-    plt.savefig(f"../Plots/{disloc_names[j]}_Comparison.png", dpi=300)
+    plt.savefig(f"..Test_Plots/{disloc_names[j]}_Comparison.png", dpi=300)

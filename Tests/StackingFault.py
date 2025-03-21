@@ -1,16 +1,13 @@
 from active_model import get_model, active_model_name
-from file_io import read, write, ase_read
-from matscipy.dislocation import DiamondGlideScrew
+from ase.io import write
 from matscipy.gamma_surface import StackingFault
-import matplotlib.pyplot as plt
 import os
-from ase.constraints import ExpCellFilter
-#from ase.neb import NEB, NEBOptimizer
 from ase.units import _e
 import numpy as np
 from ase.calculators.singlepoint import SinglePointCalculator
-from jsondata import add_info
-from utils import get_bulk
+from Utils.jsondata import add_info
+from Utils.utils import get_bulk
+
 nims = 81
 
 planes = [(0, 0, 1), (0, 0, 1), (1, 1, 0), (1, 1, 1)]
@@ -40,10 +37,10 @@ for i in range(len(planes)):
     fault.generate_images(nims, z_reps=zr, path_ylims=[0, yl])
 
     print(plane, dir, len(fault.images[0]))
-    os.makedirs(f"../Saved_Data/{active_model_name}/", exist_ok=True)
-    if os.path.exists(f"../Saved_Data/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz"):
+    os.makedirs(f"../Test_Results/{active_model_name}/", exist_ok=True)
+    if os.path.exists(f"../Test_Results/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz"):
         continue
-        #ims = ase_read(f"../Saved_Data/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", index=":")
+        #ims = ase_read(f"../Test_Results/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", index=":")
         #if len(ims) == nims and len(ims[0]) == len(fault.images[0]):
         #    fault.images = ims
 
@@ -54,7 +51,7 @@ for i in range(len(planes)):
         E = image.get_potential_energy()
         image.calc = SinglePointCalculator(image, energy=E)
 
-    write(f"../Saved_Data/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", fault.images)
+    write(f"../Test_Results/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", fault.images)
 
     data[f"E_{plane}_{dir}"] = np.max(Es) * _e * 1e20
 

@@ -2,7 +2,7 @@ import json
 import os
 
 def add_info(model_name, data_dict):
-    fname = f"../Saved_Data/{model_name}.json"
+    fname = f"../Test_Results/{model_name}.json"
 
     if not os.path.exists(fname):
         f = open(fname, "w")

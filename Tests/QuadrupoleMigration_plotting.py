@@ -1,14 +1,9 @@
 
 from active_model import *
-from StructGen import interstitial
-from file_io import ase_read as read
+from Utils.file_io import ase_read as read
 import numpy as np
-from models import *
 import matplotlib.pyplot as plt
-from neb_core import do_NEB, plot_neb
 import os
-from ase.units import kB
-from itertools import combinations
 from ase.neighborlist import mic
 
 marks = ["*"]
@@ -36,7 +31,7 @@ for i, defect in enumerate(defects):
     print(defect)
     for j, calc_name in enumerate(calc_names):
         calc = calcs[j]
-        infile = "../Saved_Data/" + calc_name + os.sep + defect + "_Quadrupole_Migration_structs.xyz"
+        infile = "../Test_Results/" + calc_name + os.sep + defect + "_Quadrupole_Migration_structs.xyz"
 
         if os.path.exists(infile):
             ats = read(infile, index=":")
@@ -78,5 +73,5 @@ for i, defect in enumerate(defects):
 
     plt.ylabel("Energy (eV)")
     plt.legend()
-    plt.savefig(f"../Plots/{defect}_Migration.png")
+    plt.savefig(f"..Test_Plots/{defect}_Migration.png")
     plt.clf()

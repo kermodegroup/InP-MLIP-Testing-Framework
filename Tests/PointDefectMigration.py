@@ -1,14 +1,8 @@
-from StructGen import interstitial as make_interstitial
-from file_io import read, write, ase_read
-import numpy as np
-from models import *
+from Utils.file_io import read, write, ase_read
 from ase.optimize import BFGSLineSearch
-from ase.mep.neb import NEB, NEBOptimizer, NEBTools
-from neb_core import do_NEB
+from Utils.neb_core import do_NEB
 import os
 from active_model import *
-from ase.units import kB
-from itertools import combinations
 
 supercell_size = 2
 zb = read("Accurate_Bulk/ZB_Bulk.xyz", index="-1")
@@ -30,7 +24,7 @@ def eval(calc, calc_name, write_traj=False, species = ["In", "P"], interstitial=
             return
 
         traj_fname = None
-        xyz_fname = "../Saved_Data/" + calc_name + os.sep + "PDMigration/" + name + "_final_ims.xyz"
+        xyz_fname = "../Test_Results/" + calc_name + os.sep + "PDMigration/" + name + "_final_ims.xyz"
         
         
         if os.path.exists(xyz_fname):
@@ -86,7 +80,7 @@ def eval(calc, calc_name, write_traj=False, species = ["In", "P"], interstitial=
 calc_name = active_model_name
 calc = get_model(active_model_name)
 
-dump_dir = "../Saved_Data/" + calc_name + os.sep + "PDMigration"
+dump_dir = "../Test_Results/" + calc_name + os.sep + "PDMigration"
 
 if not os.path.exists(dump_dir):
     os.mkdir(dump_dir)

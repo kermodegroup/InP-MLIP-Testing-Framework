@@ -1,0 +1,1628 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 22.11|
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates, M. Payne      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne,          |
+ | R. J. Maurer, J. C. Womack, J. Dziedzic,        |
+ | A. Bartok-Partay, L. LeBlanc, T. K. Stenczel,   |
+ | J. Kermode, S. Sturniolo, B. Shi, B. Durham     |
+ | M. Evans, M. J. Smith                           |
+ |                                                 |
+ | Copyright (c) 2000 - 2021                       |
+ |                                                 |
+ |     Distributed under license from Cambridge    |
+ |     Enterprise for academic use only.           |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ |              http://www.castep.org              |
+ |                                                 |
+ +-------------------------------------------------+
+
+
+
+ Compiled for linux_x86_64_gfortran10-XT on Thu, 16 Mar 2023 13:12:36 +0000
+ from code version Version unavailable
+ Compiler: GNU Fortran 11.2.0; Optimisation: fast
+ MATHLIBS: LibSci (LAPACK version 3.10.1)
+ FFT Lib : fftw3 version commercial-fftw-3.3.10-sse2-avx-avx2-avx2_128
+ Fundamental constants values: CODATA 2014
+
+ Run started: Mon, 25 Mar 2024 19:50:16 +0000
+
+ Atomic calculation performed for P: 1s2 2s2 2p6 3s2 3p3
+
+ Converged in 47 iterations to an ae energy of -9309.074 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 25-03-2024   |                
+   ------------------------------------------------------------                
+   | Element: P Ionic charge:  5.00 Level of theory: RSCAN    |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3s              2.000           -0.535        |                
+   |            3p              3.000           -0.209        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.535   1.807     qc      0         |                
+   |          2      0    0.250   1.807     qc      0         |                
+   |          3      1   -0.209   1.807     qc      0         |                
+   |          4      1    0.250   1.807     qc      0         |                
+   |          5      2    0.000   1.807     qc      0         |                
+   |          6      2    0.250   1.807     qc      0         |                
+   |         loc     3    0.000   1.807     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.263                       |                
+   | Partial core correction Rc = 1.263                       |                
+   ------------------------------------------------------------                
+   | "3|1.8|4|4|5|30:31:32"                                   |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ Warning: otfg_output_psp cannot write out meta-GGA pseudopotentials presently.
+
+ Atomic calculation performed for In:
+ 1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p1
+
+ Converged in 84 iterations to an ae energy of -160093.327 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 25-03-2024   |                
+   ------------------------------------------------------------                
+   | Element: In Ionic charge: 13.00 Level of theory: RSCAN   |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            4d             10.000           -0.711        |                
+   |            5s              2.000           -0.313        |                
+   |            5p              1.000           -0.095        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.313   2.501     qc      0         |                
+   |          2      0    0.250   2.501     qc      0         |                
+   |          3      1   -0.095   2.501     qc      0         |                
+   |          4      1    0.250   2.501     qc      0         |                
+   |          5      2   -0.711   2.207     qc      0         |                
+   |          6      2    0.250   2.207     qc      0         |                
+   |         loc     3    0.000   2.501     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.504                       |                
+   | Partial core correction Rc = 1.504                       |                
+   ------------------------------------------------------------                
+   | "3|2.5|2.5|1.5|7|8|9|50:51:42U2.2U2.2"                   |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ Warning: otfg_output_psp cannot write out meta-GGA pseudopotentials presently.
+
+ Pseudo atomic calculation performed for P 3s2 3p3
+
+ Converged in 23 iterations to a total energy of -208.0292 eV
+
+ Pseudo atomic calculation performed for In 4d10 5s2 5p1
+
+ Converged in 42 iterations to a total energy of -1747.4500 eV
+ Calculation parallelised over 240 processes.
+ Data is distributed by G-vector(6-way) and k-point(40-way)
+ Each process may use up to 2 threads.
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : StackingFaultStructs_(0_0_1)_(1_0_0)_5.check
+ type of calculation                            : geometry optimization
+ stress calculation                             : off
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : on
+ polarisation (Berry phase) analysis            : off
+ molecular orbital projected DOS                : off
+ deltaSCF calculation                           : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : off
+  
+ output         length unit                     : A
+ output           mass unit                     : amu
+ output           time unit                     : ps
+ output         charge unit                     : e
+ output           spin unit                     : hbar/2
+ output         energy unit                     : eV
+ output          force unit                     : eV/A
+ output       velocity unit                     : A/ps
+ output       pressure unit                     : GPa
+ output     inv_length unit                     : 1/A
+ output      frequency unit                     : cm-1
+ output force constant unit                     : eV/A**2
+ output         volume unit                     : A**3
+ output   IR intensity unit                     : (D/A)**2/amu
+ output         dipole unit                     : D
+ output         efield unit                     : eV/A/e
+ output        entropy unit                     : J/mol/K
+ output    efield chi2 unit                     : pm/V
+  
+ wavefunctions paging                           : none
+ random number generator seed                   : randomised (195016657)
+ data distribution                              : optimal for this architecture
+ optimization strategy                          : balance speed and memory
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : RSCAN
+ relativistic treatment                         : Koelling-Harmon
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ plane wave basis set cut-off                   :   900.0000   eV
+ size of standard grid                          :     2.0000
+ size of   fine   gmax                          :    30.7390   1/A
+ finite basis set correction                    : none
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  216.0    
+ net charge of system                           :  0.000    
+ treating system as non-spin-polarized
+ number of bands                                :        130
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as metallic with density mixing treatment of electrons,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-07   eV
+ eigen-energy convergence tolerance             : 0.2222E-08   eV
+ max force / atom convergence tol.              : ignored
+ convergence tolerance window                   :          3   cycles
+ max. number of SCF cycles                      :         50
+ number of fixed-spin iterations                :         10
+ smearing scheme                                : Gaussian
+ smearing width                                 : 0.2000       eV
+ Fermi energy convergence tolerance             : 0.2721E-13   eV
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Pulay
+ max. length of mixing history                  :         15
+ charge density mixing amplitude                : 0.5000    
+ cut-off energy for mixing                      :  900.0       eV
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+ Population analysis output                     : summary and pdos components
+
+ ********************** Geometry Optimization Parameters ***********************
+  
+ optimization method                            : LBFGS
+ max. no. of LBFGS updates                      : unbounded
+ preconditioned LBFGS is activated
+ preconditioner type                            : EXP
+     stabilization constant                     :     0.1000
+     parameter A                                :     3.0000
+     nearest neighbor distance                  : automatic
+     cut-off distance                           : automatic
+     parameter mu                               : automatic
+ variable cell method                           : fixed basis quality
+ max. number of steps                           :         30
+ estimated bulk modulus                         :  500.0       GPa
+ estimated <frequency>                          :  1668.       cm-1
+ geom line minimiser                            : on
+ with line minimiser tolerance                  :     0.4000
+ total energy convergence tolerance             : 0.2000E-04   eV/atom
+        max ionic |force| tolerance             : 0.1000E-02   eV/A
+ max ionic |displacement| tolerance             : 0.1000E-02   A
+   max |stress component| tolerance             : 0.1000       GPa
+ convergence tolerance window                   :          2   steps
+ backup results every                           :          5   steps
+ write geom trajectory file                     : on
+
+ *******************************************************************************
+  
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+     5.9012740     0.0000000     0.0000000        1.064716756   0.000000000   0.000000000
+     0.0000000     5.9012740     0.0000000        0.000000000   1.064716756  -0.204753225
+     0.0000000     3.4045810    17.7038210        0.000000000   0.000000000   0.354905605
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      5.901274          alpha =   79.114473
+                    b =      5.901274          beta  =   90.000000
+                    c =     18.028213          gamma =   90.000000
+
+                       Current cell volume =           616.536183       A**3
+                                   density =             2.837629   AMU/A**3
+                                           =             4.711994     g/cm^3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =   24
+                      Total number of species in cell =    2
+                        Max number of any one species =   12
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  P            1         0.250000   0.228608   0.903746   x 
+            x  P            2         0.250000  -0.175621   0.737743   x 
+            x  P            3         0.750000   0.324379   0.737743   x 
+            x  P            4         0.750000  -0.271392   0.903746   x 
+            x  P            5         0.750000   0.100468   0.259189   x 
+            x  P            6         0.750000   0.508410   0.418755   x 
+            x  P            7         0.750000  -0.083851   0.578675   x 
+            x  P            8         0.250000   0.600468   0.259189   x 
+            x  P            9         0.250000   0.193669   0.097641   x 
+            x  P           10         0.750000   0.693669   0.097641   x 
+            x  P           11         0.250000   0.008410   0.418755   x 
+            x  P           12         0.250000   0.416149   0.578675   x 
+            x  In           1         0.000000   0.027381   0.819205   x 
+            x  In           2         0.500000   0.119791   0.659029   x 
+            x  In           3         0.500000  -0.472619   0.819205   x 
+            x  In           4         0.500000  -0.103033   0.178591   x 
+            x  In           5         0.500000   0.494407   0.009694   x 
+            x  In           6         0.000000  -0.005593   0.009694   x 
+            x  In           7         0.000000   0.396967   0.178591   x 
+            x  In           8         0.000000  -0.380209   0.659029   x 
+            x  In           9         0.500000  -0.287737   0.498743   x 
+            x  In          10         0.500000   0.304429   0.338989   x 
+            x  In          11         0.000000  -0.195571   0.338989   x 
+            x  In          12         0.000000   0.212263   0.498743   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                         No user defined ionic velocities
+
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+
+                               Mass of species in AMU
+                                    P   30.9737600
+                                    In  114.8180000
+
+                          Electric Quadrupole Moment (Barn)
+                                    P    1.0000000 No Isotope Defined
+                                    In    0.7700000 Isotope115
+
+                          Files used for pseudopotentials:
+                                    P 3|1.8|4|4|5|30:31:32
+                                    In 3|2.5|2.5|1.5|7|8|9|50:51:42U2.2U2.2
+
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  6  6  2
+                            with an offset of   0.083  0.083  0.250
+                       Number of kpoints used =            40
+
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+
+                      Cell is a supercell containing 2 primitive cells
+                      Maximum deviation from symmetry =  0.00000         ANG
+
+                      Number of symmetry operations   =           1
+                      Number of ionic constraints     =          48
+                      Point group of crystal =     1: C1, 1, 1
+                      Space group of crystal =     1: P1, P 1
+
+             Set iprint > 1 for details on symmetry rotations/translations
+
+                         Centre of mass is NOT constrained
+             Set iprint > 1 for details of linear ionic constraints
+
+                         Number of cell constraints= 6
+                         Cell constraints are:  0 0 0 0 0 0
+
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead      488.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                              832.3 MB         0.0 MB |
+| Electronic energy minimisation requirements          87.5 MB         0.0 MB |
+| Force calculation requirements                       15.9 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process         1407.9 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating approximate eigenstates for fixed initial Hamiltonian
+Cut-off for approx. calculation is  131.752 eV
+Improving approx. states at cut-off of  450.000 eV
+Resetting cut-off to  900.000 eV
+Calculating total energy with cut-off of  900.000 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.36323932E+004  0.00000000E+000                       366.84  <-- SCF
+      1  -2.35479185E+004  2.89871358E+000  -3.51977855E+000     377.47  <-- SCF
+      2  -2.35479330E+004  2.89864510E+000   6.01827151E-004     386.96  <-- SCF
+      3  -2.35721965E+004  3.24831196E+000   1.01098153E+000     397.43  <-- SCF
+      4  -2.35761285E+004  3.27692652E+000   1.63832065E-001     409.93  <-- SCF
+      5  -2.35738850E+004  3.48089650E+000  -9.34775579E-002     420.25  <-- SCF
+      6  -2.35743433E+004  3.57353807E+000   1.90948542E-002     430.52  <-- SCF
+      7  -2.35741278E+004  3.62039838E+000  -8.97874796E-003     441.41  <-- SCF
+      8  -2.35746267E+004  3.59935477E+000   2.07871878E-002     451.90  <-- SCF
+      9  -2.35748299E+004  3.58788248E+000   8.46420921E-003     462.35  <-- SCF
+     10  -2.35748341E+004  3.56943227E+000   1.76591885E-004     473.12  <-- SCF
+     11  -2.35748311E+004  3.58445521E+000  -1.23897812E-004     483.74  <-- SCF
+     12  -2.35748312E+004  3.58336122E+000   1.46135975E-006     494.76  <-- SCF
+     13  -2.35748312E+004  3.58370285E+000   7.08025032E-007     505.84  <-- SCF
+     14  -2.35748312E+004  3.58406062E+000  -3.83568288E-007     515.41  <-- SCF
+     15  -2.35748312E+004  3.58399702E+000   4.33338261E-007     524.68  <-- SCF
+     16  -2.35748312E+004  3.58417150E+000  -7.32958485E-009     533.31  <-- SCF
+     17  -2.35748312E+004  3.58411955E+000   6.39158670E-009     540.83  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.75179415     eV
+Final free energy (E-TS)    =  -23574.83117312     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.79148363     eV
+ 
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Model and support data                              554.6 MB         0.0 MB |
+| Electronic energy minimisation requirements          87.5 MB         0.0 MB |
+| Geometry minimisation requirements                  102.1 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process          744.2 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1      0.00000(cons'd)     -0.00000(cons'd)      0.29466         *
+ * P               2      0.00000(cons'd)      0.00000(cons'd)      0.18136         *
+ * P               3     -0.00000(cons'd)      0.00000(cons'd)      0.18136         *
+ * P               4     -0.00000(cons'd)     -0.00000(cons'd)      0.29466         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)     -0.13760         *
+ * P               6      0.00000(cons'd)      0.00000(cons'd)     -0.02176         *
+ * P               7      0.00000(cons'd)     -0.00000(cons'd)     -0.02258         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)     -0.13760         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)     -0.08971         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)     -0.08971         *
+ * P              11      0.00000(cons'd)      0.00000(cons'd)     -0.02176         *
+ * P              12      0.00000(cons'd)      0.00000(cons'd)     -0.02258         *
+ * In              1      0.00000(cons'd)      0.00000(cons'd)     -0.14684         *
+ * In              2      0.00000(cons'd)      0.00000(cons'd)     -0.09096         *
+ * In              3      0.00000(cons'd)      0.00000(cons'd)     -0.14684         *
+ * In              4     -0.00000(cons'd)      0.00000(cons'd)      0.15524         *
+ * In              5      0.00000(cons'd)      0.00000(cons'd)     -0.20232         *
+ * In              6      0.00000(cons'd)      0.00000(cons'd)     -0.20232         *
+ * In              7     -0.00000(cons'd)      0.00000(cons'd)      0.15524         *
+ * In              8      0.00000(cons'd)      0.00000(cons'd)     -0.09096         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)      0.05500         *
+ * In             10      0.00000(cons'd)      0.00000(cons'd)      0.02552         *
+ * In             11     -0.00000(cons'd)     -0.00000(cons'd)      0.02552         *
+ * In             12      0.00000(cons'd)      0.00000(cons'd)      0.05500         *
+ *                                                                                  *
+ ************************************************************************************
+ EXP precond LBFGS => estimated nearest neighbor distance :  2.596       A
+ EXP precond LBFGS => estimated cutoff distance :  5.192       A
+
+ ************************************** Forces **************************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1     -0.42866(cons'd)     -0.65746(cons'd)      0.29466         *
+ * P               2     -0.16449(cons'd)     -0.15491(cons'd)      0.18136         *
+ * P               3     -0.16449(cons'd)     -0.15491(cons'd)      0.18136         *
+ * P               4     -0.42866(cons'd)     -0.65746(cons'd)      0.29466         *
+ * P               5      0.01084(cons'd)      0.03234(cons'd)     -0.13760         *
+ * P               6     -0.00045(cons'd)      0.00017(cons'd)     -0.02176         *
+ * P               7     -0.02725(cons'd)     -0.02233(cons'd)     -0.02258         *
+ * P               8      0.01084(cons'd)      0.03234(cons'd)     -0.13760         *
+ * P               9      0.09892(cons'd)      0.20090(cons'd)     -0.08971         *
+ * P              10      0.09892(cons'd)      0.20090(cons'd)     -0.08971         *
+ * P              11     -0.00045(cons'd)      0.00017(cons'd)     -0.02176         *
+ * P              12     -0.02725(cons'd)     -0.02233(cons'd)     -0.02258         *
+ * In              1      0.24089(cons'd)      0.28991(cons'd)     -0.14684         *
+ * In              2      0.03699(cons'd)      0.04231(cons'd)     -0.09096         *
+ * In              3      0.24089(cons'd)      0.28991(cons'd)     -0.14684         *
+ * In              4      0.09227(cons'd)      0.05947(cons'd)      0.15524         *
+ * In              5      0.11676(cons'd)      0.18976(cons'd)     -0.20232         *
+ * In              6      0.11676(cons'd)      0.18976(cons'd)     -0.20232         *
+ * In              7      0.09227(cons'd)      0.05947(cons'd)      0.15524         *
+ * In              8      0.03699(cons'd)      0.04231(cons'd)     -0.09096         *
+ * In              9      0.00848(cons'd)      0.00906(cons'd)      0.05500         *
+ * In             10      0.01571(cons'd)      0.01077(cons'd)      0.02552         *
+ * In             11      0.01571(cons'd)      0.01077(cons'd)      0.02552         *
+ * In             12      0.00848(cons'd)      0.00906(cons'd)      0.05500         *
+ *                                                                                  *
+ ************************************************************************************
+ doing test perturbation to get energy scale for EXP preconditioner
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.251439   0.230890   0.904988   x
+            x  P                 2         0.251439   0.827932   0.738820   x
+            x  P                 3         0.753701   0.326756   0.738820   x
+            x  P                 4         0.753701   0.732066   0.904988   x
+            x  P                 5         0.753701   0.101314   0.259608   x
+            x  P                 6         0.753701   0.511027   0.419417   x
+            x  P                 7         0.753701   0.919813   0.579559   x
+            x  P                 8         0.251439   0.603224   0.259608   x
+            x  P                 9         0.251439   0.194665   0.097801   x
+            x  P                10         0.753701   0.696575   0.097801   x
+            x  P                11         0.251439   0.009117   0.419417   x
+            x  P                12         0.251439   0.418637   0.579559   x
+            x  In                1         0.000000   0.028819   0.820369   x
+            x  In                2         0.502720   0.121331   0.660015   x
+            x  In                3         0.502720   0.530412   0.820369   x
+            x  In                4         0.502720   0.900500   0.178882   x
+            x  In                5         0.502720   0.496507   0.009710   x
+            x  In                6         0.000000   0.998100   0.009710   x
+            x  In                7         0.000000   0.398908   0.178882   x
+            x  In                8         0.000000   0.622923   0.660015   x
+            x  In                9         0.502720   0.715517   0.499519   x
+            x  In               10         0.502720   0.306225   0.339532   x
+            x  In               11         0.000000   0.807818   0.339532   x
+            x  In               12         0.000000   0.213925   0.499519   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.35734604E+004  0.00000000E+000                       554.83  <-- SCF
+      1  -2.35746725E+004  3.57390935E+000   5.05030518E-002     564.93  <-- SCF
+      2  -2.35748082E+004  3.57382183E+000   5.65223673E-003     577.67  <-- SCF
+      3  -2.35748090E+004  3.57432348E+000   3.30001482E-005     588.43  <-- SCF
+      4  -2.35748099E+004  3.57446576E+000   3.76289084E-005     599.48  <-- SCF
+      5  -2.35748100E+004  3.57435162E+000   7.55747290E-006     610.82  <-- SCF
+      6  -2.35748101E+004  3.57412640E+000   1.31329886E-006     621.94  <-- SCF
+      7  -2.35748101E+004  3.57408226E+000   3.26041043E-008     631.57  <-- SCF
+      8  -2.35748101E+004  3.57401699E+000  -2.52324983E-008     640.34  <-- SCF
+      9  -2.35748101E+004  3.57398595E+000  -8.34801599E-009     648.46  <-- SCF
+     10  -2.35748101E+004  3.57395897E+000  -7.18740923E-010     656.12  <-- SCF
+     11  -2.35748101E+004  3.57394555E+000   6.89223048E-010     663.60  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.73372367     eV
+Final free energy (E-TS)    =  -23574.81007124     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.77189745     eV
+ 
+
+ ************************************** Forces **************************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1     -0.38997(cons'd)     -0.64414(cons'd)      0.19713         *
+ * P               2     -0.13919(cons'd)     -0.23755(cons'd)      0.18706         *
+ * P               3     -0.30889(cons'd)     -0.14993(cons'd)      0.18927         *
+ * P               4     -0.44793(cons'd)     -0.69081(cons'd)      0.25901         *
+ * P               5     -0.13829(cons'd)      0.15680(cons'd)     -0.13424         *
+ * P               6     -0.14384(cons'd)     -0.02077(cons'd)     -0.01897         *
+ * P               7     -0.18014(cons'd)     -0.10339(cons'd)     -0.01844         *
+ * P               8      0.03964(cons'd)      0.00533(cons'd)     -0.13581         *
+ * P               9      0.10820(cons'd)      0.29630(cons'd)     -0.04675         *
+ * P              10     -0.02003(cons'd)      0.19287(cons'd)     -0.07461         *
+ * P              11      0.02265(cons'd)      0.12089(cons'd)     -0.01966         *
+ * P              12      0.00235(cons'd)     -0.02155(cons'd)     -0.01825         *
+ * In              1      0.34898(cons'd)      0.33055(cons'd)     -0.18060         *
+ * In              2     -0.01573(cons'd)      0.14236(cons'd)     -0.09360         *
+ * In              3      0.19873(cons'd)      0.27646(cons'd)     -0.19822         *
+ * In              4      0.04152(cons'd)     -0.03881(cons'd)      0.15814         *
+ * In              5      0.07514(cons'd)      0.15781(cons'd)     -0.09335         *
+ * In              6      0.11834(cons'd)      0.18693(cons'd)     -0.16405         *
+ * In              7      0.25674(cons'd)      0.07853(cons'd)      0.15943         *
+ * In              8      0.20999(cons'd)      0.01758(cons'd)     -0.09458         *
+ * In              9     -0.01237(cons'd)     -0.06153(cons'd)      0.08528         *
+ * In             10     -0.03983(cons'd)      0.03278(cons'd)      0.02005         *
+ * In             11      0.19285(cons'd)     -0.10120(cons'd)      0.02409         *
+ * In             12      0.22110(cons'd)      0.07447(cons'd)      0.01168         *
+ *                                                                                  *
+ ************************************************************************************
+ EXP precond LBFGS => estimated parameter mu :  1.684       eV/A**2
+ LBFGS: finished iteration     0 with enthalpy= -2.35748312E+004 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   0.000000E+000 |   2.000000E-005 |         eV | No  | <-- LBFGS
+ |  |F|max   |   8.631027E-001 |   1.000000E-003 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   2.001534E-015 |   1.000000E-003 |          A | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          1 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.327178 |   -23574.831173 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         1 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.250000   0.227574   0.905538   x
+            x  P                 2         0.250000  -0.176419   0.739125   x
+            x  P                 3         0.750000   0.323581   0.739125   x
+            x  P                 4         0.750000  -0.272426   0.905538   x
+            x  P                 5         0.750000   0.101086   0.258117   x
+            x  P                 6         0.750000   0.508543   0.418526   x
+            x  P                 7         0.750000  -0.083900   0.578759   x
+            x  P                 8         0.250000   0.601086   0.258117   x
+            x  P                 9         0.250000   0.194238   0.096655   x
+            x  P                10         0.750000   0.694238   0.096655   x
+            x  P                11         0.250000   0.008543   0.418526   x
+            x  P                12         0.250000   0.416100   0.578759   x
+            x  In                1         0.000000   0.027248   0.819437   x
+            x  In                2         0.500000   0.119727   0.659139   x
+            x  In                3         0.500000  -0.472752   0.819437   x
+            x  In                4         0.500000  -0.103064   0.178645   x
+            x  In                5         0.500000   0.495141   0.008422   x
+            x  In                6         0.000000  -0.004859   0.008422   x
+            x  In                7        -0.000000   0.396936   0.178645   x
+            x  In                8         0.000000  -0.380273   0.659139   x
+            x  In                9         0.500000  -0.287893   0.499014   x
+            x  In               10         0.500000   0.304641   0.338623   x
+            x  In               11        -0.000000  -0.195359   0.338623   x
+            x  In               12         0.000000   0.212107   0.499014   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.35734484E+004  0.00000000E+000                       672.21  <-- SCF
+      1  -2.35747050E+004  3.58803232E+000   5.23611359E-002     682.28  <-- SCF
+      2  -2.35748519E+004  3.58795333E+000   6.11971695E-003     694.93  <-- SCF
+      3  -2.35748515E+004  3.59659990E+000  -1.62168398E-005     705.74  <-- SCF
+      4  -2.35748517E+004  3.60538713E+000   9.61557142E-006     716.77  <-- SCF
+      5  -2.35748518E+004  3.60990134E+000   4.63705580E-007     728.58  <-- SCF
+      6  -2.35748517E+004  3.61296399E+000  -2.78033106E-006     739.57  <-- SCF
+      7  -2.35748516E+004  3.61585800E+000  -1.95125967E-006     750.57  <-- SCF
+      8  -2.35748516E+004  3.61739238E+000  -3.71924195E-007     760.37  <-- SCF
+      9  -2.35748516E+004  3.61776615E+000   3.82430496E-009     769.14  <-- SCF
+     10  -2.35748516E+004  3.61782765E+000   4.58081329E-009     776.78  <-- SCF
+     11  -2.35748516E+004  3.61786584E+000   3.18896170E-010     784.37  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.78117456     eV
+Final free energy (E-TS)    =  -23574.85163717     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.81640587     eV
+ 
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1     -0.00000(cons'd)      0.00000(cons'd)      0.00757         *
+ * P               2     -0.00000(cons'd)     -0.00000(cons'd)     -0.02772         *
+ * P               3     -0.00000(cons'd)     -0.00000(cons'd)     -0.02772         *
+ * P               4     -0.00000(cons'd)      0.00000(cons'd)      0.00759         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)      0.05618         *
+ * P               6     -0.00000(cons'd)      0.00000(cons'd)      0.01819         *
+ * P               7      0.00000(cons'd)     -0.00000(cons'd)      0.01857         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)      0.05620         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)      0.03340         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)      0.03341         *
+ * P              11      0.00000(cons'd)      0.00000(cons'd)      0.01820         *
+ * P              12      0.00000(cons'd)      0.00000(cons'd)      0.01856         *
+ * In              1      0.00000(cons'd)      0.00000(cons'd)      0.01292         *
+ * In              2     -0.00000(cons'd)      0.00000(cons'd)      0.01774         *
+ * In              3      0.00000(cons'd)     -0.00000(cons'd)      0.01292         *
+ * In              4      0.00000(cons'd)      0.00000(cons'd)     -0.06022         *
+ * In              5      0.00000(cons'd)     -0.00000(cons'd)     -0.01637         *
+ * In              6      0.00000(cons'd)      0.00000(cons'd)     -0.01638         *
+ * In              7      0.00000(cons'd)      0.00000(cons'd)     -0.06023         *
+ * In              8      0.00000(cons'd)      0.00000(cons'd)      0.01774         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)     -0.03438         *
+ * In             10      0.00000(cons'd)     -0.00000(cons'd)     -0.02591         *
+ * In             11      0.00000(cons'd)      0.00000(cons'd)     -0.02591         *
+ * In             12      0.00000(cons'd)     -0.00000(cons'd)     -0.03437         *
+ *                                                                                  *
+ ************************************************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.327178 |   -23574.831173 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.025709 |   -23574.851637 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     1 with enthalpy= -2.35748516E+004 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   8.526689E-004 |   2.000000E-005 |         eV | No  | <-- LBFGS
+ |  |F|max   |   6.023122E-002 |   1.000000E-003 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   3.173064E-002 |   1.000000E-003 |          A | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          2 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.082243 |   -23574.851637 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         2 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.250000   0.227508   0.905652   x
+            x  P                 2         0.250000  -0.176387   0.739070   x
+            x  P                 3         0.750000   0.323613   0.739070   x
+            x  P                 4         0.750000  -0.272492   0.905652   x
+            x  P                 5         0.750000   0.100992   0.258281   x
+            x  P                 6         0.750000   0.508533   0.418543   x
+            x  P                 7         0.750000  -0.083944   0.578836   x
+            x  P                 8         0.250000   0.600992   0.258281   x
+            x  P                 9         0.250000   0.194195   0.096728   x
+            x  P                10         0.750000   0.694195   0.096728   x
+            x  P                11         0.250000   0.008533   0.418543   x
+            x  P                12         0.250000   0.416056   0.578836   x
+            x  In                1         0.000000   0.027207   0.819508   x
+            x  In                2         0.500000   0.119674   0.659231   x
+            x  In                3         0.500000  -0.472793   0.819508   x
+            x  In                4         0.500000  -0.102928   0.178408   x
+            x  In                5         0.500000   0.495188   0.008340   x
+            x  In                6         0.000000  -0.004812   0.008340   x
+            x  In                7        -0.000000   0.397072   0.178408   x
+            x  In                8         0.000000  -0.380326   0.659231   x
+            x  In                9         0.500000  -0.287810   0.498870   x
+            x  In               10         0.500000   0.304693   0.338532   x
+            x  In               11        -0.000000  -0.195307   0.338532   x
+            x  In               12         0.000000   0.212190   0.498870   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.35747627E+004  0.00000000E+000                       793.73  <-- SCF
+      1  -2.35748512E+004  3.61532336E+000   3.68681852E-003     804.03  <-- SCF
+      2  -2.35748524E+004  3.61532304E+000   4.82224701E-005     816.83  <-- SCF
+      3  -2.35748524E+004  3.61387675E+000  -3.97903792E-007     827.82  <-- SCF
+      4  -2.35748523E+004  3.61265249E+000  -4.59523452E-007     838.53  <-- SCF
+      5  -2.35748523E+004  3.61201001E+000  -1.79406809E-007     847.44  <-- SCF
+      6  -2.35748523E+004  3.61084299E+000  -2.25889342E-007     857.06  <-- SCF
+      7  -2.35748523E+004  3.61027676E+000  -3.62400878E-008     865.84  <-- SCF
+      8  -2.35748523E+004  3.61014288E+000  -6.85742775E-010     873.66  <-- SCF
+      9  -2.35748523E+004  3.61010948E+000   3.49960833E-010     881.22  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.78224396     eV
+Final free energy (E-TS)    =  -23574.85233745     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.81729070     eV
+ 
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1     -0.00000(cons'd)     -0.00000(cons'd)     -0.00301         *
+ * P               2     -0.00000(cons'd)     -0.00000(cons'd)      0.00445         *
+ * P               3     -0.00000(cons'd)      0.00000(cons'd)      0.00445         *
+ * P               4      0.00000(cons'd)      0.00000(cons'd)     -0.00302         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)     -0.00217         *
+ * P               6     -0.00000(cons'd)      0.00000(cons'd)     -0.00004         *
+ * P               7     -0.00000(cons'd)      0.00000(cons'd)      0.00249         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)     -0.00219         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)      0.00232         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)      0.00231         *
+ * P              11     -0.00000(cons'd)      0.00000(cons'd)     -0.00004         *
+ * P              12     -0.00000(cons'd)      0.00000(cons'd)      0.00250         *
+ * In              1      0.00000(cons'd)      0.00000(cons'd)     -0.00344         *
+ * In              2      0.00000(cons'd)      0.00000(cons'd)     -0.00554         *
+ * In              3      0.00000(cons'd)     -0.00000(cons'd)     -0.00344         *
+ * In              4      0.00000(cons'd)      0.00000(cons'd)      0.00348         *
+ * In              5      0.00000(cons'd)      0.00000(cons'd)      0.00148         *
+ * In              6      0.00000(cons'd)      0.00000(cons'd)      0.00148         *
+ * In              7      0.00000(cons'd)      0.00000(cons'd)      0.00348         *
+ * In              8      0.00000(cons'd)      0.00000(cons'd)     -0.00554         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)      0.00042         *
+ * In             10      0.00000(cons'd)      0.00000(cons'd)     -0.00042         *
+ * In             11      0.00000(cons'd)      0.00000(cons'd)     -0.00042         *
+ * In             12     -0.00000(cons'd)      0.00000(cons'd)      0.00041         *
+ *                                                                                  *
+ ************************************************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.082243 |   -23574.851637 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.004594 |   -23574.852337 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     2 with enthalpy= -2.35748523E+004 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   2.917803E-005 |   2.000000E-005 |         eV | No  | <-- LBFGS
+ |  |F|max   |   5.543713E-003 |   1.000000E-003 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   4.184042E-003 |   1.000000E-003 |          A | No  | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          3 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.005749 |   -23574.852337 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         3 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.250000   0.227526   0.905621   x
+            x  P                 2         0.250000  -0.176383   0.739063   x
+            x  P                 3         0.750000   0.323617   0.739063   x
+            x  P                 4         0.750000  -0.272474   0.905621   x
+            x  P                 5         0.750000   0.100985   0.258292   x
+            x  P                 6         0.750000   0.508531   0.418547   x
+            x  P                 7         0.750000  -0.083944   0.578836   x
+            x  P                 8         0.250000   0.600985   0.258292   x
+            x  P                 9         0.250000   0.194174   0.096765   x
+            x  P                10         0.750000   0.694174   0.096765   x
+            x  P                11         0.250000   0.008531   0.418547   x
+            x  P                12         0.250000   0.416056   0.578836   x
+            x  In                1         0.000000   0.027227   0.819474   x
+            x  In                2         0.500000   0.119695   0.659195   x
+            x  In                3         0.500000  -0.472773   0.819474   x
+            x  In                4         0.500000  -0.102949   0.178444   x
+            x  In                5         0.500000   0.495179   0.008356   x
+            x  In                6         0.000000  -0.004821   0.008356   x
+            x  In                7        -0.000000   0.397051   0.178444   x
+            x  In                8         0.000000  -0.380305   0.659195   x
+            x  In                9         0.500000  -0.287809   0.498870   x
+            x  In               10         0.500000   0.304690   0.338537   x
+            x  In               11        -0.000000  -0.195310   0.338537   x
+            x  In               12        -0.000000   0.212191   0.498870   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.35747845E+004  0.00000000E+000                       889.83  <-- SCF
+      1  -2.35748523E+004  3.61044315E+000   2.82540746E-003     900.10  <-- SCF
+      2  -2.35748523E+004  3.61044313E+000   1.86414907E-006     912.81  <-- SCF
+      3  -2.35748523E+004  3.61048725E+000   1.14890273E-008     921.47  <-- SCF
+      4  -2.35748523E+004  3.61060267E+000   5.28524643E-009     929.66  <-- SCF
+      5  -2.35748523E+004  3.61066291E+000  -3.82056689E-010     937.22  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.78208835     eV
+Final free energy (E-TS)    =  -23574.85234753     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.81721794     eV
+ 
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1     -0.00000(cons'd)      0.00000(cons'd)      0.00076         *
+ * P               2     -0.00000(cons'd)     -0.00000(cons'd)     -0.00007         *
+ * P               3      0.00000(cons'd)      0.00000(cons'd)     -0.00007         *
+ * P               4     -0.00000(cons'd)      0.00000(cons'd)      0.00075         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)     -0.00061         *
+ * P               6     -0.00000(cons'd)      0.00000(cons'd)     -0.00004         *
+ * P               7     -0.00000(cons'd)     -0.00000(cons'd)     -0.00041         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)     -0.00060         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)     -0.00099         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)     -0.00099         *
+ * P              11      0.00000(cons'd)      0.00000(cons'd)     -0.00004         *
+ * P              12     -0.00000(cons'd)     -0.00000(cons'd)     -0.00041         *
+ * In              1      0.00000(cons'd)      0.00000(cons'd)      0.00106         *
+ * In              2      0.00000(cons'd)     -0.00000(cons'd)      0.00146         *
+ * In              3      0.00000(cons'd)      0.00000(cons'd)      0.00106         *
+ * In              4      0.00000(cons'd)      0.00000(cons'd)     -0.00054         *
+ * In              5      0.00000(cons'd)      0.00000(cons'd)     -0.00096         *
+ * In              6      0.00000(cons'd)     -0.00000(cons'd)     -0.00095         *
+ * In              7      0.00000(cons'd)      0.00000(cons'd)     -0.00054         *
+ * In              8     -0.00000(cons'd)     -0.00000(cons'd)      0.00146         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)      0.00027         *
+ * In             10      0.00000(cons'd)      0.00000(cons'd)      0.00006         *
+ * In             11      0.00000(cons'd)     -0.00000(cons'd)      0.00006         *
+ * In             12      0.00000(cons'd)      0.00000(cons'd)      0.00027         *
+ *                                                                                  *
+ ************************************************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.005749 |   -23574.852337 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.001864 |   -23574.852348 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     3 with enthalpy= -2.35748523E+004 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   4.202372E-007 |   2.000000E-005 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   1.458516E-003 |   1.000000E-003 |       eV/A | No  | <-- LBFGS
+ |  |dR|max  |   6.477139E-004 |   1.000000E-003 |          A | Yes | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+
+================================================================================
+ Starting LBFGS iteration          4 ...
+================================================================================
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.001625 |   -23574.852348 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: starting iteration         4 with trial guess (lambda=  1.000000)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.250000   0.227523   0.905627   x
+            x  P                 2         0.250000  -0.176390   0.739075   x
+            x  P                 3         0.750000   0.323610   0.739075   x
+            x  P                 4         0.750000  -0.272477   0.905627   x
+            x  P                 5         0.750000   0.100992   0.258280   x
+            x  P                 6         0.750000   0.508531   0.418546   x
+            x  P                 7         0.750000  -0.083948   0.578843   x
+            x  P                 8         0.250000   0.600992   0.258280   x
+            x  P                 9         0.250000   0.194182   0.096751   x
+            x  P                10         0.750000   0.694182   0.096751   x
+            x  P                11         0.250000   0.008531   0.418546   x
+            x  P                12         0.250000   0.416052   0.578843   x
+            x  In                1         0.000000   0.027220   0.819486   x
+            x  In                2         0.500000   0.119687   0.659209   x
+            x  In                3         0.500000  -0.472780   0.819486   x
+            x  In                4         0.500000  -0.102941   0.178432   x
+            x  In                5         0.500000   0.495185   0.008347   x
+            x  In                6         0.000000  -0.004815   0.008347   x
+            x  In                7        -0.000000   0.397059   0.178432   x
+            x  In                8        -0.000000  -0.380313   0.659209   x
+            x  In                9         0.500000  -0.287812   0.498874   x
+            x  In               10         0.500000   0.304693   0.338532   x
+            x  In               11        -0.000000  -0.195307   0.338532   x
+            x  In               12        -0.000000   0.212188   0.498874   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.35747814E+004  0.00000000E+000                       945.81  <-- SCF
+      1  -2.35748523E+004  3.61063619E+000   2.95568009E-003     956.11  <-- SCF
+      2  -2.35748523E+004  3.61063619E+000   2.87308306E-007     968.03  <-- SCF
+      3  -2.35748523E+004  3.61068072E+000   3.56599133E-009     975.54  <-- SCF
+      4  -2.35748523E+004  3.61069940E+000   2.37560890E-009     983.04  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.78214235     eV
+Final free energy (E-TS)    =  -23574.85234674     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.81724455     eV
+ 
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1     -0.00000(cons'd)     -0.00000(cons'd)      0.00023         *
+ * P               2     -0.00000(cons'd)      0.00000(cons'd)      0.00005         *
+ * P               3      0.00000(cons'd)     -0.00000(cons'd)      0.00005         *
+ * P               4      0.00000(cons'd)     -0.00000(cons'd)      0.00022         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)     -0.00011         *
+ * P               6     -0.00000(cons'd)      0.00000(cons'd)     -0.00002         *
+ * P               7      0.00000(cons'd)     -0.00000(cons'd)     -0.00003         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)     -0.00011         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)     -0.00029         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)     -0.00029         *
+ * P              11     -0.00000(cons'd)      0.00000(cons'd)     -0.00002         *
+ * P              12      0.00000(cons'd)      0.00000(cons'd)     -0.00003         *
+ * In              1      0.00000(cons'd)     -0.00000(cons'd)     -0.00113         *
+ * In              2      0.00000(cons'd)      0.00000(cons'd)     -0.00090         *
+ * In              3      0.00000(cons'd)      0.00000(cons'd)     -0.00113         *
+ * In              4      0.00000(cons'd)      0.00000(cons'd)      0.00107         *
+ * In              5     -0.00000(cons'd)      0.00000(cons'd)      0.00087         *
+ * In              6      0.00000(cons'd)      0.00000(cons'd)      0.00087         *
+ * In              7     -0.00000(cons'd)      0.00000(cons'd)      0.00107         *
+ * In              8      0.00000(cons'd)     -0.00000(cons'd)     -0.00090         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)     -0.00012         *
+ * In             10      0.00000(cons'd)      0.00000(cons'd)      0.00039         *
+ * In             11      0.00000(cons'd)     -0.00000(cons'd)      0.00039         *
+ * In             12      0.00000(cons'd)      0.00000(cons'd)     -0.00012         *
+ *                                                                                  *
+ ************************************************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.001625 |   -23574.852348 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.000990 |   -23574.852347 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+
+--------------------------------------------------------------------------------
+ LBFGS: improving iteration         4 with line minimization (lambda=  0.621505)
+--------------------------------------------------------------------------------
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.250000   0.227524   0.905625   x
+            x  P                 2         0.250000  -0.176387   0.739071   x
+            x  P                 3         0.750000   0.323613   0.739071   x
+            x  P                 4         0.750000  -0.272476   0.905625   x
+            x  P                 5         0.750000   0.100990   0.258285   x
+            x  P                 6         0.750000   0.508531   0.418546   x
+            x  P                 7         0.750000  -0.083946   0.578840   x
+            x  P                 8         0.250000   0.600990   0.258285   x
+            x  P                 9         0.250000   0.194179   0.096756   x
+            x  P                10         0.750000   0.694179   0.096756   x
+            x  P                11         0.250000   0.008531   0.418546   x
+            x  P                12         0.250000   0.416054   0.578840   x
+            x  In                1         0.000000   0.027222   0.819481   x
+            x  In                2         0.500000   0.119690   0.659204   x
+            x  In                3         0.500000  -0.472778   0.819481   x
+            x  In                4         0.500000  -0.102944   0.178437   x
+            x  In                5         0.500000   0.495183   0.008350   x
+            x  In                6         0.000000  -0.004817   0.008350   x
+            x  In                7        -0.000000   0.397056   0.178437   x
+            x  In                8        -0.000000  -0.380310   0.659204   x
+            x  In                9         0.500000  -0.287811   0.498872   x
+            x  In               10         0.500000   0.304692   0.338534   x
+            x  In               11        -0.000000  -0.195308   0.338534   x
+            x  In               12        -0.000000   0.212189   0.498872   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.35747828E+004  0.00000000E+000                       991.63  <-- SCF
+      1  -2.35748523E+004  3.61074512E+000   2.89924658E-003    1001.93  <-- SCF
+      2  -2.35748523E+004  3.61074512E+000   4.00820519E-008    1011.29  <-- SCF
+      3  -2.35748523E+004  3.61073910E+000   8.02911982E-010    1018.80  <-- SCF
+      4  -2.35748523E+004  3.61074696E+000   3.76514031E-010    1026.30  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23574.78212098     eV
+Final free energy (E-TS)    =  -23574.85234725     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23574.81723411     eV
+ 
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1      0.00000(cons'd)      0.00000(cons'd)      0.00013         *
+ * P               2     -0.00000(cons'd)     -0.00000(cons'd)     -0.00053         *
+ * P               3     -0.00000(cons'd)     -0.00000(cons'd)     -0.00053         *
+ * P               4      0.00000(cons'd)      0.00000(cons'd)      0.00012         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)      0.00023         *
+ * P               6     -0.00000(cons'd)      0.00000(cons'd)      0.00003         *
+ * P               7     -0.00000(cons'd)      0.00000(cons'd)     -0.00050         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)      0.00023         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)     -0.00006         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)     -0.00006         *
+ * P              11      0.00000(cons'd)      0.00000(cons'd)      0.00003         *
+ * P              12     -0.00000(cons'd)     -0.00000(cons'd)     -0.00050         *
+ * In              1      0.00000(cons'd)     -0.00000(cons'd)      0.00018         *
+ * In              2      0.00000(cons'd)      0.00000(cons'd)      0.00049         *
+ * In              3      0.00000(cons'd)     -0.00000(cons'd)      0.00018         *
+ * In              4      0.00000(cons'd)      0.00000(cons'd)     -0.00002         *
+ * In              5      0.00000(cons'd)      0.00000(cons'd)     -0.00020         *
+ * In              6      0.00000(cons'd)      0.00000(cons'd)     -0.00020         *
+ * In              7     -0.00000(cons'd)      0.00000(cons'd)     -0.00001         *
+ * In              8      0.00000(cons'd)     -0.00000(cons'd)      0.00049         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)      0.00042         *
+ * In             10      0.00000(cons'd)      0.00000(cons'd)     -0.00017         *
+ * In             11      0.00000(cons'd)      0.00000(cons'd)     -0.00017         *
+ * In             12      0.00000(cons'd)      0.00000(cons'd)      0.00042         *
+ *                                                                                  *
+ ************************************************************************************
+  
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |    Step    |   lambda    |   F.delta'  |    enthalpy     | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+ |  previous  |    0.000000 |    0.001625 |   -23574.852348 | <-- min LBFGS
+ | trial step |    1.000000 |   -0.000990 |   -23574.852347 | <-- min LBFGS
+ |  line step |    0.621505 |    0.000057 |   -23574.852347 | <-- min LBFGS
+ +------------+-------------+-------------+-----------------+ <-- min LBFGS
+  
+ LBFGS: finished iteration     4 with enthalpy= -2.35748523E+004 eV
+  
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ | Parameter |      value      |    tolerance    |    units   | OK? | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+ |  dE/ion   |   1.191240E-008 |   2.000000E-005 |         eV | Yes | <-- LBFGS
+ |  |F|max   |   5.286157E-004 |   1.000000E-003 |       eV/A | Yes | <-- LBFGS
+ |  |dR|max  |   1.525238E-004 |   1.000000E-003 |          A | Yes | <-- LBFGS
+ +-----------+-----------------+-----------------+------------+-----+ <-- LBFGS
+  
+ LBFGS: Geometry optimization completed successfully.
+
+================================================================================
+ LBFGS: Final Configuration:
+================================================================================
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element         Atom        Fractional coordinates of atoms  x
+            x                 Number           u          v          w      x
+            x---------------------------------------------------------------x
+            x  P                 1         0.250000   0.227524   0.905625   x
+            x  P                 2         0.250000  -0.176387   0.739071   x
+            x  P                 3         0.750000   0.323613   0.739071   x
+            x  P                 4         0.750000  -0.272476   0.905625   x
+            x  P                 5         0.750000   0.100990   0.258285   x
+            x  P                 6         0.750000   0.508531   0.418546   x
+            x  P                 7         0.750000  -0.083946   0.578840   x
+            x  P                 8         0.250000   0.600990   0.258285   x
+            x  P                 9         0.250000   0.194179   0.096756   x
+            x  P                10         0.750000   0.694179   0.096756   x
+            x  P                11         0.250000   0.008531   0.418546   x
+            x  P                12         0.250000   0.416054   0.578840   x
+            x  In                1         0.000000   0.027222   0.819481   x
+            x  In                2         0.500000   0.119690   0.659204   x
+            x  In                3         0.500000  -0.472778   0.819481   x
+            x  In                4         0.500000  -0.102944   0.178437   x
+            x  In                5         0.500000   0.495183   0.008350   x
+            x  In                6         0.000000  -0.004817   0.008350   x
+            x  In                7        -0.000000   0.397056   0.178437   x
+            x  In                8        -0.000000  -0.380310   0.659204   x
+            x  In                9         0.500000  -0.287811   0.498872   x
+            x  In               10         0.500000   0.304692   0.338534   x
+            x  In               11        -0.000000  -0.195308   0.338534   x
+            x  In               12        -0.000000   0.212189   0.498872   x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+ LBFGS: Final Enthalpy     = -2.35748523E+004 eV
+ LBFGS: Final <frequency>  =     239.14802 cm-1
+
+ ******************* Unconstrained Forces *******************
+ *                                                          *
+ *               Cartesian components (eV/A)                *
+ * -------------------------------------------------------- *
+ *                         x            y            z      *
+ *                                                          *
+ * P               1     -0.36084     -0.63182      0.00013 *
+ * P               2     -0.17120     -0.16225     -0.00053 *
+ * P               3     -0.17120     -0.16225     -0.00053 *
+ * P               4     -0.36084     -0.63182      0.00012 *
+ * P               5      0.01145      0.03718      0.00023 *
+ * P               6     -0.00050      0.00011      0.00003 *
+ * P               7     -0.02811     -0.02309     -0.00050 *
+ * P               8      0.01145      0.03718      0.00023 *
+ * P               9      0.10335      0.22487     -0.00006 *
+ * P              10      0.10336      0.22487     -0.00006 *
+ * P              11     -0.00050      0.00012      0.00003 *
+ * P              12     -0.02811     -0.02308     -0.00050 *
+ * In              1      0.24884      0.29498      0.00018 *
+ * In              2      0.03894      0.04435      0.00049 *
+ * In              3      0.24884      0.29498      0.00018 *
+ * In              4      0.09904      0.06346     -0.00002 *
+ * In              5      0.03309      0.13116     -0.00020 *
+ * In              6      0.03309      0.13116     -0.00020 *
+ * In              7      0.09904      0.06346     -0.00001 *
+ * In              8      0.03894      0.04435      0.00049 *
+ * In              9      0.00902      0.00947      0.00042 *
+ * In             10      0.01692      0.01158     -0.00017 *
+ * In             11      0.01692      0.01158     -0.00017 *
+ * In             12      0.00902      0.00947      0.00042 *
+ *                                                          *
+ ************************************************************
+
+ ******************************** Constrained Forces ********************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * P               1      0.00000(cons'd)      0.00000(cons'd)      0.00013         *
+ * P               2     -0.00000(cons'd)     -0.00000(cons'd)     -0.00053         *
+ * P               3     -0.00000(cons'd)     -0.00000(cons'd)     -0.00053         *
+ * P               4      0.00000(cons'd)      0.00000(cons'd)      0.00012         *
+ * P               5      0.00000(cons'd)      0.00000(cons'd)      0.00023         *
+ * P               6     -0.00000(cons'd)      0.00000(cons'd)      0.00003         *
+ * P               7     -0.00000(cons'd)      0.00000(cons'd)     -0.00050         *
+ * P               8      0.00000(cons'd)      0.00000(cons'd)      0.00023         *
+ * P               9      0.00000(cons'd)      0.00000(cons'd)     -0.00006         *
+ * P              10      0.00000(cons'd)      0.00000(cons'd)     -0.00006         *
+ * P              11      0.00000(cons'd)      0.00000(cons'd)      0.00003         *
+ * P              12     -0.00000(cons'd)     -0.00000(cons'd)     -0.00050         *
+ * In              1      0.00000(cons'd)     -0.00000(cons'd)      0.00018         *
+ * In              2      0.00000(cons'd)      0.00000(cons'd)      0.00049         *
+ * In              3      0.00000(cons'd)     -0.00000(cons'd)      0.00018         *
+ * In              4      0.00000(cons'd)      0.00000(cons'd)     -0.00002         *
+ * In              5      0.00000(cons'd)      0.00000(cons'd)     -0.00020         *
+ * In              6      0.00000(cons'd)      0.00000(cons'd)     -0.00020         *
+ * In              7     -0.00000(cons'd)      0.00000(cons'd)     -0.00001         *
+ * In              8      0.00000(cons'd)     -0.00000(cons'd)      0.00049         *
+ * In              9      0.00000(cons'd)      0.00000(cons'd)      0.00042         *
+ * In             10      0.00000(cons'd)      0.00000(cons'd)     -0.00017         *
+ * In             11      0.00000(cons'd)      0.00000(cons'd)     -0.00017         *
+ * In             12      0.00000(cons'd)      0.00000(cons'd)      0.00042         *
+ *                                                                                  *
+ ************************************************************************************
+
+ Pseudo atomic calculation performed for P 3s2 3p3
+
+ Converged in 23 iterations to a total energy of -208.0292 eV
+
+ Pseudo atomic calculation performed for In 4d10 5s2 5p1
+
+ Converged in 42 iterations to a total energy of -1747.4500 eV
+Charge spilling parameter for spin component 1 = 0.21%
+
+            Orbital Populations       
+     Ion    Atom   Orbital             Charge
+  -------------------------------------------
+      P     1      S                    1.772
+      P     1      Px                   1.304
+      P     1      Py                   1.337
+      P     1      Pz                   1.277
+      P     2      S                    1.732
+      P     2      Px                   1.311
+      P     2      Py                   1.312
+      P     2      Pz                   1.316
+      P     3      S                    1.732
+      P     3      Px                   1.311
+      P     3      Py                   1.312
+      P     3      Pz                   1.316
+      P     4      S                    1.772
+      P     4      Px                   1.304
+      P     4      Py                   1.337
+      P     4      Pz                   1.277
+      P     5      S                    1.726
+      P     5      Px                   1.316
+      P     5      Py                   1.317
+      P     5      Pz                   1.320
+      P     6      S                    1.725
+      P     6      Px                   1.317
+      P     6      Py                   1.317
+      P     6      Pz                   1.325
+      P     7      S                    1.725
+      P     7      Px                   1.316
+      P     7      Py                   1.317
+      P     7      Pz                   1.324
+      P     8      S                    1.726
+      P     8      Px                   1.316
+      P     8      Py                   1.317
+      P     8      Pz                   1.320
+      P     9      S                    1.762
+      P     9      Px                   1.269
+      P     9      Py                   1.269
+      P     9      Pz                   1.311
+      P    10      S                    1.762
+      P    10      Px                   1.269
+      P    10      Py                   1.269
+      P    10      Pz                   1.311
+      P    11      S                    1.725
+      P    11      Px                   1.317
+      P    11      Py                   1.317
+      P    11      Pz                   1.325
+      P    12      S                    1.725
+      P    12      Px                   1.316
+      P    12      Py                   1.317
+      P    12      Pz                   1.324
+     In     1      Dzz                  1.999
+     In     1      Dzy                  1.997
+     In     1      Dzx                  1.997
+     In     1      Dxx-yy               1.999
+     In     1      Dxy                  1.997
+     In     1      S                    1.427
+     In     1      Px                   0.486
+     In     1      Py                   0.481
+     In     1      Pz                   0.440
+     In     1      S                   -0.472
+     In     2      Dzz                  1.999
+     In     2      Dzy                  1.997
+     In     2      Dzx                  1.997
+     In     2      Dxx-yy               1.999
+     In     2      Dxy                  1.996
+     In     2      S                    1.442
+     In     2      Px                   0.497
+     In     2      Py                   0.496
+     In     2      Pz                   0.472
+     In     2      S                   -0.593
+     In     3      Dzz                  1.999
+     In     3      Dzy                  1.997
+     In     3      Dzx                  1.997
+     In     3      Dxx-yy               1.999
+     In     3      Dxy                  1.997
+     In     3      S                    1.427
+     In     3      Px                   0.486
+     In     3      Py                   0.481
+     In     3      Pz                   0.440
+     In     3      S                   -0.472
+     In     4      Dzz                  1.999
+     In     4      Dzy                  1.997
+     In     4      Dzx                  1.997
+     In     4      Dxx-yy               1.999
+     In     4      Dxy                  1.997
+     In     4      S                    1.442
+     In     4      Px                   0.504
+     In     4      Py                   0.502
+     In     4      Pz                   0.467
+     In     4      S                   -0.509
+     In     5      Dzz                  1.999
+     In     5      Dzy                  1.998
+     In     5      Dzx                  1.998
+     In     5      Dxx-yy               2.000
+     In     5      Dxy                  1.996
+     In     5      S                    1.448
+     In     5      Px                   0.456
+     In     5      Py                   0.449
+     In     5      Pz                   0.471
+     In     5      S                   -0.461
+     In     6      Dzz                  1.999
+     In     6      Dzy                  1.998
+     In     6      Dzx                  1.998
+     In     6      Dxx-yy               2.000
+     In     6      Dxy                  1.996
+     In     6      S                    1.448
+     In     6      Px                   0.456
+     In     6      Py                   0.449
+     In     6      Pz                   0.471
+     In     6      S                   -0.461
+     In     7      Dzz                  1.999
+     In     7      Dzy                  1.997
+     In     7      Dzx                  1.997
+     In     7      Dxx-yy               1.999
+     In     7      Dxy                  1.997
+     In     7      S                    1.442
+     In     7      Px                   0.504
+     In     7      Py                   0.502
+     In     7      Pz                   0.467
+     In     7      S                   -0.509
+     In     8      Dzz                  1.999
+     In     8      Dzy                  1.997
+     In     8      Dzx                  1.997
+     In     8      Dxx-yy               1.999
+     In     8      Dxy                  1.996
+     In     8      S                    1.442
+     In     8      Px                   0.497
+     In     8      Py                   0.496
+     In     8      Pz                   0.472
+     In     8      S                   -0.593
+     In     9      Dzz                  1.999
+     In     9      Dzy                  1.997
+     In     9      Dzx                  1.997
+     In     9      Dxx-yy               1.999
+     In     9      Dxy                  1.996
+     In     9      S                    1.436
+     In     9      Px                   0.493
+     In     9      Py                   0.493
+     In     9      Pz                   0.474
+     In     9      S                   -0.583
+     In    10      Dzz                  1.999
+     In    10      Dzy                  1.997
+     In    10      Dzx                  1.997
+     In    10      Dxx-yy               1.999
+     In    10      Dxy                  1.996
+     In    10      S                    1.442
+     In    10      Px                   0.492
+     In    10      Py                   0.492
+     In    10      Pz                   0.472
+     In    10      S                   -0.602
+     In    11      Dzz                  1.999
+     In    11      Dzy                  1.997
+     In    11      Dzx                  1.997
+     In    11      Dxx-yy               1.999
+     In    11      Dxy                  1.996
+     In    11      S                    1.442
+     In    11      Px                   0.492
+     In    11      Py                   0.492
+     In    11      Pz                   0.472
+     In    11      S                   -0.602
+     In    12      Dzz                  1.999
+     In    12      Dzy                  1.997
+     In    12      Dzx                  1.997
+     In    12      Dxx-yy               1.999
+     In    12      Dxy                  1.996
+     In    12      S                    1.436
+     In    12      Px                   0.493
+     In    12      Py                   0.493
+     In    12      Pz                   0.474
+     In    12      S                   -0.583
+  -------------------------------------------
+                           Total:     216.000
+  -------------------------------------------
+
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion     s       p       d       f      Total   Charge (e)
+==========================================================================
+  P               1     1.772   3.918   0.000   0.000   5.689    -0.689
+  P               2     1.732   3.940   0.000   0.000   5.672    -0.672
+  P               3     1.732   3.940   0.000   0.000   5.672    -0.672
+  P               4     1.772   3.918   0.000   0.000   5.689    -0.689
+  P               5     1.726   3.953   0.000   0.000   5.679    -0.679
+  P               6     1.725   3.959   0.000   0.000   5.684    -0.684
+  P               7     1.725   3.957   0.000   0.000   5.682    -0.682
+  P               8     1.726   3.953   0.000   0.000   5.679    -0.679
+  P               9     1.762   3.848   0.000   0.000   5.610    -0.610
+  P              10     1.762   3.848   0.000   0.000   5.610    -0.610
+  P              11     1.725   3.959   0.000   0.000   5.684    -0.684
+  P              12     1.725   3.957   0.000   0.000   5.682    -0.682
+  In              1     0.955   1.407   9.989   0.000  12.351     0.649
+  In              2     0.849   1.465   9.987   0.000  12.301     0.699
+  In              3     0.955   1.407   9.989   0.000  12.351     0.649
+  In              4     0.933   1.473   9.988   0.000  12.394     0.606
+  In              5     0.987   1.376   9.991   0.000  12.354     0.646
+  In              6     0.987   1.376   9.991   0.000  12.354     0.646
+  In              7     0.933   1.473   9.988   0.000  12.394     0.606
+  In              8     0.849   1.465   9.987   0.000  12.301     0.699
+  In              9     0.853   1.459   9.988   0.000  12.300     0.700
+  In             10     0.840   1.456   9.988   0.000  12.284     0.716
+  In             11     0.840   1.456   9.988   0.000  12.284     0.716
+  In             12     0.853   1.459   9.988   0.000  12.300     0.700
+==========================================================================
+
+                 Bond                   Population      Length (A)
+======================================================================
+              P 5  -- In 4                   0.56        2.52021
+              P 8  -- In 7                   0.56        2.52021
+              P 8  -- In 4                   0.57        2.52021
+              P 5  -- In 7                   0.57        2.52021
+              P 2  -- In 8                   0.60        2.52039
+              P 3  -- In 2                   0.60        2.52039
+              P 3  -- In 8                   0.57        2.52039
+              P 2  -- In 2                   0.57        2.52039
+              P 12 -- In 12                  0.60        2.52140
+              P 7  -- In 9                   0.60        2.52140
+              P 7  -- In 12                  0.60        2.52140
+              P 12 -- In 9                   0.60        2.52140
+              P 11 -- In 11                  0.59        2.52184
+              P 6  -- In 10                  0.59        2.52184
+              P 11 -- In 10                  0.60        2.52184
+              P 6  -- In 11                  0.60        2.52184
+              P 5  -- In 10                  0.61        2.52420
+              P 5  -- In 11                  0.60        2.52420
+              P 8  -- In 10                  0.60        2.52420
+              P 8  -- In 11                  0.61        2.52420
+              P 6  -- In 9                   0.59        2.52496
+              P 11 -- In 9                   0.59        2.52496
+              P 6  -- In 12                  0.59        2.52496
+              P 11 -- In 12                  0.59        2.52496
+              P 7  -- In 2                   0.59        2.52533
+              P 12 -- In 2                   0.59        2.52533
+              P 7  -- In 8                   0.59        2.52533
+              P 12 -- In 8                   0.59        2.52533
+              P 3  -- In 1                   0.56        2.52581
+              P 2  -- In 1                   0.57        2.52581
+              P 3  -- In 3                   0.57        2.52581
+              P 2  -- In 3                   0.56        2.52581
+              P 10 -- In 7                   0.57        2.53854
+              P 10 -- In 4                   0.55        2.53854
+              P 9  -- In 7                   0.55        2.53854
+              P 9  -- In 4                   0.57        2.53854
+              P 1  -- In 6                   0.74        2.55484
+              P 4  -- In 5                   0.74        2.55484
+              P 1  -- In 1                   0.56        2.58437
+              P 4  -- In 3                   0.56        2.58437
+              P 1  -- In 3                   0.55        2.58437
+              P 4  -- In 1                   0.55        2.58437
+              P 10 -- In 5                   0.47        2.60821
+              P 9  -- In 6                   0.47        2.60821
+              P 9  -- In 5                   0.56        2.60821
+              P 10 -- In 6                   0.56        2.60821
+======================================================================
+
+
+     Hirshfeld Analysis
+     ------------------
+Species   Ion     Hirshfeld Charge (e)
+======================================
+  P        1                -0.29
+  P        2                -0.23
+  P        3                -0.23
+  P        4                -0.29
+  P        5                -0.24
+  P        6                -0.24
+  P        7                -0.24
+  P        8                -0.24
+  P        9                -0.23
+  P       10                -0.23
+  P       11                -0.24
+  P       12                -0.24
+  In       1                 0.24
+  In       2                 0.24
+  In       3                 0.24
+  In       4                 0.22
+  In       5                 0.29
+  In       6                 0.29
+  In       7                 0.22
+  In       8                 0.24
+  In       9                 0.24
+  In      10                 0.24
+  In      11                 0.24
+  In      12                 0.24
+======================================
+
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ StackingFaultStructs_(0_0_1)_(1_0_0)_5.bib
+ 
+Initialisation time =    346.50 s
+Calculation time    =    694.50 s
+Finalisation time   =      0.94 s
+Total time          =   1041.94 s
+Peak Memory Use     = 2213780 kB
+ 
+Overall parallel efficiency rating: Poor (38%)
+ 
+Data was distributed by:-
+G-vector (6-way); efficiency rating: Mediocre (59%)
+k-point (40-way); efficiency rating: Very good (87%)

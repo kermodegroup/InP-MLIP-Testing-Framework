@@ -20,8 +20,8 @@ ax[1].scatter(d["V_WZ"], d["E_WZ"], label="RSCAN DFT", color="k", marker=".")
 
 
 # LDA DFT
-zb_dir = "/home/eng/phrbqc/GitHub/DiamondDislocs/Data/XYZ/EOS"
-wz_dir = "/home/eng/phrbqc/GitHub/DiamondDislocs/Data/XYZ/EOS_WZ"
+zb_dir = "DFT_Reference/JPCA_EOS/EOS"
+wz_dir = "DFT_Reference/JPCA_EOS/EOS_WZ"
 
 zb_dft = []
 for file in os.listdir(zb_dir):
@@ -45,9 +45,6 @@ Es_wz -= E0
 ax[0].scatter(v_zb, Es_zb, label="LDA DFT", color="k", marker="x")
 ax[1].scatter(v_wz, Es_wz, label="LDA DFT", color="k", marker="x")
 
-print(v_zb)
-print(Es_zb)
-
 for i, calc in enumerate(calcs):
     if not os.path.exists(f"../Test_Results/{calc}/EOS.json"):
         continue
@@ -69,7 +66,7 @@ ax[1].set_ylim(-0.1, 6.3)
 plt.legend()
 
 plt.tight_layout()
-plt.savefig("..Test_Plots/EOS.png", dpi=200)
+plt.savefig("../Test_Plots/EOS.png", dpi=200)
 
 plt.clf()
 
@@ -124,5 +121,5 @@ fig.suptitle("Equation of State comparison of several potentials")
 
 ax[0].legend()
 plt.tight_layout()
-plt.savefig("..Test_Plots/EOS_Zoomed.png", dpi=200)
+plt.savefig("../Test_Plots/EOS_Zoomed.png", dpi=200)
 

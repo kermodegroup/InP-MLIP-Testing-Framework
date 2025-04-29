@@ -1,62 +1,73 @@
-from Utils.file_io import read, write, ase_read
+from ase.io import read, write
+from ase.optimize.precon import PreconLBFGS
 from ase.optimize import BFGSLineSearch
-from Utils.neb_core import do_NEB
+from ase.mep.neb import NEB, NEBOptimizer
 import os
+from ase.calculators.singlepoint import SinglePointCalculator
 from active_model import *
 
 supercell_size = 2
-zb = read("Accurate_Bulk/ZB_Bulk.xyz", index="-1")
+zb = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
 
 base_cell = zb.cell
 
 zb = zb * (supercell_size, supercell_size, supercell_size)
 
-tol = 1E-4
-neb_ftol = 1e-3
-paths = os.listdir("PD_Migration_Paths")
+paths = os.listdir("Misc_Reference/PD_Migration_Paths")
 interstitials = [item for item in paths if "Interstitial" in item]
 vacancies = [item for item in paths if "Vacancy" in item]
 
-def eval(calc, calc_name, write_traj=False, species = ["In", "P"], interstitial=True, vacancy=True, nims=9, **kwargs):
-    def run_neb(name):
-        
-        if name != "P_Vacancy_Migration_5->3":
-            return
+def eval(calc, calc_name, species = ["In", "P"], interstitial=True, vacancy=True, nims=15, steps=500, neb_steps=500,
+            ftol=1E-3, neb_ftol = 1e-2):
+    def run_neb(name, climb=True, interpolate=False):
 
-        traj_fname = None
-        xyz_fname = "../Test_Results/" + calc_name + os.sep + "PDMigration/" + name + "_final_ims.xyz"
-        
-        
-        if os.path.exists(xyz_fname):
-            images = ase_read(xyz_fname, index=":")
-        else:
-            images = []
-
-
-        if len(images) == nims:
-            start = images
+        def do_neb(images, climb=True, interpolate=False):
+            start = images[0]
             end = images[-1]
-            skip_non_ci = False
-        else:
-            images = ase_read(f"PD_Migration_Paths/" + vac, index=":")
-            start = images[0].copy()
-            end = images[-1].copy()
-            skip_non_ci = False
 
-
+            if interpolate:
+                images = [start.copy() for i in range(nims-1)] + [end.copy()]
+                neb = NEB(images)
+                neb.interpolate(method="idpp", mic=True)
+                images = neb.images
+            
             for ats in [start, end]:
                 ats.calc = calc
                 opt = BFGSLineSearch(ats)
-                opt.run(1e-3, steps=500)            
+                opt.run(ftol, steps=steps)      
 
-                if not opt.converged():
-                    return
+            for image in images:
+                image.calc = calc
+
+            neb = NEB(images, allow_shared_calculator=True, climb=climb)
+            opt = NEBOptimizer(neb)
+            opt.run(neb_ftol, steps=neb_steps)
+
+            return neb.images
+
+        xyz_fname = "../Test_Results/" + calc_name + os.sep + "PDMigration/" + name + ".xyz"
+        
+        
+        if os.path.exists(xyz_fname):
+            images = read(xyz_fname, index=":")
+        else:
+            images = read(f"Misc_Reference/PD_Migration_Paths/" + name + ".xyz", index=":")
+            start = images[0]
+            end = images[-1]
+
+            #images = do_neb(images, climb=False, interpolate=True)
+
+        images = do_neb(images, climb=True, interpolate=False)
+
+        for image in images:
+            image.calc = calc
+            E = image.get_potential_energy()
+            image.calc = SinglePointCalculator(image, energy=E)
+
+        write(xyz_fname, images)   
 
 
-        neb, e = do_NEB(calc, start, end, traj_fname, nims=nims, skip_non_ci=skip_non_ci, **kwargs)
-        print(e)
-        if e is None:
-            write(xyz_fname, neb.images)
+        
     
     # Interstitial
     if interstitial:
@@ -85,5 +96,4 @@ dump_dir = "../Test_Results/" + calc_name + os.sep + "PDMigration"
 if not os.path.exists(dump_dir):
     os.mkdir(dump_dir)
 
-eval(calc, calc_name, write_traj=False, nims=21, neb_ftol=3e-2, max_nsteps=500, ci=False, refine=False,
-     species=["In", "P"], interstitial=True, vacancy=True, ftol=1e-3, apply_constraints=False, method="ode")
+eval(calc, calc_name)

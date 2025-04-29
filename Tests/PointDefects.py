@@ -1,10 +1,9 @@
 from active_model import *
-from Utils.file_io import read
 import numpy as np
 from ase.optimize.precon import PreconLBFGS
 from ase.optimize import BFGSLineSearch
 import os
-from ase.io import read as ase_read
+from ase.io import read
 import json
 from ase.constraints import ExpCellFilter
 from Utils.jsondata import add_info
@@ -15,8 +14,8 @@ fmax = 1E-4
 
 data = {}
 
-In_iso = read("IsolatedAtom/Iso_In.xyz", index="-1")
-P_iso = read("IsolatedAtom/Iso_P.xyz", index="-1")
+In_iso = read("DFT_Reference/IsolatedAtom/Iso_In.xyz", index="-1")
+P_iso = read("DFT_Reference/IsolatedAtom/Iso_P.xyz", index="-1")
 
 
 def get_binding_energy(struct, E_iso_In, E_iso_P, calc):
@@ -37,52 +36,44 @@ def test_calc(calc, calc_name, err_func=None):
 
     data = {}
 
-    with open(f"../Test_Results/PointDefects/{calc_name}_ChemPot.json") as f:
-        chempot = json.load(f)
-
     os.makedirs(f"../Test_Results/{calc_name}/PointDefectTraj", exist_ok=True)
-    files = os.listdir("PointDefectStructs")
+    files = os.listdir("DFT_Reference/PointDefects")
 
-    formation_energies = {"zb_E0":{}, "wz_E0":{}}
-
-    if type(calc) != list:  # Single model, not list
-        calc = [calc]
+    formation_energies = {}
 
     for file in files:
         name = file.split(".")[0]
-        formation_energies[name] = {"raw_energies":{}}
 
-    for i in range(len(calc)):
-        sub_calc = calc[i]
 
-        if sub_calc is not None:
-            In_iso.calc = sub_calc
+        if calc is not None:
+            In_iso.calc = calc
         E_iso_In = In_iso.get_potential_energy()
 
 
-        if sub_calc is not None:
-            P_iso.calc = sub_calc
+        if calc is not None:
+            P_iso.calc = calc
         E_iso_P = P_iso.get_potential_energy()
 
 
         E_iso = 0.5 * (E_iso_In + E_iso_P)
 
-        zb_bulk = read("Accurate_Bulk/ZB_Bulk.xyz", index="-1")
-        wz_bulk = read("Accurate_Bulk/WZ_Bulk.xyz", index="-1")
+        zb_bulk = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
+        wz_bulk = read("DFT_Reference/Bulk/WZ_Bulk.xyz", index="-1")
         
-        zb_bulk.calc = sub_calc
-        filter = ExpCellFilter(zb_bulk, mask=[True]*6)
+        if calc is not None:
+            zb_bulk.calc = calc
+            filter = ExpCellFilter(zb_bulk, mask=[True]*6)
 
-        opt = PreconLBFGS(filter)
+            opt = PreconLBFGS(filter)
 
-        opt.run(fmax=1e-4, smax=1e-4)
+            opt.run(fmax=1e-4, smax=1e-4)
 
-        wz_bulk.calc = sub_calc
-        filter = ExpCellFilter(wz_bulk, mask=[True]*6)
+            wz_bulk.calc = calc
+            filter = ExpCellFilter(wz_bulk, mask=[True]*6)
 
-        opt = PreconLBFGS(filter)
+            opt = PreconLBFGS(filter)
 
-        opt.run(fmax=1e-6, smax=1e-6)
+            opt.run(fmax=1e-6, smax=1e-6)
 
         spec = np.array(zb_bulk.get_chemical_symbols())
         zb_bulk_n_In = np.sum(spec == "In") * 8
@@ -107,27 +98,27 @@ def test_calc(calc, calc_name, err_func=None):
 
         wz_cell = wz_bulk.cell[:, :] * 2
 
-        formation_energies["zb_E0"][i] = zb_E0
-        formation_energies["wz_E0"][i] = wz_E0
+        formation_energies["zb_bulk"] = {"E0" : zb_E0}
+        formation_energies["wz_bulk"] = {"E0" : wz_E0}
 
         spec = np.array(zb_bulk.get_chemical_symbols())
 
-        formation_energies["zb_E0"]["n_In"] = int(np.sum(spec=="In"))
-        formation_energies["zb_E0"]["n_P"] = int(np.sum(spec=="P"))
+        formation_energies["zb_bulk"]["n_In"] = int(np.sum(spec=="In"))
+        formation_energies["zb_bulk"]["n_P"] = int(np.sum(spec=="P"))
         
         spec = np.array(wz_bulk.get_chemical_symbols())
 
-        formation_energies["wz_E0"]["n_In"] = int(np.sum(spec=="In"))
-        formation_energies["wz_E0"]["n_P"] = int(np.sum(spec=="P"))
+        formation_energies["wz_bulk"]["n_In"] = int(np.sum(spec=="In"))
+        formation_energies["wz_bulk"]["n_P"] = int(np.sum(spec=="P"))
 
-        if sub_calc is None:
+        if calc is None:
             idx = "-1"
         else:
             idx = "-1"
 
         for file in files:
             name = file.split(".")[0]
-            ats = ase_read("PointDefectStructs/" + file, index=idx)
+            ats = read("DFT_Reference/PointDefects/" + file, index=idx)
 
 
             crystal_struct = "zb" if "ZB" in name else "wz"
@@ -152,24 +143,26 @@ def test_calc(calc, calc_name, err_func=None):
             dE = d_n_In * E_iso_In + d_n_P * E_iso_P
 
 
-            if sub_calc is not None:
+            if calc is not None:
                 ats.set_cell(cell, scale_atoms=True)
-                ats.calc = sub_calc
+                ats.calc = calc
                 opt = BFGSLineSearch(ats, trajectory=f"../Test_Results/{calc_name}/PointDefectTraj/{file[:-4]}.traj")
                 opt.run(fmax)
 
             E_bind = ats.get_potential_energy()
 
-            formation_energies[name]["raw_energies"][i] = E_bind
+            formation_energies[name] = {}
+
+            formation_energies[name]["Total_Energy"] = E_bind
 
             if crystal_struct == "zb":
                 E0 = zb_E0
-                formation_energies[name][i] = E_bind - zb_E0
+                formation_energies[name]["E_form"] = E_bind - zb_E0
             else:
                 E0 = wz_E0
-                formation_energies[name][i] = E_bind - wz_E0
+                formation_energies[name]["E_form"] = E_bind - wz_E0
 
-            formation_energies[name][i] -= dE
+            formation_energies[name]["E_form"] -= dE
 
             
             spec = np.array(ats.get_chemical_symbols())
@@ -177,21 +170,15 @@ def test_calc(calc, calc_name, err_func=None):
             formation_energies[name]["n_In"] = int(np.sum(spec=="In"))
             formation_energies[name]["n_P"] = int(np.sum(spec=="P"))
 
-    for file in files:
-        name = file.split(".")[0]
-        average = np.average(
-            np.array([formation_energies[name][i] for i in range(len(calc))]))
-        std = np.std(np.array([formation_energies[name][i] for i in range(len(calc))]))
-        formation_energies[name]["Average"] = average
-        formation_energies[name]["Error"] = std
-
-        data[name] = average
-    with open(data_dir + os.sep + "PointDefects" + os.sep + calc_name + "_Formation_Energies.json", "w") as f:
+            data[name] = formation_energies[name]["E_form"]
+    with open(data_dir + os.sep + calc_name + os.sep + "PointDefect_Formation_Energies.json", "w") as f:
         json.dump(formation_energies, f, indent=4)
 
     add_info(calc_name, data)
 
 
 active_model = get_model(active_model_name)
+
+#test_calc(None, "DFT")
 
 test_calc(active_model, active_model_name)

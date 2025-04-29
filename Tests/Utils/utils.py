@@ -1,5 +1,5 @@
 import numpy as np
-from file_io import read
+from ase.io import read
 from ase.build import bulk
 import ase
 from ase.constraints import ExpCellFilter
@@ -23,11 +23,11 @@ def rattle_structs(structs, n_rattles=100, r_tol=1e-1):
 
     return ims
 
-def get_bulk(calc = None, elast=True, nsteps=5, ftol=1e-6, stol=1e-6):
-    ats = read("Accurate_Bulk/ZB_Bulk.xyz", index="-1")
+def get_bulk(calc = None, elast=False, nsteps=5, ftol=1e-6, stol=1e-6):
+    ats = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
     alat = ats.cell[0, 0]
 
-    ats = bulk("InP", "zincblende", alat, cubic=True)
+    #ats = bulk("InP", "zincblende", alat, cubic=True)
 
     if calc is not None:
         ats.calc = calc
@@ -38,17 +38,25 @@ def get_bulk(calc = None, elast=True, nsteps=5, ftol=1e-6, stol=1e-6):
 
         opt.run(fmax=ftol, smax=stol)
 
+        alat = ats.cell[0, 0]
+        new_ats = bulk("InP", "zincblende", alat, cubic=True)
+
         if elast:
             delta_max = 2E-3
             Cs, C_errs = fit_elastic_constants(
                 ats, N_steps=nsteps, delta=2*delta_max/nsteps, optimizer=PreconLBFGS, fmax=ftol, graphics=False,
                 verbose=False)
             c = np.array([Cs[0, 0], Cs[0, 1], Cs[-1, -1]]) / GPa
-            return ats, *c
-    elif elast:
+            return new_ats, *c
+    
+    alat = ats.cell[0, 0]
+    new_ats = bulk("InP", "zincblende", alat, cubic=True)
+    
+    if elast:
         # return rough DFT elastic constants
-        return ats, 97, 53, 47
-    return ats
+        return new_ats, 97, 53, 47
+    else:
+        return new_ats
 
 def get_slice_mask(struct, eps=1e-3):
     ats = struct.copy()

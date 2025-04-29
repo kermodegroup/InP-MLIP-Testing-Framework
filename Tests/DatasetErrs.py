@@ -1,5 +1,5 @@
 from active_model import *
-from Utils.file_io import read
+from ase.io import read
 from tqdm import tqdm
 import numpy as np
 import json
@@ -12,11 +12,11 @@ data_dir = "../Test_Results"
 
 def _setup():
 
-    dataset = read("../InP_Dataset.xyz", index=":")
+    dataset = read("../Dataset/InP_Dataset.xyz", index=":")
 
 
-    iso_In = read("IsolatedAtom/Iso_In.xyz", index="-1")
-    iso_P = read("IsolatedAtom/Iso_P.xyz", index="-1")
+    iso_In = read("DFT_Reference/IsolatedAtom/Iso_In.xyz", index="-1")
+    iso_P = read("DFT_Reference/IsolatedAtom/Iso_P.xyz", index="-1")
     config_types_rmses = {}
 
     conf_raw_data = {}
@@ -191,10 +191,12 @@ def test_calc(calc, x):
 
 
 def save(calc_name, config_types_rmses, conf_raw_data):
-    with open(data_dir + os.sep + "TT_RMSE" + os.sep + calc_name + "_TT_RMSE.json", "w") as f:
+    savedir = data_dir + os.sep + calc_name + os.sep + "TT_RMSE"
+    os.makedirs(savedir, exist_ok=True)
+    with open(savedir + os.sep + "TT_RMSE.json", "w") as f:
         json.dump(config_types_rmses, f, indent=4)
 
-    with open(data_dir + os.sep + "TT_RMSE" + os.sep + calc_name + "_RAW_TT_DIFFS.json", "w") as f:
+    with open(savedir + os.sep + "RAW_TT_DIFFS.json", "w") as f:
         json.dump(conf_raw_data, f, indent=4)
 
 

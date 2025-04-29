@@ -6,13 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from get_true_values import *
 
-data_src = "../Test_Results/TT_RMSE"
+data_src = savedir = data_dir + os.sep + active_model_name + os.sep + "TT_RMSE"
 
 with open(data_src + os.sep + "True_Vals.json") as f:
     true_vals = json.load(f)
-
-
-files = os.listdir(data_src)
 
 
 colours = list(mcolors.TABLEAU_COLORS.values())
@@ -205,7 +202,7 @@ calc = active_model_name
 os.makedirs("../Test_Plots/" + os.sep + calc +
                 os.sep + "TT_Config_Types", exist_ok=True)
 
-with open(data_src + os.sep + calc + "_RAW_TT_DIFFS.json") as f:
+with open(data_src + os.sep + "RAW_TT_DIFFS.json") as f:
     raw_data = json.load(f)
 
 fig, ax = gen_plots(raw_data, calc)

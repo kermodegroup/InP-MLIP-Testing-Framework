@@ -1,4 +1,4 @@
-from ase.io import read as ase_read
+from ase.io import read
 from ase.phonons import Phonons
 from active_model import *
 
@@ -8,7 +8,7 @@ calc = get_model(active_model_name)
 delta = 0.1
 mul = 8
 
-bulk = ase_read("Phonon_bulk.xyz")
+bulk = read("Misc_Reference/Phonon_bulk.xyz")
 
 
 path = bulk.cell.bandpath('GXGL', npoints=100)

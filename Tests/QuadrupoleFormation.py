@@ -12,7 +12,7 @@ calc = get_model(active_model_name)
 
 disloc_names = ["30 degree Partial", "90 degree Partial"]
 
-dft_structs = [read("DFT_Quadrupoles/DFT_Quads_0/DFT_Quads_0.geom", index="-1"), read("DFT_Quadrupoles/DFT_Quads_1/DFT_Quads_1.geom", index="-1")]
+dft_structs = [read("DFT_Reference/Quadrupoles/DFT_Quads_0/DFT_Quads_0.geom", index="-1"), read("DFT_Reference/Quadrupoles/DFT_Quads_1/DFT_Quads_1.geom", index="-1")]
 
 structs = []
 calc_data = {}
@@ -21,9 +21,8 @@ dft_a0 = 5.901273599999999
 
 
 for k, disloc in enumerate([DiamondGlide30degreePartial, DiamondGlide90degreePartial]):
-    a = get_bulk(calc)
-    ref_bulk = a[0]
-    d = Quadrupole(disloc, *a)
+    ref_bulk, C11, C12, C44 = get_bulk(calc, elast=True)
+    d = Quadrupole(disloc, ref_bulk, C11, C12, C44)
     struct = dft_structs[k].copy()
     cell = struct.cell[:, :].copy() / dft_a0 * ref_bulk.cell[0, 0]
     struct.set_cell(cell, scale_atoms=True)
@@ -39,7 +38,7 @@ for k, disloc in enumerate([DiamondGlide30degreePartial, DiamondGlide90degreePar
         E_form = struct.get_potential_energy() - E_bulk
 
         dft_rs = dft_structs[k].get_positions() / dft_a0
-        rs = struct.get_positions() / a[0].cell[0, 0]
+        rs = struct.get_positions() / ref_bulk.cell[0, 0]
 
         errs = mic(rs - dft_rs, np.eye(3))
 

@@ -1,4 +1,4 @@
-from Utils.file_io import read, ase_read
+from ase.io import read
 from matscipy.gamma_surface import StackingFault
 import matplotlib.pyplot as plt
 from ase.units import _e
@@ -11,8 +11,7 @@ import numpy as np
 from ase.build import rotate
 import matplotlib.gridspec as gridspec
 
-
-nims = 27
+nims = 81
 
 def vtm(dir, brackets):
     repr = " "
@@ -27,12 +26,11 @@ dirs = [(1, 0, 0), (1, 1, 0), (1, -1, 0), (1, 1, -2)]
 zreps = [3, 6, 6, 2]
 max_lims = [1, 1, 1, 1]
 
-bulk = read("Bulk/ZB_Bulk.xyz", index="-1")
+bulk = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
 
 calc_names = [model for model in plot_models if model != "DFT"]
 dft_data = {}
 
-print("start")
 
 si = True
 
@@ -43,7 +41,7 @@ else:
     mul = 1
     units = r"eV/$ \mathrm{A}^2$"
 
-ns = [9, 9, 9, 13]
+ns = [9, 9, 9, 9]
 
 
 fig, ax = plt.subplots(figsize=(12, 13))
@@ -74,16 +72,11 @@ ax = [
 ]
 
 
-#ax = ax.flatten()
-
-
 for i in range(6):
     topax[i].set_xticks([])
     topax[i].set_yticks([])
     botax[i].set_xticks([])
     botax[i].set_yticks([])
-    # topax[i].axis("off")
-    # botax[i].axis("off")
 
 atoms_axes = [
     topax[:3],
@@ -93,7 +86,7 @@ atoms_axes = [
 ]
 
 plot_at_centers = [
-    4, 4, 4, 5
+    4, 4, 4, 4
 ]
 
 ylims = [
@@ -113,13 +106,11 @@ for i in range(len(planes)):
     fault = StackingFault(bulk, plane, dir)
     fault.generate_images(nims, z_reps=zr, path_ylims=[0, yl/2])
 
-    print(plane, dir, len(fault.images[0]))
-    #fig, ax = plt.subplots()
     ax[i].tick_params(axis='both', which='major', labelsize=12)
 
     for idx in range(len(calc_names)):
         active_model_name = calc_names[idx]
-        ims = ase_read(f"../Test_Results/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", index=":")
+        ims = read(f"../Test_Results/{active_model_name}/StackingFaultStructs_{plane}_{dir}.xyz", index=":")
 
         Es = []
         for image in ims:
@@ -139,10 +130,10 @@ for i in range(len(planes)):
     pt = "".join([str(idx) for idx in plane])
     dt = "".join([str(idx) for idx in dir])
 
-    dft_ims = [ase_read(f"DFT_Stacking_Faults/StackingFaultStructs_{pt}_{dt}_{idx}/StackingFaultStructs_{pt}_{dt}_{idx}.geom", index="-1") for idx in range(ns[i])]
+    dft_ims = [read(f"DFT_Reference/Stacking_Faults/StackingFaultStructs_{pt}_{dt}_{idx}/StackingFaultStructs_{pt}_{dt}_{idx}.geom", index="-1") for idx in range(ns[i])]
     ref_nats = len(dft_ims[0])
 
-    dft_ims = dft_ims + [dft_ims[0]]
+    dft_ims = dft_ims
     dft_Es = []
     for image in dft_ims:
         cell = image.cell[:, :]
@@ -152,6 +143,9 @@ for i in range(len(planes)):
     dft_Es -= dft_Es[0]
 
     dft_data[f"E_{plane}_{dir}"] = np.max(dft_Es) * _e * 1e20
+
+    if i == 3:
+        dft_data["Disloc_SF_Form"] = (dft_Es[-1] - dft_Es[0]) * _e * 1e20 * 1000
 
     xs = [image.cell[2, 1] for image in ims]
 
@@ -166,10 +160,7 @@ for i in range(len(planes)):
     ax[i].set_xlabel(f"${vtm(np.array(dir), brackets='[]')}$ Displacment (Å)", fontsize=13)
     ax[i].set_title(f"${vtm(np.array(plane), brackets='()')}{vtm(np.array(dir), brackets='[]')}$ Stacking Fault", fontsize=13)
 
-
-    print(ax[i].get_ylim())
-
-    plot_ats = [dft_ims[0], dft_ims[plot_at_centers[i]], dft_ims[-2]]
+    plot_ats = [dft_ims[0], dft_ims[plot_at_centers[i]], dft_ims[-1]]
     plot_ats_xs = [0, ys[plot_at_centers[i]], xs[-2]]
 
 
@@ -201,19 +192,17 @@ for i in range(len(planes)):
         ats.cell = new_cell
         atom_labels, struct_names, colors = get_structure_types(ats, diamond_structure=True)
         atom_colors = [colors[atom_label] for atom_label in atom_labels]
-        #plot_atoms(atoms_axes[i][idx], ats, atom_colors, atom_labels, x_lims=xlims, y_lims=None, supercell=(1, 2, 1))
         plot_atoms(atoms_axes[i][idx], ats, atom_colors, atom_labels, x_lims=xlims, y_lims=ylims, supercell=supercell)
         atoms_axes[i][idx].set_aspect("equal")
         atoms_axes[i][idx].text(0.5, 1.0, f"{plot_ats_xs[idx]:.1f} Å ", color="k", va="bottom", ha="center", transform=atoms_axes[i][idx].transAxes, fontsize=15)
 
         atoms_axes[i][idx].set_xlabel(f"${vtm(np.array(dir), brackets='[]')}$", ha="center")
         atoms_axes[i][idx].set_ylabel(f"${vtm(np.array(plane), brackets='[]')}$", rotation=90)
-#plt.tight_layout()
 
 if si:
-    plt.savefig(f"..Test_Plots/StackingFaultPlot_SI.png", dpi=200)
+    plt.savefig(f"../Test_Plots/StackingFaultPlot_SI.png", dpi=200)
 else:
-    plt.savefig(f"..Test_Plots/StackingFaultPlot.png", dpi=200)
+    plt.savefig(f"../Test_Plots/StackingFaultPlot.png", dpi=200)
 
 
 add_info("DFT", dft_data)

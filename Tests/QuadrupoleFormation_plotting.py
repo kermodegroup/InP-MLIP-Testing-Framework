@@ -9,7 +9,7 @@ import matplotlib.patches as mpatches
 model_names = [model for model in plot_models if model != "DFT"]
 nmodels = len(model_names)
 
-dft_structs = [read("DFT_Quadrupoles/DFT_Quads_0/DFT_Quads_0.geom", index="-1"), read("DFT_Quadrupoles/DFT_Quads_1/DFT_Quads_1.geom", index="-1")]
+dft_structs = [read("DFT_Reference/Quadrupoles/DFT_Quads_0/DFT_Quads_0.geom", index="-1"), read("DFT_Reference/Quadrupoles/DFT_Quads_1/DFT_Quads_1.geom", index="-1")]
 
 
 disloc_names = ["30_degree_Partial", "90_degree_Partial"]
@@ -56,4 +56,4 @@ for j in range(2):
     fig.suptitle(latex_names[j] + " Dislocation Quadrupole", color="k", size=20)
     #plt.tight_layout()
 
-    plt.savefig(f"..Test_Plots/{disloc_names[j]}_Comparison.png", dpi=300)
+    plt.savefig(f"../Test_Plots/{disloc_names[j]}_Comparison.png", dpi=300)

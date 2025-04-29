@@ -1,6 +1,6 @@
 
 from active_model import *
-from Utils.file_io import ase_read as read
+from ase.io import read
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -10,7 +10,6 @@ marks = ["*"]
 
 
 calc_names = plot_models[1:]
-calcs = [get_model(name) for name in calc_names]
 
 
 defects = [
@@ -30,7 +29,6 @@ e_cut = 2.0 # eV
 for i, defect in enumerate(defects):
     print(defect)
     for j, calc_name in enumerate(calc_names):
-        calc = calcs[j]
         infile = "../Test_Results/" + calc_name + os.sep + defect + "_Quadrupole_Migration_structs.xyz"
 
         if os.path.exists(infile):
@@ -39,7 +37,6 @@ for i, defect in enumerate(defects):
             Es = []
 
             for image in ats:
-                image.calc = calc
                 Es.append(image.get_potential_energy())
             Es = np.array(Es)
 
@@ -73,5 +70,5 @@ for i, defect in enumerate(defects):
 
     plt.ylabel("Energy (eV)")
     plt.legend()
-    plt.savefig(f"..Test_Plots/{defect}_Migration.png")
+    plt.savefig(f"../Test_Plots/{defect}_Migration.png")
     plt.clf()

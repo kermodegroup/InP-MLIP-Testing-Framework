@@ -5,11 +5,11 @@ from Utils.utils import get_bulk
 ## Change the value of active_model_name to change the model used in each of the tests
 
 active_model_name = "ACE"
-#active_model_name = "MACE"
-#active_model_name = "SNAP"
-#active_model_name = "Vashishta"
-#active_model_name = "MP0"
-#active_model_name = "MPA"
+active_model_name = "MACE"
+active_model_name = "SNAP"
+active_model_name = "Vashishta"
+active_model_name = "MP0"
+active_model_name = "MPA"
 
 ## List of models (in a consistent order) to plot in each of the plotting functions
 plot_models = ["DFT", "Vashishta", "SNAP", "MP0", "MPA", "ACE", "MACE"]

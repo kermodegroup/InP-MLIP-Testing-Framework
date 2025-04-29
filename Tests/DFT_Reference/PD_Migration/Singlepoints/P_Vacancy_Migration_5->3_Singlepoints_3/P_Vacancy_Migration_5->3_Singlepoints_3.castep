@@ -1,0 +1,1352 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 24.1 |
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates,               |
+ | A. Bartok-Partay, M. Payne                      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne,          |
+ | R. J. Maurer, J. C. Womack, J. Dziedzic,        |
+ | L. LeBlanc, T. K. Stenczel, J. Kermode,         |
+ | S. Sturniolo, B. Shi, B. Durham, M. Evans,      |
+ | M. J. Smith, A. Tamerus, Z. Hawkhead,           |
+ | V. Ravindran, T. Hollins, S. A. Joyce,          |
+ | R. T. Strong, A. M. Reilly, S. J. Donaldson     |
+ |                                                 |
+ | Copyright (c) 2000 - 2023                       |
+ |                                                 |
+ |     Distributed under license from Cambridge    |
+ |     Enterprise for academic use only.           |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ |              http://www.castep.org              |
+ |                                                 |
+ +-------------------------------------------------+
+
+
+
+ Compiled for  GNU 11.2.0 on 04-04-2024 18:39:17
+ from code version 6355fd106 Castep241_branch Thu Mar 7 17:56:19 2024 +0000
+ Compiler: GNU Fortran 11.2.0; Optimisation: FAST
+ Comms   : MPI VERSION : CRAY MPICH version 8.1.23.14 (ANL base 3.4a2)
+ MATHLIBS: default (LAPACK version 3.10.1)
+ FFT Lib : fftw3 version commercial-fftw-3.3.10-sse2-avx-avx2-avx2_128
+ Fundamental constants values: CODATA 2018
+
+ Run started: Sun, 27 Apr 2025 02:56:36 +0100
+
+ Atomic calculation performed for P: 1s2 2s2 2p6 3s2 3p3
+
+ Converged in 47 iterations to an ae energy of -9309.074 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 27-04-2025   |                
+   ------------------------------------------------------------                
+   | Element: P Ionic charge:  5.00 Level of theory: RSCAN    |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3s              2.000           -0.535        |                
+   |            3p              3.000           -0.209        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.535   1.807     qc      0         |                
+   |          2      0    0.250   1.807     qc      0         |                
+   |          3      1   -0.209   1.807     qc      0         |                
+   |          4      1    0.250   1.807     qc      0         |                
+   |          5      2    0.000   1.807     qc      0         |                
+   |          6      2    0.250   1.807     qc      0         |                
+   |         loc     3    0.000   1.807     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.263                       |                
+   | Partial core correction Rc = 1.263                       |                
+   ------------------------------------------------------------                
+   | "3|1.8|4|4|5|30:31:32"                                   |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ Warning: otfg_output_psp cannot write out meta-GGA pseudopotentials presently.
+
+ Atomic calculation performed for In:
+ 1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p1
+
+ Converged in 84 iterations to an ae energy of -160093.328 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 27-04-2025   |                
+   ------------------------------------------------------------                
+   | Element: In Ionic charge: 13.00 Level of theory: RSCAN   |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            4d             10.000           -0.711        |                
+   |            5s              2.000           -0.313        |                
+   |            5p              1.000           -0.095        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.313   2.501     qc      0         |                
+   |          2      0    0.250   2.501     qc      0         |                
+   |          3      1   -0.095   2.501     qc      0         |                
+   |          4      1    0.250   2.501     qc      0         |                
+   |          5      2   -0.711   2.207     qc      0         |                
+   |          6      2    0.250   2.207     qc      0         |                
+   |         loc     3    0.000   2.501     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.504                       |                
+   | Partial core correction Rc = 1.504                       |                
+   ------------------------------------------------------------                
+   | "3|2.5|2.5|1.5|7|8|9|50:51:42U2.2U2.2"                   |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ Warning: otfg_output_psp cannot write out meta-GGA pseudopotentials presently.
+
+ Pseudo atomic calculation performed for P 3s2 3p3
+
+ Converged in 23 iterations to a total energy of -208.0292 eV
+
+ Pseudo atomic calculation performed for In 4d10 5s2 5p1
+
+ Converged in 42 iterations to a total energy of -1747.4501 eV
+ Calculation parallelised over 108 processes.
+ Data is distributed by G-vector(3-way) and k-point(36-way)
+ Each process may use up to 16 threads.
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : P_Vacancy_Migration_5->3_Singlepoints_3.check
+ type of calculation                            : single point energy
+ stress calculation                             : off
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : on
+ polarisation (Berry phase) analysis            : off
+ molecular orbital projected DOS                : off
+ deltaSCF calculation                           : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : off
+  
+ output         length unit                     : A
+ output           mass unit                     : amu
+ output           time unit                     : ps
+ output         charge unit                     : e
+ output           spin unit                     : hbar/2
+ output         energy unit                     : eV
+ output          force unit                     : eV/A
+ output       velocity unit                     : A/ps
+ output       pressure unit                     : GPa
+ output     inv_length unit                     : 1/A
+ output      frequency unit                     : cm-1
+ output force constant unit                     : eV/A**2
+ output         volume unit                     : A**3
+ output   IR intensity unit                     : (D/A)**2/amu
+ output         dipole unit                     : D
+ output         efield unit                     : eV/A/e
+ output        entropy unit                     : J/mol/K
+ output    efield chi2 unit                     : pm/V
+  
+ wavefunctions paging                           : none
+ random number generator seed                   :   25636454
+ data distribution                              : optimal for this architecture
+ optimization strategy                          : balance speed and memory
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : RSCAN
+ relativistic treatment                         : Koelling-Harmon
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ plane wave basis set cut-off                   :   900.0000   eV
+ size of standard grid                          :     2.0000
+ size of   fine   gmax                          :    30.7390   1/A
+ finite basis set correction                    : none
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  571.0    
+ net charge of system                           :  0.000    
+ net spin   of system                           :  1.000    
+ number of  up  spins                           :  286.0    
+ number of down spins                           :  285.0    
+ treating system as spin-polarized
+ number of bands                                :        343
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as metallic with density mixing treatment of electrons,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-07   eV
+ eigen-energy convergence tolerance             : 0.2203E-08   eV
+ max force / atom convergence tol.              : ignored
+ convergence tolerance window                   :          3   cycles
+ max. number of SCF cycles                      :        100
+ number of fixed-spin iterations                :         10
+ smearing scheme                                : Gaussian
+ smearing width                                 : 0.2000       eV
+ Fermi energy convergence tolerance             : 0.2721E-13   eV
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Pulay
+ max. length of mixing history                  :         20
+ charge density mixing amplitude                : 0.5000    
+   spin density mixing amplitude                :  2.000    
+ cut-off energy for mixing                      :  900.0       eV
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+ Population analysis output                     : summary and pdos components
+
+ *******************************************************************************
+  
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+    11.8016820    -0.0000080    -0.0000080        0.532397442   0.000000361   0.000000361
+    -0.0000080    11.8016820    -0.0000080        0.000000361   0.532397442   0.000000361
+    -0.0000080    -0.0000080    11.8016820        0.000000361   0.000000361   0.532397442
+
+                       Lattice parameters(A)       Cell Angles
+                    a =     11.801682          alpha =   90.000078
+                    b =     11.801682          beta  =   90.000078
+                    c =     11.801682          gamma =   90.000078
+
+                       Current cell volume =          1643.734705       A**3
+                                   density =             2.819410   AMU/A**3
+                                           =             4.681741     g/cm^3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =   63
+                      Total number of species in cell =    2
+                        Max number of any one species =   32
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  P            1         0.108060   0.146778   0.393623   x 
+            x  P            2         0.393622   0.146779   0.108062   x 
+            x  P            3         0.124471   0.371092   0.124471   x 
+            x  P            4         0.124207   0.122078   0.874634   x 
+            x  P            5         0.378458   0.120899   0.630847   x 
+            x  P            6         0.121792   0.387117   0.635609   x 
+            x  P            7         0.375460   0.383398   0.869208   x 
+            x  P            8         0.134707   0.617713   0.371902   x 
+            x  P            9         0.371902   0.617713   0.134707   x 
+            x  P           10         0.140523   0.890760   0.140524   x 
+            x  P           11         0.360722   0.899476   0.360722   x 
+            x  P           12         0.123131   0.630174   0.880688   x 
+            x  P           13         0.376380   0.629702   0.616262   x 
+            x  P           14         0.127860   0.871068   0.624867   x 
+            x  P           15         0.372390   0.865926   0.879120   x 
+            x  P           16         0.630847   0.120899   0.378458   x 
+            x  P           17         0.874634   0.122078   0.124207   x 
+            x  P           18         0.635610   0.387117   0.121792   x 
+            x  P           19         0.869208   0.383398   0.375460   x 
+            x  P           20         0.622983   0.123949   0.878971   x 
+            x  P           21         0.878971   0.123949   0.622983   x 
+            x  P           22         0.621102   0.373249   0.621102   x 
+            x  P           23         0.873618   0.374090   0.873618   x 
+            x  P           24         0.616262   0.629702   0.376380   x 
+            x  P           25         0.880688   0.630174   0.123131   x 
+            x  P           26         0.624867   0.871068   0.127860   x 
+            x  P           27         0.879120   0.865926   0.372390   x 
+            x  P           28         0.625667   0.624807   0.873916   x 
+            x  P           29         0.873916   0.624807   0.625667   x 
+            x  P           30         0.626488   0.877476   0.626487   x 
+            x  P           31         0.874890   0.877977   0.874889   x 
+            x  In           1         0.006046  -0.007450   0.006046   x 
+            x  In           2         0.289531   0.163012   0.289528   x 
+            x  In           3        -0.011720   0.255825   0.248901   x 
+            x  In           4         0.248901   0.255825  -0.011720   x 
+            x  In           5        -0.000129  -0.009911   0.500234   x 
+            x  In           6         0.250857  -0.005005   0.753924   x 
+            x  In           7        -0.000333   0.248873   0.751201   x 
+            x  In           8         0.248652   0.256629   0.525237   x 
+            x  In           9        -0.000705   0.499075  -0.000705   x 
+            x  In          10         0.263751   0.471576   0.263751   x 
+            x  In          11         0.015600   0.750119   0.244707   x 
+            x  In          12         0.244707   0.750119   0.015600   x 
+            x  In          13         0.001341   0.504473   0.498497   x 
+            x  In          14         0.251596   0.515918   0.751074   x 
+            x  In          15        -0.001673   0.750656   0.750727   x 
+            x  In          16         0.254019   0.758639   0.487797   x 
+            x  In          17         0.500234  -0.009911  -0.000129   x 
+            x  In          18         0.753924  -0.005005   0.250857   x 
+            x  In          19         0.525237   0.256629   0.248651   x 
+            x  In          20         0.751201   0.248873  -0.000333   x 
+            x  In          21         0.496986  -0.006906   0.496986   x 
+            x  In          22         0.750591   0.006390   0.750591   x 
+            x  In          23         0.501402   0.250093   0.752901   x 
+            x  In          24         0.752901   0.250093   0.501402   x 
+            x  In          25         0.498497   0.504473   0.001341   x 
+            x  In          26         0.751074   0.515918   0.251596   x 
+            x  In          27         0.487797   0.758639   0.254019   x 
+            x  In          28         0.750727   0.750656  -0.001673   x 
+            x  In          29         0.488087   0.490222   0.488087   x 
+            x  In          30         0.747270   0.497785   0.747270   x 
+            x  In          31         0.501739   0.749302   0.748091   x 
+            x  In          32         0.748091   0.749302   0.501739   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                         No user defined ionic velocities
+
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+
+                               Mass of species in AMU
+                                    P   30.9737600
+                                    In  114.8180000
+
+                          Electric Quadrupole Moment (Barn)
+                                    P    1.0000000 No Isotope Defined
+                                    In    0.7700000 Isotope115
+
+                          Files used for pseudopotentials:
+                                    P 3|1.8|4|4|5|30:31:32
+                                    In 3|2.5|2.5|1.5|7|8|9|50:51:42U2.2U2.2
+
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  4  4  4
+                            with an offset of   0.125  0.125  0.125
+                       Number of kpoints used =            36
+
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+
+                      Maximum deviation from symmetry =  0.00000         ANG
+
+                      Number of symmetry operations   =           1
+                      Number of ionic constraints     =           3
+                      Point group of crystal =     1: C1, 1, 1
+                      Space group of crystal =     8: Cm, C -2y
+
+             Set iprint > 1 for details on symmetry rotations/translations
+
+                         Centre of mass is constrained
+             Set iprint > 1 for details of linear ionic constraints
+
+                         Number of cell constraints= 0
+                         Cell constraints are:  1 2 3 4 5 6
+
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead      368.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                             4302.1 MB         0.0 MB |
+| Electronic energy minimisation requirements        1320.9 MB         0.0 MB |
+| Force calculation requirements                      127.4 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process         5991.0 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating approximate eigenstates for fixed initial Hamiltonian
+Cut-off for approx. calculation is   89.988 eV
+Improving approx. states at cut-off of  450.000 eV
+Resetting cut-off to  900.000 eV
+Calculating total energy with cut-off of  900.000 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -6.28295708E+004  0.00000000E+000                       445.23  <-- SCF
+      1  -6.25834242E+004  2.84925824E+000  -3.90708951E+000     888.36  <-- SCF
+      2  -6.25837082E+004  2.84899326E+000   4.50858289E-003    1194.12  <-- SCF
+      3  -6.26507637E+004  2.96199728E+000   1.06437256E+000    1543.07  <-- SCF
+      4  -6.26630698E+004  3.00185446E+000   1.95336023E-001    2024.60  <-- SCF
+      5  -6.26705143E+004  3.08432423E+000   1.18165409E-001    2369.79  <-- SCF
+      6  -6.26593982E+004  3.23621439E+000  -1.76445271E-001    2713.36  <-- SCF
+      7  -6.26580874E+004  3.27976551E+000  -2.08069884E-002    3067.39  <-- SCF
+      8  -6.26579300E+004  3.30331880E+000  -2.49801615E-003    3428.53  <-- SCF
+      9  -6.26588736E+004  3.31302506E+000   1.49772766E-002    3781.00  <-- SCF
+     10  -6.26592525E+004  3.37522523E+000   6.01543953E-003    4132.12  <-- SCF
+     11  -6.26593030E+004  3.37527871E+000   8.00659307E-004    4488.59  <-- SCF
+     12  -6.26593205E+004  3.37593825E+000   2.78017357E-004    4855.88  <-- SCF
+     13  -6.26593263E+004  3.37541985E+000   9.18661322E-005    5226.36  <-- SCF
+     14  -6.26593284E+004  3.37568356E+000   3.30415543E-005    5588.54  <-- SCF
+     15  -6.26593288E+004  3.37583831E+000   6.25993915E-006    5944.13  <-- SCF
+     16  -6.26593293E+004  3.37619777E+000   8.02429439E-006    6312.28  <-- SCF
+     17  -6.26593295E+004  3.37652239E+000   2.98092430E-006    6656.75  <-- SCF
+     18  -6.26593297E+004  3.37703052E+000   3.43492167E-006    6996.64  <-- SCF
+     19  -6.26593298E+004  3.37733834E+000   1.48398666E-006    7350.90  <-- SCF
+     20  -6.26593298E+004  3.37746037E+000   5.25604728E-007    7689.31  <-- SCF
+     21  -6.26593298E+004  3.37751289E+000   2.48936070E-007    8025.32  <-- SCF
+     22  -6.26593298E+004  3.37753620E+000   8.62127706E-008    8345.38  <-- SCF
+     23  -6.26593298E+004  3.37756365E+000   8.10536671E-008    8661.43  <-- SCF
+     24  -6.26593298E+004  3.37758305E+000   4.49980827E-008    8985.23  <-- SCF
+     25  -6.26593298E+004  3.37760340E+000   2.30120840E-008    9277.95  <-- SCF
+     26  -6.26593298E+004  3.37762902E+000   1.65929620E-008    9592.10  <-- SCF
+     27  -6.26593298E+004  3.37763905E+000   2.51826944E-009    9848.49  <-- SCF
+     28  -6.26593298E+004  3.37764768E+000  -3.28822624E-009   10090.21  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Integrated Spin Density     =    0.258708     hbar/2
+Integrated |Spin Density|   =    0.318645     hbar/2
+ 
+Final energy, E             =  -62659.22372004     eV
+Final free energy (E-TS)    =  -62659.32983118     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -62659.27677561     eV
+ 
+
+ ************************** Forces **************************
+ *                                                          *
+ *               Cartesian components (eV/A)                *
+ * -------------------------------------------------------- *
+ *                         x            y            z      *
+ *                                                          *
+ * P               1      0.01874      0.03374      0.03328 *
+ * P               2      0.03356      0.03353      0.01813 *
+ * P               3      0.21770     -0.12303      0.21769 *
+ * P               4      0.00453      0.03039      0.00485 *
+ * P               5      0.04641      0.18102     -0.18061 *
+ * P               6      0.19015      0.04822     -0.10682 *
+ * P               7      0.02860      0.01385      0.03864 *
+ * P               8     -0.00583     -0.11605      0.05965 *
+ * P               9      0.05965     -0.11605     -0.00583 *
+ * P              10     -0.02178     -0.01168     -0.02181 *
+ * P              11      0.04773      0.04855      0.04772 *
+ * P              12      0.07756     -0.07831     -0.08847 *
+ * P              13     -0.06579     -0.08746      0.00658 *
+ * P              14     -0.02674      0.01737      0.02394 *
+ * P              15      0.06525      0.04208     -0.09601 *
+ * P              16     -0.18061      0.18101      0.04640 *
+ * P              17      0.00484      0.03040      0.00450 *
+ * P              18     -0.10688      0.04814      0.19017 *
+ * P              19      0.03861      0.01388      0.02859 *
+ * P              20     -0.01418      0.06569     -0.04321 *
+ * P              21     -0.04325      0.06569     -0.01415 *
+ * P              22     -0.09566     -0.04589     -0.09565 *
+ * P              23      0.02654     -0.01654      0.02653 *
+ * P              24      0.00658     -0.08746     -0.06579 *
+ * P              25     -0.08848     -0.07831      0.07756 *
+ * P              26      0.02393      0.01739     -0.02674 *
+ * P              27     -0.09601      0.04207      0.06526 *
+ * P              28      0.00703     -0.02745      0.00849 *
+ * P              29      0.00849     -0.02745      0.00703 *
+ * P              30      0.04533      0.10903      0.04534 *
+ * P              31     -0.05864      0.09305     -0.05863 *
+ * In              1      0.15665     -0.22578      0.15666 *
+ * In              2     -0.05338     -1.30662     -0.05252 *
+ * In              3      0.00235      0.03772      0.06685 *
+ * In              4      0.06682      0.03776      0.00233 *
+ * In              5      0.00460      0.00179      0.03936 *
+ * In              6     -0.13271     -0.02058      0.01739 *
+ * In              7      0.09360     -0.12737      0.00326 *
+ * In              8     -0.35950     -0.11745      0.08309 *
+ * In              9      0.00740      0.21258      0.00740 *
+ * In             10      0.01418      0.71204      0.01418 *
+ * In             11      0.09152      0.18073     -0.29819 *
+ * In             12     -0.29820      0.18073      0.09153 *
+ * In             13     -0.02647      0.01848     -0.07949 *
+ * In             14      0.01235      0.01343      0.02086 *
+ * In             15     -0.00292      0.03081      0.08238 *
+ * In             16      0.19510      0.05032     -0.03123 *
+ * In             17      0.03934      0.00186      0.00463 *
+ * In             18      0.01740     -0.02057     -0.13270 *
+ * In             19      0.08328     -0.11730     -0.35946 *
+ * In             20      0.00327     -0.12738      0.09361 *
+ * In             21     -0.08279     -0.14606     -0.08279 *
+ * In             22      0.03809     -0.29335      0.03806 *
+ * In             23     -0.03275      0.08781      0.03864 *
+ * In             24      0.03866      0.08781     -0.03275 *
+ * In             25     -0.07948      0.01849     -0.02647 *
+ * In             26      0.02089      0.01343      0.01238 *
+ * In             27     -0.03124      0.05032      0.19511 *
+ * In             28      0.08240      0.03081     -0.00293 *
+ * In             29      0.04852      0.27005      0.04852 *
+ * In             30     -0.01199      0.17514     -0.01199 *
+ * In             31     -0.01503     -0.00453     -0.03733 *
+ * In             32     -0.03732     -0.00453     -0.01504 *
+ *                                                          *
+ ************************************************************
+
+ Pseudo atomic calculation performed for P 3s2 3p3
+
+ Converged in 23 iterations to a total energy of -208.0292 eV
+
+ Pseudo atomic calculation performed for In 4d10 5s2 5p1
+
+ Converged in 42 iterations to a total energy of -1747.4501 eV
+Charge spilling parameter for spin component 1 = 0.18%
+Charge spilling parameter for spin component 2 = 0.18%
+
+                   Orbital Populations                  
+  ---------------------------------------------------------------
+     Ion    Atom   Orbital              Up        Down      Spin
+  ---------------------------------------------------------------
+      P     1      S                    0.877     0.874     0.003
+      P     1      Px                   0.608     0.586     0.022
+      P     1      Py                   0.689     0.688     0.001
+      P     1      Pz                   0.658     0.657     0.001
+      P     2      S                    0.877     0.874     0.003
+      P     2      Px                   0.658     0.657     0.001
+      P     2      Py                   0.689     0.688     0.001
+      P     2      Pz                   0.608     0.586     0.022
+      P     3      S                    0.873     0.873    -0.000
+      P     3      Px                   0.640     0.642    -0.001
+      P     3      Py                   0.676     0.676    -0.000
+      P     3      Pz                   0.640     0.642    -0.001
+      P     4      S                    0.869     0.869     0.000
+      P     4      Px                   0.656     0.655     0.000
+      P     4      Py                   0.651     0.651     0.000
+      P     4      Pz                   0.659     0.659     0.000
+      P     5      S                    0.873     0.873     0.000
+      P     5      Px                   0.660     0.660     0.000
+      P     5      Py                   0.642     0.641     0.001
+      P     5      Pz                   0.651     0.650     0.001
+      P     6      S                    0.871     0.871     0.000
+      P     6      Px                   0.644     0.644    -0.000
+      P     6      Py                   0.657     0.656     0.000
+      P     6      Pz                   0.655     0.655    -0.000
+      P     7      S                    0.868     0.868     0.000
+      P     7      Px                   0.655     0.655     0.000
+      P     7      Py                   0.652     0.652     0.000
+      P     7      Pz                   0.659     0.659     0.000
+      P     8      S                    0.874     0.874     0.001
+      P     8      Px                   0.647     0.645     0.001
+      P     8      Py                   0.640     0.638     0.002
+      P     8      Pz                   0.666     0.665     0.001
+      P     9      S                    0.874     0.874     0.001
+      P     9      Px                   0.666     0.665     0.001
+      P     9      Py                   0.640     0.638     0.002
+      P     9      Pz                   0.647     0.645     0.001
+      P    10      S                    0.904     0.904     0.000
+      P    10      Px                   0.629     0.629     0.000
+      P    10      Py                   0.629     0.629     0.000
+      P    10      Pz                   0.629     0.629     0.000
+      P    11      S                    0.900     0.900    -0.000
+      P    11      Px                   0.633     0.633    -0.000
+      P    11      Py                   0.631     0.631    -0.000
+      P    11      Pz                   0.633     0.633    -0.000
+      P    12      S                    0.868     0.868     0.000
+      P    12      Px                   0.655     0.655     0.000
+      P    12      Py                   0.658     0.658     0.000
+      P    12      Pz                   0.654     0.653     0.000
+      P    13      S                    0.874     0.873     0.001
+      P    13      Px                   0.665     0.664     0.002
+      P    13      Py                   0.646     0.641     0.005
+      P    13      Pz                   0.644     0.640     0.003
+      P    14      S                    0.868     0.868     0.000
+      P    14      Px                   0.654     0.654     0.000
+      P    14      Py                   0.660     0.660     0.000
+      P    14      Pz                   0.654     0.654     0.000
+      P    15      S                    0.873     0.873     0.001
+      P    15      Px                   0.658     0.657     0.001
+      P    15      Py                   0.652     0.650     0.002
+      P    15      Pz                   0.650     0.648     0.002
+      P    16      S                    0.873     0.873     0.000
+      P    16      Px                   0.651     0.650     0.001
+      P    16      Py                   0.642     0.641     0.001
+      P    16      Pz                   0.660     0.660     0.000
+      P    17      S                    0.869     0.869     0.000
+      P    17      Px                   0.659     0.659     0.000
+      P    17      Py                   0.651     0.651     0.000
+      P    17      Pz                   0.656     0.655     0.000
+      P    18      S                    0.871     0.871     0.000
+      P    18      Px                   0.655     0.655    -0.000
+      P    18      Py                   0.657     0.656     0.000
+      P    18      Pz                   0.644     0.644    -0.000
+      P    19      S                    0.868     0.868     0.000
+      P    19      Px                   0.659     0.659     0.000
+      P    19      Py                   0.652     0.652     0.000
+      P    19      Pz                   0.655     0.655     0.000
+      P    20      S                    0.869     0.869     0.000
+      P    20      Px                   0.654     0.653     0.001
+      P    20      Py                   0.657     0.656     0.001
+      P    20      Pz                   0.655     0.654     0.001
+      P    21      S                    0.869     0.869     0.000
+      P    21      Px                   0.655     0.654     0.001
+      P    21      Py                   0.657     0.656     0.001
+      P    21      Pz                   0.654     0.653     0.001
+      P    22      S                    0.873     0.873     0.001
+      P    22      Px                   0.645     0.644     0.002
+      P    22      Py                   0.665     0.664     0.000
+      P    22      Pz                   0.645     0.644     0.002
+      P    23      S                    0.870     0.870     0.000
+      P    23      Px                   0.651     0.651     0.000
+      P    23      Py                   0.661     0.661     0.001
+      P    23      Pz                   0.651     0.651     0.000
+      P    24      S                    0.874     0.873     0.001
+      P    24      Px                   0.644     0.640     0.003
+      P    24      Py                   0.646     0.641     0.005
+      P    24      Pz                   0.665     0.664     0.002
+      P    25      S                    0.868     0.868     0.000
+      P    25      Px                   0.654     0.653     0.000
+      P    25      Py                   0.658     0.658     0.000
+      P    25      Pz                   0.655     0.655     0.000
+      P    26      S                    0.868     0.868     0.000
+      P    26      Px                   0.654     0.654     0.000
+      P    26      Py                   0.660     0.660     0.000
+      P    26      Pz                   0.654     0.654     0.000
+      P    27      S                    0.873     0.873     0.001
+      P    27      Px                   0.650     0.648     0.002
+      P    27      Py                   0.652     0.650     0.002
+      P    27      Pz                   0.658     0.657     0.001
+      P    28      S                    0.868     0.868     0.000
+      P    28      Px                   0.657     0.657     0.000
+      P    28      Py                   0.656     0.656    -0.000
+      P    28      Pz                   0.655     0.655     0.000
+      P    29      S                    0.868     0.868     0.000
+      P    29      Px                   0.655     0.655     0.000
+      P    29      Py                   0.656     0.656    -0.000
+      P    29      Pz                   0.657     0.657    -0.000
+      P    30      S                    0.868     0.868     0.000
+      P    30      Px                   0.656     0.656     0.000
+      P    30      Py                   0.655     0.655     0.000
+      P    30      Pz                   0.656     0.656    -0.000
+      P    31      S                    0.869     0.869     0.000
+      P    31      Px                   0.655     0.655     0.000
+      P    31      Py                   0.656     0.656     0.000
+      P    31      Pz                   0.655     0.655     0.000
+     In     1      Dzz                  1.000     1.000     0.000
+     In     1      Dzy                  0.999     0.999     0.000
+     In     1      Dzx                  0.998     0.998    -0.000
+     In     1      Dxx-yy               1.000     1.000    -0.000
+     In     1      Dxy                  0.999     0.999     0.000
+     In     1      S                    0.706     0.706     0.000
+     In     1      Px                   0.240     0.240     0.000
+     In     1      Py                   0.245     0.245     0.000
+     In     1      Pz                   0.240     0.240     0.000
+     In     1      S                   -0.238    -0.241     0.002
+     In     2      Dzz                  0.998     0.998    -0.000
+     In     2      Dzy                  1.000     1.000    -0.000
+     In     2      Dzx                  0.997     0.997     0.000
+     In     2      Dxx-yy               0.999     0.999     0.000
+     In     2      Dxy                  1.000     1.000    -0.000
+     In     2      S                    0.701     0.695     0.006
+     In     2      Px                   0.251     0.237     0.013
+     In     2      Py                   0.239     0.227     0.012
+     In     2      Pz                   0.251     0.237     0.013
+     In     2      S                   -0.192    -0.198     0.006
+     In     3      Dzz                  1.000     1.000     0.000
+     In     3      Dzy                  0.998     0.998     0.000
+     In     3      Dzx                  0.998     0.998    -0.000
+     In     3      Dxx-yy               1.000     1.000     0.000
+     In     3      Dxy                  0.999     0.999     0.000
+     In     3      S                    0.710     0.711    -0.000
+     In     3      Px                   0.234     0.235    -0.000
+     In     3      Py                   0.237     0.237     0.001
+     In     3      Pz                   0.248     0.248     0.000
+     In     3      S                   -0.232    -0.231    -0.001
+     In     4      Dzz                  1.000     1.000     0.000
+     In     4      Dzy                  0.999     0.999     0.000
+     In     4      Dzx                  0.998     0.998    -0.000
+     In     4      Dxx-yy               1.000     1.000     0.000
+     In     4      Dxy                  0.998     0.998     0.000
+     In     4      S                    0.710     0.711    -0.000
+     In     4      Px                   0.248     0.248     0.000
+     In     4      Py                   0.237     0.237     0.001
+     In     4      Pz                   0.234     0.235    -0.000
+     In     4      S                   -0.232    -0.231    -0.001
+     In     5      Dzz                  1.000     1.000    -0.000
+     In     5      Dzy                  0.998     0.998     0.000
+     In     5      Dzx                  0.999     0.999     0.000
+     In     5      Dxx-yy               0.999     0.999     0.000
+     In     5      Dxy                  0.998     0.998    -0.000
+     In     5      S                    0.721     0.719     0.002
+     In     5      Px                   0.234     0.234    -0.000
+     In     5      Py                   0.240     0.238     0.002
+     In     5      Pz                   0.240     0.237     0.003
+     In     5      S                   -0.250    -0.250     0.000
+     In     6      Dzz                  1.000     1.000    -0.000
+     In     6      Dzy                  0.999     0.999    -0.000
+     In     6      Dzx                  0.998     0.998     0.000
+     In     6      Dxx-yy               1.000     1.000    -0.000
+     In     6      Dxy                  0.998     0.998     0.000
+     In     6      S                    0.712     0.712     0.000
+     In     6      Px                   0.240     0.239     0.001
+     In     6      Py                   0.241     0.241     0.000
+     In     6      Pz                   0.237     0.237    -0.000
+     In     6      S                   -0.268    -0.268    -0.001
+     In     7      Dzz                  1.000     1.000    -0.000
+     In     7      Dzy                  0.998     0.998     0.000
+     In     7      Dzx                  0.999     0.999     0.000
+     In     7      Dxx-yy               1.000     1.000     0.000
+     In     7      Dxy                  0.998     0.998     0.000
+     In     7      S                    0.709     0.709    -0.000
+     In     7      Px                   0.240     0.240    -0.000
+     In     7      Py                   0.243     0.243     0.000
+     In     7      Pz                   0.237     0.237     0.000
+     In     7      S                   -0.262    -0.263     0.000
+     In     8      Dzz                  0.999     0.999     0.000
+     In     8      Dzy                  0.999     0.999    -0.000
+     In     8      Dzx                  0.999     0.999     0.000
+     In     8      Dxx-yy               1.000     1.000     0.000
+     In     8      Dxy                  0.998     0.998     0.000
+     In     8      S                    0.722     0.721     0.000
+     In     8      Px                   0.255     0.255    -0.000
+     In     8      Py                   0.242     0.244    -0.002
+     In     8      Pz                   0.232     0.230     0.002
+     In     8      S                   -0.215    -0.216     0.001
+     In     9      Dzz                  1.000     1.000    -0.000
+     In     9      Dzy                  0.998     0.998    -0.000
+     In     9      Dzx                  0.999     0.999     0.000
+     In     9      Dxx-yy               1.000     1.000    -0.000
+     In     9      Dxy                  0.998     0.998    -0.000
+     In     9      S                    0.714     0.714     0.000
+     In     9      Px                   0.239     0.239    -0.000
+     In     9      Py                   0.238     0.238     0.000
+     In     9      Pz                   0.239     0.239    -0.000
+     In     9      S                   -0.258    -0.258     0.000
+     In    10      Dzz                  1.000     1.000     0.000
+     In    10      Dzy                  0.999     0.999     0.000
+     In    10      Dzx                  0.999     0.999     0.000
+     In    10      Dxx-yy               1.000     1.000     0.000
+     In    10      Dxy                  0.999     0.999     0.000
+     In    10      S                    0.711     0.710     0.001
+     In    10      Px                   0.247     0.246     0.001
+     In    10      Py                   0.236     0.242    -0.006
+     In    10      Pz                   0.247     0.246     0.001
+     In    10      S                   -0.235    -0.236     0.002
+     In    11      Dzz                  1.000     1.000     0.000
+     In    11      Dzy                  0.999     0.999     0.000
+     In    11      Dzx                  0.999     0.999     0.000
+     In    11      Dxx-yy               1.000     1.000     0.000
+     In    11      Dxy                  0.998     0.998    -0.000
+     In    11      S                    0.705     0.704     0.000
+     In    11      Px                   0.239     0.239     0.000
+     In    11      Py                   0.244     0.244     0.000
+     In    11      Pz                   0.242     0.242     0.001
+     In    11      S                   -0.227    -0.227     0.000
+     In    12      Dzz                  1.000     1.000     0.000
+     In    12      Dzy                  0.998     0.998    -0.000
+     In    12      Dzx                  0.999     0.999     0.000
+     In    12      Dxx-yy               1.000     1.000     0.000
+     In    12      Dxy                  0.999     0.999     0.000
+     In    12      S                    0.705     0.704     0.000
+     In    12      Px                   0.242     0.242     0.001
+     In    12      Py                   0.244     0.244     0.000
+     In    12      Pz                   0.239     0.239     0.000
+     In    12      S                   -0.227    -0.227     0.000
+     In    13      Dzz                  1.000     1.000     0.000
+     In    13      Dzy                  0.999     0.999     0.000
+     In    13      Dzx                  0.998     0.998     0.000
+     In    13      Dxx-yy               1.000     1.000     0.000
+     In    13      Dxy                  0.999     0.999     0.000
+     In    13      S                    0.708     0.708    -0.000
+     In    13      Px                   0.242     0.242     0.000
+     In    13      Py                   0.235     0.235    -0.000
+     In    13      Pz                   0.241     0.241    -0.000
+     In    13      S                   -0.261    -0.260    -0.001
+     In    14      Dzz                  1.000     1.000    -0.000
+     In    14      Dzy                  0.998     0.998     0.000
+     In    14      Dzx                  0.998     0.998     0.000
+     In    14      Dxx-yy               1.000     1.000    -0.000
+     In    14      Dxy                  0.998     0.998     0.000
+     In    14      S                    0.707     0.708    -0.000
+     In    14      Px                   0.247     0.247    -0.000
+     In    14      Py                   0.239     0.239    -0.000
+     In    14      Pz                   0.239     0.239    -0.000
+     In    14      S                   -0.239    -0.239     0.001
+     In    15      Dzz                  1.000     1.000    -0.000
+     In    15      Dzy                  0.998     0.998     0.000
+     In    15      Dzx                  0.998     0.998     0.000
+     In    15      Dxx-yy               1.000     1.000    -0.000
+     In    15      Dxy                  0.999     0.999    -0.000
+     In    15      S                    0.709     0.709     0.000
+     In    15      Px                   0.242     0.242    -0.000
+     In    15      Py                   0.240     0.240     0.000
+     In    15      Pz                   0.241     0.241     0.000
+     In    15      S                   -0.262    -0.262     0.000
+     In    16      Dzz                  1.000     1.000     0.000
+     In    16      Dzy                  0.998     0.998     0.000
+     In    16      Dzx                  0.999     0.999     0.000
+     In    16      Dxx-yy               1.000     1.000     0.000
+     In    16      Dxy                  0.999     0.999    -0.000
+     In    16      S                    0.702     0.702    -0.000
+     In    16      Px                   0.237     0.238    -0.000
+     In    16      Py                   0.244     0.245    -0.000
+     In    16      Pz                   0.238     0.238    -0.000
+     In    16      S                   -0.220    -0.222     0.002
+     In    17      Dzz                  1.000     1.000     0.000
+     In    17      Dzy                  0.998     0.998    -0.000
+     In    17      Dzx                  0.999     0.999     0.000
+     In    17      Dxx-yy               1.000     1.000     0.000
+     In    17      Dxy                  0.998     0.998     0.000
+     In    17      S                    0.721     0.719     0.002
+     In    17      Px                   0.240     0.237     0.003
+     In    17      Py                   0.240     0.238     0.002
+     In    17      Pz                   0.234     0.234    -0.000
+     In    17      S                   -0.250    -0.250     0.000
+     In    18      Dzz                  1.000     1.000    -0.000
+     In    18      Dzy                  0.998     0.998     0.000
+     In    18      Dzx                  0.998     0.998     0.000
+     In    18      Dxx-yy               1.000     1.000    -0.000
+     In    18      Dxy                  0.999     0.999    -0.000
+     In    18      S                    0.712     0.712     0.000
+     In    18      Px                   0.237     0.237    -0.000
+     In    18      Py                   0.241     0.241     0.000
+     In    18      Pz                   0.240     0.239     0.001
+     In    18      S                   -0.268    -0.267    -0.001
+     In    19      Dzz                  1.000     1.000     0.000
+     In    19      Dzy                  0.998     0.998     0.000
+     In    19      Dzx                  0.999     0.999     0.000
+     In    19      Dxx-yy               0.999     0.999     0.000
+     In    19      Dxy                  0.999     0.999    -0.000
+     In    19      S                    0.722     0.721     0.000
+     In    19      Px                   0.232     0.230     0.002
+     In    19      Py                   0.242     0.244    -0.002
+     In    19      Pz                   0.255     0.255    -0.000
+     In    19      S                   -0.215    -0.216     0.001
+     In    20      Dzz                  1.000     1.000     0.000
+     In    20      Dzy                  0.998     0.998     0.000
+     In    20      Dzx                  0.999     0.999     0.000
+     In    20      Dxx-yy               1.000     1.000    -0.000
+     In    20      Dxy                  0.998     0.998     0.000
+     In    20      S                    0.709     0.709    -0.000
+     In    20      Px                   0.237     0.237     0.000
+     In    20      Py                   0.243     0.243     0.000
+     In    20      Pz                   0.240     0.240    -0.000
+     In    20      S                   -0.262    -0.263     0.000
+     In    21      Dzz                  1.000     1.000     0.000
+     In    21      Dzy                  0.999     0.999     0.000
+     In    21      Dzx                  0.998     0.998     0.000
+     In    21      Dxx-yy               1.000     1.000     0.000
+     In    21      Dxy                  0.999     0.999     0.000
+     In    21      S                    0.708     0.707     0.000
+     In    21      Px                   0.242     0.242    -0.000
+     In    21      Py                   0.243     0.243    -0.000
+     In    21      Pz                   0.242     0.242    -0.000
+     In    21      S                   -0.235    -0.234    -0.001
+     In    22      Dzz                  1.000     1.000     0.000
+     In    22      Dzy                  0.999     0.999     0.000
+     In    22      Dzx                  0.998     0.998     0.000
+     In    22      Dxx-yy               1.000     1.000    -0.000
+     In    22      Dxy                  0.999     0.999     0.000
+     In    22      S                    0.706     0.705     0.001
+     In    22      Px                   0.241     0.241     0.000
+     In    22      Py                   0.243     0.242     0.001
+     In    22      Pz                   0.241     0.241     0.000
+     In    22      S                   -0.249    -0.250     0.000
+     In    23      Dzz                  1.000     1.000    -0.000
+     In    23      Dzy                  0.998     0.998     0.000
+     In    23      Dzx                  0.999     0.999     0.000
+     In    23      Dxx-yy               1.000     1.000    -0.000
+     In    23      Dxy                  0.998     0.998    -0.000
+     In    23      S                    0.707     0.707    -0.000
+     In    23      Px                   0.240     0.240    -0.000
+     In    23      Py                   0.244     0.244     0.000
+     In    23      Pz                   0.238     0.239    -0.000
+     In    23      S                   -0.263    -0.262    -0.001
+     In    24      Dzz                  1.000     1.000    -0.000
+     In    24      Dzy                  0.998     0.998    -0.000
+     In    24      Dzx                  0.999     0.999     0.000
+     In    24      Dxx-yy               1.000     1.000    -0.000
+     In    24      Dxy                  0.998     0.998     0.000
+     In    24      S                    0.707     0.707    -0.000
+     In    24      Px                   0.238     0.239    -0.000
+     In    24      Py                   0.244     0.244     0.000
+     In    24      Pz                   0.240     0.240    -0.000
+     In    24      S                   -0.263    -0.262    -0.001
+     In    25      Dzz                  1.000     1.000    -0.000
+     In    25      Dzy                  0.999     0.999     0.000
+     In    25      Dzx                  0.998     0.998     0.000
+     In    25      Dxx-yy               1.000     1.000     0.000
+     In    25      Dxy                  0.999     0.999     0.000
+     In    25      S                    0.708     0.708    -0.000
+     In    25      Px                   0.241     0.241    -0.000
+     In    25      Py                   0.235     0.235    -0.000
+     In    25      Pz                   0.242     0.242     0.000
+     In    25      S                   -0.261    -0.260    -0.001
+     In    26      Dzz                  1.000     1.000    -0.000
+     In    26      Dzy                  0.998     0.998     0.000
+     In    26      Dzx                  0.998     0.998     0.000
+     In    26      Dxx-yy               1.000     1.000     0.000
+     In    26      Dxy                  0.998     0.998     0.000
+     In    26      S                    0.707     0.708    -0.000
+     In    26      Px                   0.239     0.239    -0.000
+     In    26      Py                   0.239     0.239    -0.000
+     In    26      Pz                   0.247     0.247    -0.000
+     In    26      S                   -0.239    -0.239     0.001
+     In    27      Dzz                  1.000     1.000    -0.000
+     In    27      Dzy                  0.999     0.999    -0.000
+     In    27      Dzx                  0.999     0.999     0.000
+     In    27      Dxx-yy               1.000     1.000     0.000
+     In    27      Dxy                  0.998     0.998     0.000
+     In    27      S                    0.702     0.702    -0.000
+     In    27      Px                   0.238     0.238    -0.000
+     In    27      Py                   0.244     0.245    -0.000
+     In    27      Pz                   0.237     0.238    -0.000
+     In    27      S                   -0.220    -0.222     0.002
+     In    28      Dzz                  1.000     1.000    -0.000
+     In    28      Dzy                  0.999     0.999    -0.000
+     In    28      Dzx                  0.998     0.998     0.000
+     In    28      Dxx-yy               1.000     1.000    -0.000
+     In    28      Dxy                  0.998     0.998     0.000
+     In    28      S                    0.709     0.709     0.000
+     In    28      Px                   0.241     0.241     0.000
+     In    28      Py                   0.240     0.240     0.000
+     In    28      Pz                   0.242     0.242    -0.000
+     In    28      S                   -0.262    -0.262     0.000
+     In    29      Dzz                  1.000     1.000    -0.000
+     In    29      Dzy                  0.999     0.999    -0.000
+     In    29      Dzx                  0.999     0.999    -0.000
+     In    29      Dxx-yy               1.000     1.000    -0.000
+     In    29      Dxy                  0.999     0.999    -0.000
+     In    29      S                    0.743     0.727     0.016
+     In    29      Px                   0.252     0.235     0.017
+     In    29      Py                   0.246     0.233     0.013
+     In    29      Pz                   0.252     0.235     0.017
+     In    29      S                   -0.249    -0.250     0.001
+     In    30      Dzz                  1.000     1.000     0.000
+     In    30      Dzy                  0.998     0.998     0.000
+     In    30      Dzx                  0.999     0.999     0.000
+     In    30      Dxx-yy               1.000     1.000     0.000
+     In    30      Dxy                  0.998     0.998     0.000
+     In    30      S                    0.709     0.707     0.001
+     In    30      Px                   0.240     0.240     0.000
+     In    30      Py                   0.240     0.238     0.002
+     In    30      Pz                   0.240     0.240     0.000
+     In    30      S                   -0.239    -0.241     0.002
+     In    31      Dzz                  1.000     1.000    -0.000
+     In    31      Dzy                  0.999     0.999     0.000
+     In    31      Dzx                  0.998     0.998     0.000
+     In    31      Dxx-yy               1.000     1.000    -0.000
+     In    31      Dxy                  0.999     0.999     0.000
+     In    31      S                    0.710     0.709     0.001
+     In    31      Px                   0.242     0.240     0.002
+     In    31      Py                   0.239     0.239    -0.000
+     In    31      Pz                   0.241     0.241     0.000
+     In    31      S                   -0.258    -0.259     0.001
+     In    32      Dzz                  1.000     1.000     0.000
+     In    32      Dzy                  0.999     0.999     0.000
+     In    32      Dzx                  0.998     0.998     0.000
+     In    32      Dxx-yy               1.000     1.000    -0.000
+     In    32      Dxy                  0.999     0.999     0.000
+     In    32      S                    0.710     0.709     0.001
+     In    32      Px                   0.241     0.241     0.000
+     In    32      Py                   0.239     0.239    -0.000
+     In    32      Pz                   0.242     0.240     0.002
+     In    32      S                   -0.258    -0.259     0.001
+  ---------------------------------------------------------------
+                           Total:     285.630   285.370     0.260
+  ---------------------------------------------------------------
+
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion Spin      s       p       d       f      Total   Charge(e)   Spin(hbar/2)
+==============================================================================================
+  P               1   up:     0.877   1.955   0.000   0.000   2.832    -0.638        0.026
+                  1   dn:     0.874   1.932   0.000   0.000   2.806
+  P               2   up:     0.877   1.955   0.000   0.000   2.832    -0.638        0.026
+                  2   dn:     0.874   1.932   0.000   0.000   2.806
+  P               3   up:     0.873   1.956   0.000   0.000   2.829    -0.662       -0.003
+                  3   dn:     0.873   1.959   0.000   0.000   2.833
+  P               4   up:     0.869   1.966   0.000   0.000   2.835    -0.669        0.001
+                  4   dn:     0.869   1.965   0.000   0.000   2.834
+  P               5   up:     0.873   1.954   0.000   0.000   2.826    -0.650        0.003
+                  5   dn:     0.873   1.951   0.000   0.000   2.824
+  P               6   up:     0.871   1.955   0.000   0.000   2.826    -0.652       -0.000
+                  6   dn:     0.871   1.955   0.000   0.000   2.826
+  P               7   up:     0.868   1.966   0.000   0.000   2.834    -0.668        0.001
+                  7   dn:     0.868   1.966   0.000   0.000   2.834
+  P               8   up:     0.874   1.952   0.000   0.000   2.827    -0.649        0.005
+                  8   dn:     0.874   1.948   0.000   0.000   2.822
+  P               9   up:     0.874   1.952   0.000   0.000   2.827    -0.649        0.005
+                  9   dn:     0.874   1.948   0.000   0.000   2.822
+  P              10   up:     0.904   1.888   0.000   0.000   2.792    -0.584        0.001
+                 10   dn:     0.904   1.887   0.000   0.000   2.792
+  P              11   up:     0.900   1.896   0.000   0.000   2.796    -0.593       -0.000
+                 11   dn:     0.900   1.896   0.000   0.000   2.797
+  P              12   up:     0.868   1.966   0.000   0.000   2.835    -0.669        0.000
+                 12   dn:     0.868   1.966   0.000   0.000   2.834
+  P              13   up:     0.874   1.955   0.000   0.000   2.830    -0.649        0.011
+                 13   dn:     0.873   1.946   0.000   0.000   2.819
+  P              14   up:     0.868   1.968   0.000   0.000   2.836    -0.672        0.000
+                 14   dn:     0.868   1.968   0.000   0.000   2.836
+  P              15   up:     0.873   1.960   0.000   0.000   2.833    -0.661        0.006
+                 15   dn:     0.873   1.955   0.000   0.000   2.828
+  P              16   up:     0.873   1.954   0.000   0.000   2.826    -0.650        0.003
+                 16   dn:     0.873   1.951   0.000   0.000   2.824
+  P              17   up:     0.869   1.966   0.000   0.000   2.835    -0.669        0.001
+                 17   dn:     0.869   1.965   0.000   0.000   2.834
+  P              18   up:     0.871   1.955   0.000   0.000   2.826    -0.652       -0.000
+                 18   dn:     0.871   1.955   0.000   0.000   2.826
+  P              19   up:     0.868   1.966   0.000   0.000   2.834    -0.668        0.001
+                 19   dn:     0.868   1.966   0.000   0.000   2.834
+  P              20   up:     0.869   1.965   0.000   0.000   2.834    -0.666        0.003
+                 20   dn:     0.869   1.963   0.000   0.000   2.831
+  P              21   up:     0.869   1.965   0.000   0.000   2.834    -0.666        0.003
+                 21   dn:     0.869   1.963   0.000   0.000   2.831
+  P              22   up:     0.873   1.955   0.000   0.000   2.828    -0.653        0.004
+                 22   dn:     0.873   1.951   0.000   0.000   2.824
+  P              23   up:     0.870   1.964   0.000   0.000   2.834    -0.667        0.001
+                 23   dn:     0.870   1.963   0.000   0.000   2.833
+  P              24   up:     0.874   1.955   0.000   0.000   2.830    -0.649        0.011
+                 24   dn:     0.873   1.946   0.000   0.000   2.819
+  P              25   up:     0.868   1.966   0.000   0.000   2.835    -0.669        0.000
+                 25   dn:     0.868   1.966   0.000   0.000   2.834
+  P              26   up:     0.868   1.968   0.000   0.000   2.836    -0.672        0.000
+                 26   dn:     0.868   1.968   0.000   0.000   2.836
+  P              27   up:     0.873   1.960   0.000   0.000   2.833    -0.661        0.006
+                 27   dn:     0.873   1.955   0.000   0.000   2.828
+  P              28   up:     0.868   1.968   0.000   0.000   2.836    -0.673        0.000
+                 28   dn:     0.868   1.968   0.000   0.000   2.836
+  P              29   up:     0.868   1.968   0.000   0.000   2.836    -0.673        0.000
+                 29   dn:     0.868   1.968   0.000   0.000   2.836
+  P              30   up:     0.868   1.966   0.000   0.000   2.835    -0.669        0.000
+                 30   dn:     0.868   1.966   0.000   0.000   2.834
+  P              31   up:     0.869   1.966   0.000   0.000   2.835    -0.669        0.000
+                 31   dn:     0.869   1.966   0.000   0.000   2.834
+  In              1   up:     0.468   0.725   4.995   0.000   6.187     0.628        0.003
+                  1   dn:     0.465   0.725   4.995   0.000   6.185
+  In              2   up:     0.510   0.741   4.994   0.000   6.244     0.564        0.051
+                  2   dn:     0.497   0.702   4.993   0.000   6.193
+  In              3   up:     0.479   0.720   4.995   0.000   6.193     0.615        0.000
+                  3   dn:     0.479   0.719   4.994   0.000   6.193
+  In              4   up:     0.479   0.720   4.995   0.000   6.193     0.615        0.000
+                  4   dn:     0.479   0.719   4.994   0.000   6.193
+  In              5   up:     0.471   0.714   4.994   0.000   6.180     0.647        0.007
+                  5   dn:     0.469   0.710   4.994   0.000   6.173
+  In              6   up:     0.444   0.718   4.995   0.000   6.156     0.687       -0.000
+                  6   dn:     0.445   0.717   4.995   0.000   6.157
+  In              7   up:     0.447   0.720   4.994   0.000   6.161     0.677       -0.000
+                  7   dn:     0.447   0.720   4.994   0.000   6.162
+  In              8   up:     0.507   0.729   4.995   0.000   6.231     0.540        0.001
+                  8   dn:     0.505   0.730   4.995   0.000   6.230
+  In              9   up:     0.456   0.716   4.995   0.000   6.167     0.667        0.001
+                  9   dn:     0.455   0.716   4.995   0.000   6.166
+  In             10   up:     0.477   0.730   4.997   0.000   6.204     0.592       -0.000
+                 10   dn:     0.474   0.733   4.997   0.000   6.204
+  In             11   up:     0.478   0.725   4.995   0.000   6.198     0.606        0.002
+                 11   dn:     0.477   0.725   4.995   0.000   6.196
+  In             12   up:     0.478   0.725   4.995   0.000   6.198     0.606        0.002
+                 12   dn:     0.477   0.725   4.995   0.000   6.196
+  In             13   up:     0.447   0.718   4.995   0.000   6.159     0.679       -0.002
+                 13   dn:     0.448   0.718   4.995   0.000   6.161
+  In             14   up:     0.469   0.724   4.994   0.000   6.187     0.626        0.000
+                 14   dn:     0.468   0.725   4.994   0.000   6.187
+  In             15   up:     0.447   0.722   4.995   0.000   6.164     0.672        0.000
+                 15   dn:     0.447   0.722   4.995   0.000   6.164
+  In             16   up:     0.482   0.720   4.995   0.000   6.196     0.608        0.001
+                 16   dn:     0.480   0.720   4.995   0.000   6.195
+  In             17   up:     0.471   0.714   4.994   0.000   6.180     0.647        0.007
+                 17   dn:     0.469   0.710   4.994   0.000   6.173
+  In             18   up:     0.444   0.718   4.995   0.000   6.156     0.687       -0.000
+                 18   dn:     0.445   0.717   4.995   0.000   6.157
+  In             19   up:     0.507   0.729   4.995   0.000   6.231     0.540        0.001
+                 19   dn:     0.505   0.730   4.995   0.000   6.230
+  In             20   up:     0.447   0.720   4.994   0.000   6.161     0.677       -0.000
+                 20   dn:     0.447   0.720   4.994   0.000   6.162
+  In             21   up:     0.472   0.728   4.995   0.000   6.195     0.609       -0.002
+                 21   dn:     0.473   0.728   4.995   0.000   6.196
+  In             22   up:     0.456   0.725   4.995   0.000   6.176     0.650        0.002
+                 22   dn:     0.456   0.724   4.995   0.000   6.174
+  In             23   up:     0.444   0.722   4.995   0.000   6.161     0.677       -0.001
+                 23   dn:     0.445   0.723   4.995   0.000   6.162
+  In             24   up:     0.444   0.722   4.995   0.000   6.161     0.677       -0.001
+                 24   dn:     0.445   0.723   4.995   0.000   6.162
+  In             25   up:     0.447   0.718   4.995   0.000   6.159     0.679       -0.002
+                 25   dn:     0.448   0.718   4.995   0.000   6.161
+  In             26   up:     0.469   0.724   4.994   0.000   6.187     0.626        0.000
+                 26   dn:     0.468   0.725   4.994   0.000   6.187
+  In             27   up:     0.482   0.720   4.995   0.000   6.196     0.608        0.001
+                 27   dn:     0.480   0.720   4.995   0.000   6.195
+  In             28   up:     0.447   0.722   4.995   0.000   6.164     0.672        0.000
+                 28   dn:     0.447   0.722   4.995   0.000   6.164
+  In             29   up:     0.495   0.750   4.996   0.000   6.241     0.583        0.064
+                 29   dn:     0.477   0.704   4.996   0.000   6.177
+  In             30   up:     0.470   0.720   4.995   0.000   6.184     0.636        0.004
+                 30   dn:     0.467   0.718   4.995   0.000   6.180
+  In             31   up:     0.452   0.723   4.995   0.000   6.169     0.666        0.005
+                 31   dn:     0.450   0.720   4.995   0.000   6.165
+  In             32   up:     0.452   0.723   4.995   0.000   6.169     0.666        0.005
+                 32   dn:     0.450   0.720   4.995   0.000   6.165
+==============================================================================================
+
+                 Bond                   Population        Spin       Length (A)
+================================================================================
+              P 2  -- In 2                   0.75        -0.01          2.47634
+              P 1  -- In 2                   0.75        -0.01          2.47642
+              P 6  -- In 8                   0.77         0.00          2.51191
+              P 18 -- In 19                  0.77         0.00          2.51192
+              P 11 -- In 21                  0.75         0.00          2.52841
+              P 14 -- In 5                   0.69         0.00          2.53340
+              P 26 -- In 17                  0.69         0.00          2.53340
+              P 10 -- In 11                  0.80         0.00          2.53777
+              P 10 -- In 12                  0.80         0.00          2.53777
+              P 15 -- In 17                  0.67        -0.00          2.54055
+              P 27 -- In 5                   0.67        -0.00          2.54055
+              P 17 -- In 3                   0.68        -0.00          2.54085
+              P 4  -- In 4                   0.68        -0.00          2.54086
+              P 12 -- In 14                  0.64         0.00          2.54100
+              P 25 -- In 26                  0.64         0.00          2.54100
+              P 5  -- In 8                   0.72        -0.00          2.54287
+              P 16 -- In 19                  0.72        -0.00          2.54287
+              P 19 -- In 3                   0.65        -0.00          2.54408
+              P 7  -- In 4                   0.65        -0.00          2.54408
+              P 10 -- In 1                   0.80         0.00          2.54571
+              P 23 -- In 20                  0.67         0.00          2.54636
+              P 23 -- In 7                   0.67         0.00          2.54636
+              P 20 -- In 22                  0.64        -0.00          2.54723
+              P 21 -- In 22                  0.64        -0.00          2.54724
+              P 20 -- In 23                  0.67         0.00          2.54731
+              P 21 -- In 24                  0.67         0.00          2.54731
+              P 25 -- In 9                   0.67         0.00          2.54736
+              P 12 -- In 9                   0.67         0.00          2.54736
+              P 21 -- In 7                   0.67         0.00          2.54799
+              P 20 -- In 20                  0.67         0.00          2.54800
+              P 9  -- In 25                  0.68        -0.00          2.54862
+              P 8  -- In 13                  0.68        -0.00          2.54862
+              P 29 -- In 32                  0.67        -0.00          2.55006
+              P 28 -- In 31                  0.67        -0.00          2.55006
+              P 24 -- In 26                  0.64        -0.00          2.55015
+              P 13 -- In 14                  0.64        -0.00          2.55015
+              P 5  -- In 23                  0.64        -0.00          2.55046
+              P 16 -- In 24                  0.64        -0.00          2.55046
+              P 17 -- In 18                  0.67         0.00          2.55204
+              P 4  -- In 6                   0.67         0.00          2.55204
+              P 18 -- In 26                  0.59        -0.00          2.55229
+              P 6  -- In 14                  0.59        -0.00          2.55229
+              P 30 -- In 32                  0.67        -0.00          2.55250
+              P 30 -- In 31                  0.67        -0.00          2.55250
+              P 4  -- In 7                   0.67         0.00          2.55372
+              P 17 -- In 20                  0.67         0.00          2.55372
+              P 7  -- In 14                  0.64         0.00          2.55472
+              P 19 -- In 26                  0.64         0.00          2.55472
+              P 31 -- In 15                  0.66         0.00          2.55483
+              P 31 -- In 28                  0.66         0.00          2.55483
+              P 22 -- In 24                  0.64        -0.00          2.55491
+              P 22 -- In 23                  0.64        -0.00          2.55491
+              P 29 -- In 13                  0.66         0.00          2.55554
+              P 28 -- In 25                  0.66         0.00          2.55554
+              P 30 -- In 21                  0.64        -0.00          2.55606
+              P 29 -- In 15                  0.65         0.00          2.55735
+              P 28 -- In 28                  0.65         0.00          2.55735
+              P 29 -- In 30                  0.65        -0.00          2.55748
+              P 28 -- In 30                  0.65        -0.00          2.55748
+              P 12 -- In 15                  0.65        -0.00          2.55805
+              P 25 -- In 28                  0.65        -0.00          2.55805
+              P 18 -- In 25                  0.63         0.00          2.56074
+              P 6  -- In 13                  0.63         0.00          2.56074
+              P 15 -- In 6                   0.66        -0.00          2.56135
+              P 27 -- In 18                  0.66        -0.00          2.56135
+              P 26 -- In 28                  0.64        -0.00          2.56178
+              P 14 -- In 15                  0.64        -0.00          2.56178
+              P 26 -- In 18                  0.66         0.00          2.56239
+              P 14 -- In 6                   0.66         0.00          2.56239
+              P 19 -- In 24                  0.66         0.00          2.56286
+              P 7  -- In 23                  0.66         0.00          2.56286
+              P 1  -- In 3                   0.59        -0.00          2.56352
+              P 2  -- In 4                   0.59        -0.00          2.56352
+              P 23 -- In 9                   0.63        -0.00          2.56426
+              P 23 -- In 30                  0.62        -0.00          2.56475
+              P 19 -- In 13                  0.65         0.00          2.56551
+              P 7  -- In 25                  0.65         0.00          2.56551
+              P 5  -- In 6                   0.62        -0.00          2.56620
+              P 16 -- In 18                  0.62        -0.00          2.56620
+              P 3  -- In 3                   0.62         0.00          2.56716
+              P 3  -- In 4                   0.62         0.00          2.56717
+              P 26 -- In 27                  0.61        -0.00          2.56791
+              P 14 -- In 16                  0.61        -0.00          2.56791
+              P 22 -- In 30                  0.62        -0.00          2.56794
+              P 11 -- In 16                  0.74         0.00          2.56856
+              P 11 -- In 27                  0.74         0.00          2.56856
+              P 25 -- In 11                  0.62        -0.00          2.56856
+              P 12 -- In 12                  0.62        -0.00          2.56856
+              P 18 -- In 20                  0.61        -0.00          2.56907
+              P 6  -- In 7                   0.61        -0.00          2.56907
+              P 31 -- In 22                  0.64        -0.00          2.56914
+              P 13 -- In 31                  0.64         0.00          2.56935
+              P 24 -- In 32                  0.64         0.00          2.56935
+              P 30 -- In 22                  0.63         0.00          2.57000
+              P 15 -- In 31                  0.64        -0.00          2.57215
+              P 27 -- In 32                  0.64        -0.00          2.57215
+              P 9  -- In 27                  0.64        -0.00          2.57285
+              P 8  -- In 16                  0.64        -0.00          2.57285
+              P 31 -- In 1                   0.62        -0.00          2.57296
+              P 21 -- In 5                   0.60        -0.00          2.57489
+              P 20 -- In 17                  0.60        -0.00          2.57490
+              P 1  -- In 5                   0.58        -0.00          2.57542
+              P 2  -- In 17                  0.58        -0.00          2.57545
+              P 3  -- In 9                   0.61        -0.00          2.57801
+              P 8  -- In 11                  0.61        -0.00          2.58283
+              P 9  -- In 12                  0.61        -0.00          2.58283
+              P 4  -- In 1                   0.59        -0.00          2.58584
+              P 17 -- In 1                   0.59        -0.00          2.58584
+              P 24 -- In 27                  0.60        -0.00          2.58831
+              P 13 -- In 16                  0.60        -0.00          2.58831
+              P 16 -- In 21                  0.59         0.00          2.59374
+              P 5  -- In 21                  0.59         0.00          2.59374
+              P 15 -- In 12                  0.58        -0.00          2.59479
+              P 27 -- In 11                  0.58        -0.00          2.59479
+              P 24 -- In 29                  0.64        -0.00          2.59536
+              P 13 -- In 29                  0.64        -0.00          2.59536
+              P 3  -- In 10                  0.62         0.00          2.60961
+              P 22 -- In 29                  0.62        -0.00          2.61425
+              P 2  -- In 19                  0.48        -0.00          2.61654
+              P 1  -- In 8                   0.48        -0.00          2.61656
+              P 8  -- In 10                  0.62        -0.00          2.63115
+              P 9  -- In 10                  0.62        -0.00          2.63115
+================================================================================
+
+ Hirshfeld supercell size:           2           2           2
+Standard grid dimensions: 240 240 240
+Fine grid dimensions:     240 240 240
+
+
+     Hirshfeld Analysis
+     ------------------
+Species   Ion     Hirshfeld Charge (e)  Spin (hbar/2)
+===================================================
+  P        1                -0.24        0.02
+  P        2                -0.24        0.02
+  P        3                -0.23       -0.00
+  P        4                -0.24        0.00
+  P        5                -0.23        0.00
+  P        6                -0.23       -0.00
+  P        7                -0.24        0.00
+  P        8                -0.24        0.00
+  P        9                -0.24        0.00
+  P       10                -0.26        0.00
+  P       11                -0.25        0.00
+  P       12                -0.24        0.00
+  P       13                -0.24        0.01
+  P       14                -0.24        0.00
+  P       15                -0.23        0.00
+  P       16                -0.23        0.00
+  P       17                -0.24        0.00
+  P       18                -0.23       -0.00
+  P       19                -0.24        0.00
+  P       20                -0.23        0.00
+  P       21                -0.23        0.00
+  P       22                -0.23        0.01
+  P       23                -0.23        0.00
+  P       24                -0.24        0.01
+  P       25                -0.24        0.00
+  P       26                -0.24        0.00
+  P       27                -0.23        0.00
+  P       28                -0.24        0.00
+  P       29                -0.24        0.00
+  P       30                -0.24        0.00
+  P       31                -0.24        0.00
+  In       1                 0.22        0.00
+  In       2                 0.21        0.04
+  In       3                 0.23        0.00
+  In       4                 0.23        0.00
+  In       5                 0.25        0.01
+  In       6                 0.24        0.00
+  In       7                 0.24        0.00
+  In       8                 0.22        0.01
+  In       9                 0.25        0.00
+  In      10                 0.18        0.01
+  In      11                 0.22        0.00
+  In      12                 0.22        0.00
+  In      13                 0.23        0.00
+  In      14                 0.23        0.00
+  In      15                 0.24        0.00
+  In      16                 0.23        0.00
+  In      17                 0.25        0.01
+  In      18                 0.24        0.00
+  In      19                 0.22        0.01
+  In      20                 0.24        0.00
+  In      21                 0.21        0.00
+  In      22                 0.23        0.00
+  In      23                 0.23        0.00
+  In      24                 0.23        0.00
+  In      25                 0.23        0.00
+  In      26                 0.23        0.00
+  In      27                 0.23        0.00
+  In      28                 0.24        0.00
+  In      29                 0.18        0.05
+  In      30                 0.24        0.00
+  In      31                 0.24        0.00
+  In      32                 0.24        0.00
+===================================================
+
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ P_Vacancy_Migration_5->3_Singlepoints_3.bib
+ 
+Initialisation time =     30.03 s
+Calculation time    =  10569.25 s
+Finalisation time   =    153.83 s
+Total time          =  10753.12 s
+Peak Memory Use     = 9569040 kB
+ 
+Overall parallel efficiency rating: Terrible (32%)
+ 
+Data was distributed by:-
+G-vector (3-way); efficiency rating: Poor (36%)
+k-point (36-way); efficiency rating: Good (75%)

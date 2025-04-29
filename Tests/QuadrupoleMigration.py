@@ -1,41 +1,65 @@
-from matscipy.dislocation import Quadrupole, DiamondGlide30degreePartial, DiamondGlide90degreePartial, DiamondGlide60Degree, DiamondGlideScrew
 from Utils.utils import get_bulk
 from ase.io import read, write
 from Utils.jsondata import add_info
 from active_model import *
-from Utils.neb_core import do_NEB
+from ase.mep.neb import NEB, NEBOptimizer
+from ase.optimize import BFGSLineSearch
+from ase.calculators.singlepoint import SinglePointCalculator
+
+def run_neb(name, calc, calc_name, nims, ftol=1e-3, neb_ftol=1e-2, steps=500, neb_steps=500, climb=True, interpolate=False):
+        def do_neb(images, climb=True, interpolate=False):
+            start = images[0]
+            end = images[-1]
+
+            if interpolate:
+                images = [start.copy() for i in range(nims-1)] + [end.copy()]
+                neb = NEB(images)
+                neb.interpolate(method="idpp", mic=True)
+                images = neb.images
+            
+            for ats in [start, end]:
+                ats.calc = calc
+                opt = BFGSLineSearch(ats)
+                opt.run(ftol, steps=steps)      
+
+            for image in images:
+                image.calc = calc
+
+            neb = NEB(images, allow_shared_calculator=True, climb=climb)
+            opt = NEBOptimizer(neb)
+            opt.run(neb_ftol, steps=neb_steps)
+
+            return neb.images
+
+        xyz_fname = "../Test_Results/" + calc_name + os.sep + name + "_Quadrupole_Migration_structs.xyz"
+        
+        
+        if os.path.exists(xyz_fname):
+            images = read(xyz_fname, index=":")
+        else:
+            images = read(f"Misc_Reference/Quadrupole_Migration/" + name + "_Quadrupole_Migration_structs.xyz", index=":")
+            start = images[0]
+            end = images[-1]
+
+            #images = do_neb(images, climb=False, interpolate=True)
+
+        images = do_neb(images, climb=True, interpolate=False)
+
+        for image in images:
+            image.calc = calc
+            E = image.get_potential_energy()
+            image.calc = SinglePointCalculator(image, energy=E)
+
+        write(xyz_fname, images)
+        return images 
+
 
 calc_name = active_model_name
 calc = get_model(active_model_name)
 
-disloc_names = ["30 degree Partial", "90 degree Partial"]
-
 short_names = ["30deg", "90deg"]
 
-dft_structs = [read("DFT_Quadrupoles/DFT_Quads_0/DFT_Quads_0.geom", index="-1"), read("DFT_Quadrupoles/DFT_Quads_1/DFT_Quads_1.geom", index="-1")]
-
-structs = []
-calc_data = {}
-
-dft_a0 = 5.901273599999999
 nims=15
 
-for k, disloc in enumerate([DiamondGlide30degreePartial, DiamondGlide90degreePartial]):
-    a = get_bulk(calc)
-    ref_bulk = a[0]
-    d = Quadrupole(disloc, *a)
-
-    fname = f"../Test_Results/{calc_name}/{short_names[k]}_Quadrupole_Migration_structs.xyz"
-
-    if os.path.exists(fname):
-        ims = read(fname, index=":")
-    else:
-        ims = d.build_glide_quadrupoles(nims, glide_left=False, glide_right=True, glide_separation=4, self_consistent=False)
-        #ims = read(f"../Test_Results/ACE13/{short_names[k]}_Quadrupole_Migration_structs.xyz", index=":")
-    neb, e = do_NEB(calc, ims, ims[-1], nims=nims, ci=False, ftol=1e-3, neb_ftol=7e-2, max_nsteps=500, mic=True, idpp=False, refine=False)
-
-    structs.extend(ims) 
-
-    write(f"../Test_Results/{calc_name}/{short_names[k]}_Quadrupole_Migration_structs.xyz", neb.images)
-
-add_info(calc_name, calc_data)
+for name in short_names:
+    run_neb(name, calc, calc_name, nims)

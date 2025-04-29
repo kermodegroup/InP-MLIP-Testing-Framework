@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 from scipy.constants import h, e
 import numpy as np
-from ase.io import read as ase_read
+from ase.io import read
 from ase.phonons import Phonons
-from active_model import *W
+from active_model import plot_models
 
 calc_names = plot_models[1:]
 
@@ -12,7 +12,7 @@ eV_to_THz = h * 1E12 / e
 emax = 12 # THz
 delta = 0.1
 mul = 8
-bulk = ase_read("Phonon_bulk.xyz")
+bulk = read("Misc_Reference/Phonon_bulk.xyz")
 
 fig, ax = plt.subplot_mosaic("AABC", figsize=(12, 6))
 ax, dosax, legax = ax.values()
@@ -217,4 +217,4 @@ handles, labels = z
 legax.legend(handles, labels, fontsize=12)
 
 plt.tight_layout()
-fig.savefig("..Test_Plots/Phonons.png")
+fig.savefig("../Test_Plots/Phonons.png")

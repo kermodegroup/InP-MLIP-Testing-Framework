@@ -3,42 +3,13 @@ from ase.calculators.lammpslib import LAMMPSlib
 import torch
 from ase.calculators.calculator import BaseCalculator
 
+import pathlib
+file_root = os.path.dirname(os.path.abspath(__file__))
 
-class LMPMIX(BaseCalculator):
-    '''
-    Wrapper calculator for dealing with LAMMPS calculators aplied to structures with missing elements
-    (e.g. InP potential applied to isolated P)
-    '''
-    def __init__(self, base_func, *funcargs, **funckwargs):
-        self.calcs = {
-            "In" : base_func(*funcargs, In=True, P=False, **funckwargs),
-            "P" : base_func(*funcargs, In=False, P=True, **funckwargs),
-            "InP" : base_func(*funcargs, In=True, P=True, **funckwargs),
-        }
-        super().__init__()
-
-        self.implemented_properties = self.calcs["InP"].implemented_properties
-
-    def calculate(self, atoms, properties, system_changes):
-        spec = atoms.get_chemical_symbols()
-
-        In = "In" in spec
-        P = "P" in spec
-
-        if In and not P:
-            calc = self.calcs["In"]
-        elif not In and P:
-            calc = self.calcs["P"]
-        else:
-            calc = self.calcs["InP"]
-
-        calc.calculate(atoms, properties, system_changes)
-        self.results = calc.results
-
-fpath = "/home/eng/phrbqc/GitHub/InPDislocs/Potentials/"
+fpath = os.path.normpath(file_root + "../../../Potentials/")
 
 def ACE(lammps=True):
-    path = fpath + f"ACE"
+    path = fpath + os.sep + f"ACE"
     
     if lammps:
         lammps_commands = [
@@ -63,9 +34,9 @@ def MACE():
         print(f"MACE using CPU")
         device = "cpu"
 
-    pot_path = fpath + os.sep + "MACE/InP_MACE_stagetwo.model"
+    path = fpath + os.sep + "MACE/InP_MACE_stagetwo.model"
 
-    calculator = MACECalculator(model_paths=pot_path, device=device)
+    calculator = MACECalculator(model_paths=path, device=device)
     return calculator
 
 
@@ -94,65 +65,19 @@ def MPA():
 
     return mace_mp(model="medium-mpa-0", default_dtype="float64", device=device)
 
-def Vashishta_Base(In=True, P=True):
-    elem = ""
-    if In:
-        elem += "In "
-    if P:
-        elem += "P "
-
+def Vashishta():
     lmpcmds = ["pair_style vashishta",
-               f"pair_coeff * * {fpath}/Vashishta/InP.vashishta {elem}"]
+               f"pair_coeff * * {fpath}/Vashishta/InP.vashishta In P"]
     lmp = LAMMPSlib(lmpcmds=lmpcmds, log_file="run.log", keep_alive=True, atom_types={
                     "In": 1, "P": 2})
     return lmp
 
-# def Vashishta():
-#     lmpcmds = ["pair_style vashishta",
-#                f"pair_coeff * * {fpath}/Vashishta/InP.vashishta In P"]
-#     lmp = LAMMPSlib(lmpcmds=lmpcmds, log_file="run.log", keep_alive=True, atom_types={
-#                     "In": 1, "P": 2})
-#     return lmp
-
-
-def Vashishta():
-    return LMPMIX(Vashishta_Base)
-
-def MLIAP_Base(In=True, P=True):
-    elem = ""
-    if In:
-        elem += "In "
-    if P:
-        elem += "P "
-
-    lmpcmds = [
-        f"pair_style mliap model linear {fpath}/MLIAP/InP_JCPA2020.mliap.model descriptor sna {fpath}/MLIAP/InP_JCPA2020.mliap.descriptor", f"pair_coeff * * {elem}"]
-    lmp = LAMMPSlib(lmpcmds=lmpcmds, log_file="run.log", keep_alive=True, atom_types={"In": 1, "P": 2}
-    )
-    return lmp
-
-def MLIAP():
-    return LMPMIX(MLIAP_Base)
-
-def SNAP_Base(In=True, P=True):
-    if P == False:
-        lmpcmds = ["pair_style hybrid/overlay zbl 4 4.2 snap",
-                   f"pair_coeff 1 1 zbl 49 49",
-                   f"pair_coeff * * snap {fpath}/SNAP/InP_pot.snapcoeff {fpath}/SNAP/InP_pot.snapparam In P"]
-    elif In == False:
-        lmpcmds = ["pair_style hybrid/overlay zbl 4 4.2 snap",
-                   f"pair_coeff 2 2 zbl 15 15",
-                   f"pair_coeff * * snap {fpath}/SNAP/InP_pot.snapcoeff {fpath}/SNAP/InP_pot.snapparam In P"]
-    else:
-        lmpcmds = ["pair_style hybrid/overlay zbl 4 4.2 snap",
+def SNAP():
+    lmpcmds = lmpcmds = ["pair_style hybrid/overlay zbl 4 4.2 snap",
                    f"pair_coeff 1 1 zbl 49 49",
                    f"pair_coeff 1 2 zbl 49 15",
                    f"pair_coeff 2 2 zbl 15 15",
                    f"pair_coeff * * snap {fpath}/SNAP/InP_pot.snapcoeff {fpath}/SNAP/InP_pot.snapparam In P"]
-
-    lmp = LAMMPSlib(lmpcmds=lmpcmds, atom_types={
-                    "In": 1, "P": 2}, log_file="run.log", keep_alive=True)
+    lmp = LAMMPSlib(lmpcmds=lmpcmds, log_file="run.log", keep_alive=True, atom_types={
+                    "In": 1, "P": 2})
     return lmp
-
-def SNAP():
-    return LMPMIX(SNAP_Base)

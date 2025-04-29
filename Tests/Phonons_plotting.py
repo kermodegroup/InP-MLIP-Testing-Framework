@@ -201,9 +201,9 @@ for i in range(4):
     # pass
 
 
-ax.text((point_coords[1] + point_coords[0])/2, -0.1, r"($\zeta$, 0, 0)", fontsize=12, ha="center", va="top")
-ax.text((point_coords[2] + point_coords[1])/2, -0.1, r"($\zeta$, $\zeta$, 0)", fontsize=12, ha="center", va="top")
-ax.text((point_coords[3] + point_coords[2])/2, -0.1, r"($\zeta$, $\zeta$, $\zeta$)", fontsize=12, ha="center", va="top")
+#ax.text((point_coords[1] + point_coords[0])/2, -0.1, r"($\zeta$, 0, 0)", fontsize=12, ha="center", va="top")
+#ax.text((point_coords[2] + point_coords[1])/2, -0.1, r"($\zeta$, $\zeta$, 0)", fontsize=12, ha="center", va="top")
+#ax.text((point_coords[3] + point_coords[2])/2, -0.1, r"($\zeta$, $\zeta$, $\zeta$)", fontsize=12, ha="center", va="top")
 
 
 handles, labels = ax.get_legend_handles_labels()

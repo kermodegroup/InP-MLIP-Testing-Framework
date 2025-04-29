@@ -44,12 +44,13 @@ for i in range(len(planes)):
         if len(ats) == nims:
             fault.images = ats
 
-    Es = fault.get_energy_densities(active_model, relax=True, cell_relax=False)
+    Es = fault.get_energy_densities(active_model, relax=True, cell_relax=False, ftol=1e-4)
 
     for image in fault.images:
         image.calc = active_model
         E = image.get_potential_energy()
-        image.calc = SinglePointCalculator(image, energy=E)
+        F = image.get_forces()
+        image.calc = SinglePointCalculator(image, energy=E, forces=F)
 
     write(save_file, fault.images)
 

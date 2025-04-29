@@ -6,7 +6,7 @@ from ase.mep.neb import NEB, NEBOptimizer
 from ase.optimize import BFGSLineSearch
 from ase.calculators.singlepoint import SinglePointCalculator
 
-def run_neb(name, calc, calc_name, nims, ftol=1e-3, neb_ftol=1e-2, steps=500, neb_steps=500, climb=True, interpolate=False):
+def run_neb(name, calc, calc_name, nims, ftol=1e-4, neb_ftol=5e-3, steps=500, neb_steps=500, climb=True, interpolate=False):
         def do_neb(images, climb=True, interpolate=False):
             start = images[0]
             end = images[-1]

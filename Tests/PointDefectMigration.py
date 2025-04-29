@@ -18,7 +18,7 @@ interstitials = [item for item in paths if "Interstitial" in item]
 vacancies = [item for item in paths if "Vacancy" in item]
 
 def eval(calc, calc_name, species = ["In", "P"], interstitial=True, vacancy=True, nims=15, steps=500, neb_steps=500,
-            ftol=1E-3, neb_ftol = 1e-2):
+            ftol=1e-4, neb_ftol = 5e-3):
     def run_neb(name, climb=True, interpolate=False):
 
         def do_neb(images, climb=True, interpolate=False):

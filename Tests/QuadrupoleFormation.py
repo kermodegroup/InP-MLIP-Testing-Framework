@@ -59,3 +59,17 @@ for k, disloc in enumerate([DiamondGlide30degreePartial, DiamondGlide90degreePar
 write(f"../Test_Results/{calc_name}/Quadrupole_structs.xyz", structs)
 
 add_info(calc_name, calc_data)
+
+# DFT Formation Energies
+bulk = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
+E_bulk = bulk.get_potential_energy() / len(bulk)
+
+dft_data = {}
+
+for k, name in enumerate(disloc_names):
+    struct = dft_structs[k]
+    E_form = struct.get_potential_energy() - len(struct) * E_bulk
+
+    dft_data[name + " Eform"] = E_form
+
+add_info("DFT", dft_data)

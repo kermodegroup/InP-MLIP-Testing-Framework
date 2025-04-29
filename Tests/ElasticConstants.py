@@ -1,7 +1,7 @@
 from active_model import *
-from ase.io import read
+from ase.io import read, write
 import numpy as np
-from matscipy.elasticity import fit_elastic_constants, elastic_moduli
+from matscipy.elasticity import fit_elastic_constants, elastic_moduli, generate_strained_configs
 from ase.optimize.precon import PreconLBFGS
 from ase.optimize import BFGSLineSearch, BFGS
 from ase.constraints import ExpCellFilter
@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import os
 from ase.units import GPa
 from Utils.jsondata import add_info
+from castep import castep
 
 def test_calc(calc, calc_name):
     ats = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
@@ -34,8 +35,8 @@ def test_calc(calc, calc_name):
     # nsteps is the number of images used to fit the stress-strain curve
     nsteps = 15
 
-    Cs, C_errs = fit_elastic_constants(
-        at, N_steps=nsteps, delta=2*delta_max/nsteps, optimizer=BFGSLineSearch, fmax=1e-3, graphics=True)
+    Cs, C_errs = fit_elastic_constants(at, N_steps=nsteps, delta=2*delta_max/nsteps, 
+                            optimizer=BFGSLineSearch, fmax=1e-3, graphics=True, verbose=False)
 
     plt.savefig("../Test_Plots" + os.sep + calc_name + os.sep + "C_fit.png")
     
@@ -73,3 +74,37 @@ print("C_12: ", Cs[1], " +- ", C_errs[1])
 print("C_44: ", Cs[2], " +- ", C_errs[2])
 print("E: ", E)
 print("nu: ", nu)
+
+
+### DFT Elastic Constants
+bulk = read("DFT_Reference/Bulk/ZB_Bulk.xyz", index="-1")
+delta_max = 2E-3
+# nsteps is the number of images used to fit the stress-strain curve
+nsteps = 10
+
+matscipy_ats = [at for at in generate_strained_configs(bulk, N_steps=nsteps, delta=2*delta_max/nsteps, symmetry="cubic")]
+
+#ats = read(f"DFT_Reference/ElasticConstants/ElasticConstants.xyz", index=":")
+ats = [read(f"DFT_Reference/ElasticConstants/Bulk_Elastic_{i}/Bulk_Elastic_{i}.castep", index="-1") for i in range(nsteps)]
+for i, at in enumerate(ats):
+    at.info["strain"] = matscipy_ats[i].info["strain"]
+
+
+Cs, C_errs = fit_elastic_constants(ats, N_steps=nsteps, delta=2*delta_max/nsteps, 
+        graphics=True, verbose=False, symmetry="cubic")
+
+os.makedirs("../Test_Plots" + os.sep + "DFT", exist_ok=True)
+plt.savefig("../Test_Plots" + os.sep + "DFT" + os.sep + "C_fit.png")
+
+C11 = Cs[0, 0] / GPa
+C12 = Cs[0, 1] / GPa
+C44 = Cs[3, 3] / GPa
+
+
+dft_data = {
+    "C11" : C11,
+    "C12" : C12,
+    "C44" : C44
+}
+
+add_info("DFT", dft_data)

@@ -36,34 +36,28 @@ def MACE():
 
     path = fpath + os.sep + "MACE/InP_MACE_stagetwo.model"
 
+    if not os.path.exists(path):
+        # Fallback for no stagetwo (e.g. for multihead models)
+        path = fpath + os.sep + "MACE/InP_MACE.model"
+
     calculator = MACECalculator(model_paths=path, device=device)
     return calculator
 
 
-def MP0():
+def __MACE_MP(mp_name):
     from mace.calculators import mace_mp
 
     if torch.cuda.is_available():
-        print(f"MP0 using GPU")
         device = "cuda"
     else:
-        print(f"MP0 using CPU")
         device = "cpu"
 
-    return mace_mp(model="medium", default_dtype="float64", device=device)
+    return mace_mp(model=mp_name, default_dtype="float64", device=device)
+def MP0():
+    return __MACE_MP("medium")
 
 def MPA():
-    from mace.calculators import mace_mp
-    #from mace_jax import MACE
-
-    if torch.cuda.is_available():
-        print(f"MPA using GPU")
-        device = "cuda"
-    else:
-        print(f"MPA using CPU")
-        device = "cpu"
-
-    return mace_mp(model="medium-mpa-0", default_dtype="float64", device=device)
+    return __MACE_MP("medium-mpa-0")
 
 def Vashishta():
     lmpcmds = ["pair_style vashishta",

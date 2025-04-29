@@ -1,6 +1,6 @@
 
 from active_model import *
-from ase.io import read
+from ase.io import read, write
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -9,8 +9,8 @@ from ase.neighborlist import mic
 marks = ["*"]
 
 
-calc_names = plot_models[1:]
-
+#calc_names = plot_models[1:]
+calc_names = ["_", "_", "MP0", "MPA", "ACE", "MACE"]
 
 defects = [
     "30deg", "90deg"
@@ -23,6 +23,12 @@ titles = [
 
 normalise = True
 
+dft_startpoints = [read(f"DFT_Reference/Quadrupoles/DFT_Quads_{i}/DFT_Quads_{i}.geom", index="-1") for i in range(2)]
+dft_endpoints = [read(f"DFT_Reference/QuadMigration/Endpoints/QuadRelaxEndpoints_{i}/QuadRelaxEndpoints_{i}.geom", index="-1") for i in range(2)]
+
+
+dft_endpoints[-1] = read(f"DFT_Reference/QuadMigration/Endpoints/90deg_Quadrupole_Migration_Endpoint/90deg_Quadrupole_Migration_Endpoint.geom", index="-1")
+
 
 e_cut = 2.0 # eV
 
@@ -33,6 +39,9 @@ for i, defect in enumerate(defects):
 
         if os.path.exists(infile):
             ats = read(infile, index=":")
+
+            if calc_name == "ACE":
+                write(defect + "_Singlepoints.xyz", ats[::2])
 
             Es = []
 
@@ -61,6 +70,14 @@ for i, defect in enumerate(defects):
                 d /= np.max(d)
 
             plt.plot(d, Es, label=calc_name, marker=".", color=f"C{j}")
+
+    dft_start = dft_startpoints[i]
+    dft_end = dft_endpoints[i]
+
+    E_start = dft_start.get_potential_energy()
+    E_end = dft_end.get_potential_energy()
+
+    plt.scatter([0, 1], [0, E_end - E_start], marker="s", color="k", label="DFT Relaxation")
 
     plt.title(titles[i])
     if normalise:

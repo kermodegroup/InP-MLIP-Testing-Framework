@@ -151,7 +151,7 @@ for i in range(len(planes)):
 
     ys = [image.cell[2, 1] for image in dft_ims]
 
-    ax[i].scatter(ys, np.array(dft_Es) * mul, label="RSCAN DFT", color="k", marker="x")
+    ax[i].scatter(ys, np.array(dft_Es) * mul, label="DFT Relaxations", color="k", marker="s")
     
     if i == 1:
         ax[i].legend(fontsize=13)

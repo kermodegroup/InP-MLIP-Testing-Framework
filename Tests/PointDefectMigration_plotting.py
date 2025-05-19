@@ -10,9 +10,9 @@ from ase.neighborlist import mic
 
 marks = ["*"]
 
-
-print_barriers = False
+# Whether to plot the barrier heights for each calc + defect
 print_barriers = True
+print_barriers = False
 
 calc_names = plot_models[1:]
 

@@ -40,8 +40,8 @@ for i, defect in enumerate(defects):
         if os.path.exists(infile):
             ats = read(infile, index=":")
 
-            if calc_name == "ACE":
-                write(defect + "_Singlepoints.xyz", ats[::2])
+            # if calc_name == "ACE":
+            #     write(defect + "_Singlepoints.xyz", ats[::2])
 
             Es = []
 
@@ -69,7 +69,13 @@ for i, defect in enumerate(defects):
 
                 d /= np.max(d)
 
+            if calc_name == "ACE":
+                d_dft = d[::2]
+
             plt.plot(d, Es, label=calc_name, marker=".", color=f"C{j}")
+
+
+    ### Endpoints
 
     dft_start = dft_startpoints[i]
     dft_end = dft_endpoints[i]
@@ -78,6 +84,27 @@ for i, defect in enumerate(defects):
     E_end = dft_end.get_potential_energy()
 
     plt.scatter([0, 1], [0, E_end - E_start], marker="s", color="k", label="DFT Relaxation")
+
+    ### Singlepoints
+
+    E_singles = [0] * 8
+
+    for j in range(8):
+        try:
+            singlepoint = read(f"DFT_Reference/QuadMigration/Singlepoints/{defect}_Singlepoints_{j}/{defect}_Singlepoints_{j}.castep", index="0")
+            E_singles[j] = singlepoint.get_potential_energy()
+        except BaseException as e:
+            print(type(e))
+            print(defect, j, " issue")
+            E_singles[j] = np.inf
+
+    E_singles = np.array(E_singles)
+    E_singles -= E_start
+
+    plt.scatter(d_dft, E_singles, label="DFT Singlepoint\nfrom ACE Structures", color="k", marker="x", zorder=5, s=60, linewidth=2)
+
+
+
 
     plt.title(titles[i])
     if normalise:

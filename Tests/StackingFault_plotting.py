@@ -10,6 +10,9 @@ from matscipy.utils import get_structure_types
 import numpy as np
 from ase.build import rotate
 import matplotlib.gridspec as gridspec
+import plot_config
+
+plot_config.full_plot()
 
 nims = 81
 
@@ -21,6 +24,7 @@ def vtm(dir, brackets):
         else:
             repr += str(item) + " "
     return r"\left" + brackets[0] + repr + r"\right" + brackets[1]
+
 planes = [(0, 0, 1), (0, 0, 1), (1, 1, 0), (1, 1, 1)]
 dirs = [(1, 0, 0), (1, 1, 0), (1, -1, 0), (1, 1, -2)]
 zreps = [3, 6, 6, 2]
@@ -44,22 +48,26 @@ else:
 ns = [9, 9, 9, 9]
 
 
-fig, ax = plt.subplots(figsize=(12, 13))
+fig, ax = plt.subplots(figsize=(12, 16))
 ax.axis("off")
 
-topleftgrid = gridspec.GridSpec(1, 3)
-toprightgrid = gridspec.GridSpec(1, 3)
-bottomleftgrid = gridspec.GridSpec(1, 3)
-bottomrightgrid = gridspec.GridSpec(1, 3)
+topleftgrid = gridspec.GridSpec(1, 3, wspace=0.3)
+toprightgrid = gridspec.GridSpec(1, 3, wspace=0.3)
+bottomleftgrid = gridspec.GridSpec(1, 3, wspace=0.3)
+bottomrightgrid = gridspec.GridSpec(1, 3, wspace=0.3)
 
 midgrid = gridspec.GridSpec(2, 2)
 
-bottomleftgrid.update(left=0.08, right=0.475, bottom=0.02, top=0.18)
-bottomrightgrid.update(left=0.56, right=0.95, bottom=0.02, top=0.18)
-midgrid.update(left=0.08, right=0.95, bottom=0.23, top=0.79, hspace=0.4)
-topleftgrid.update(left=0.08, right=0.475, bottom=0.82, top=0.98)
-toprightgrid.update(left=0.56, right=0.95, bottom=0.82, top=0.98)
+legendgrid = gridspec.GridSpec(1, 1)
 
+topleftgrid.update(left=0.08, right=0.475, bottom=0.78, top=0.98)
+toprightgrid.update(left=0.56, right=0.95, bottom=0.78, top=0.98)
+midgrid.update(left=0.08, right=0.95, bottom=0.28, top=0.74, hspace=0.4)
+bottomleftgrid.update(left=0.08, right=0.475, bottom=0.05, top=0.25)
+bottomrightgrid.update(left=0.56, right=0.95, bottom=0.05, top=0.25)
+legendgrid.update(left=0.08, right=0.95, top=0.05, bottom=0.00)
+
+legax = plt.subplot(legendgrid[0])
 
 topax = [plt.subplot(topleftgrid[i]) for i in range(3)] + [plt.subplot(toprightgrid[i]) for i in range(3)]
 botax = [plt.subplot(bottomleftgrid[i]) for i in range(3)] + [plt.subplot(bottomrightgrid[i]) for i in range(3)]
@@ -106,7 +114,7 @@ for i in range(len(planes)):
     fault = StackingFault(bulk, plane, dir)
     fault.generate_images(nims, z_reps=zr, path_ylims=[0, yl/2])
 
-    ax[i].tick_params(axis='both', which='major', labelsize=12)
+    ax[i].tick_params(axis='both', which='major')
 
     for idx in range(len(calc_names)):
         active_model_name = calc_names[idx]
@@ -151,14 +159,11 @@ for i in range(len(planes)):
 
     ys = [image.cell[2, 1] for image in dft_ims]
 
-    ax[i].scatter(ys, np.array(dft_Es) * mul, label="DFT Relaxations", color="k", marker="s")
-    
-    if i == 1:
-        ax[i].legend(fontsize=13)
+    ax[i].scatter(ys, np.array(dft_Es) * mul, label="DFT Relaxations", color="k", marker="s", zorder=3)
 
-    ax[i].set_ylabel(f"Energy Density ({units})", fontsize=13)
-    ax[i].set_xlabel(f"${vtm(np.array(dir), brackets='[]')}$ Displacment (Å)", fontsize=13)
-    ax[i].set_title(f"${vtm(np.array(plane), brackets='()')}{vtm(np.array(dir), brackets='[]')}$ Stacking Fault", fontsize=13)
+    ax[i].set_ylabel(f"Energy Density ({units})")
+    ax[i].set_xlabel(f"${vtm(np.array(dir), brackets='[]')}$ Displacment (Å)")
+    ax[i].set_title(f"${vtm(np.array(plane), brackets='()')}{vtm(np.array(dir), brackets='[]')}$ Stacking Fault")
 
     plot_ats = [dft_ims[0], dft_ims[plot_at_centers[i]], dft_ims[-1]]
     plot_ats_xs = [0, ys[plot_at_centers[i]], xs[-2]]
@@ -194,15 +199,20 @@ for i in range(len(planes)):
         atom_colors = [colors[atom_label] for atom_label in atom_labels]
         plot_atoms(atoms_axes[i][idx], ats, atom_colors, atom_labels, x_lims=xlims, y_lims=ylims, supercell=supercell)
         atoms_axes[i][idx].set_aspect("equal")
-        atoms_axes[i][idx].text(0.5, 1.0, f"{plot_ats_xs[idx]:.1f} Å ", color="k", va="bottom", ha="center", transform=atoms_axes[i][idx].transAxes, fontsize=15)
+        atoms_axes[i][idx].text(0.5, 1.0, f"{plot_ats_xs[idx]:.1f} Å ", color="k", va="bottom", ha="center", transform=atoms_axes[i][idx].transAxes)
 
         atoms_axes[i][idx].set_xlabel(f"${vtm(np.array(dir), brackets='[]')}$", ha="center")
         atoms_axes[i][idx].set_ylabel(f"${vtm(np.array(plane), brackets='[]')}$", rotation=90)
 
+
+legax.axis("off")
+handles, labels = ax[0].get_legend_handles_labels()
+legax.legend(handles, labels, ncols=4, loc="center")
+
 if si:
-    plt.savefig(f"../Test_Plots/StackingFaultPlot_SI.png", dpi=200)
+    plt.savefig(f"../Test_Plots/StackingFaultPlot_SI.pdf")
 else:
-    plt.savefig(f"../Test_Plots/StackingFaultPlot.png", dpi=200)
+    plt.savefig(f"../Test_Plots/StackingFaultPlot.pdf")
 
 
 add_info("DFT", dft_data)

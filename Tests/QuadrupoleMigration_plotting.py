@@ -5,6 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from ase.neighborlist import mic
+import plot_config
+from matplotlib.gridspec import GridSpec
+
+plot_config.half_plot()
+
+fig = plt.figure(figsize=(8, 11))
+gs = GridSpec(3, 1, height_ratios=[5, 5, 1], hspace=0.5)
+ax = [fig.add_subplot(gs[i]) for i in range(3)]
 
 marks = ["*"]
 
@@ -16,10 +24,7 @@ defects = [
     "30deg", "90deg"
 ]
 
-titles = [
-    "30 degree Partial Migration",
-    "90 degree Partial Migration",
-]
+titles = ["$30^\circ$ Partial", "$90^\circ$ Partial"]
 
 normalise = True
 
@@ -72,7 +77,7 @@ for i, defect in enumerate(defects):
             if calc_name == "ACE":
                 d_dft = d[::2]
 
-            plt.plot(d, Es, label=calc_name, marker=".", color=f"C{j}")
+            ax[i].plot(d, Es, label=calc_name, marker=".", color=f"C{j}")
 
 
     ### Endpoints
@@ -83,7 +88,7 @@ for i, defect in enumerate(defects):
     E_start = dft_start.get_potential_energy()
     E_end = dft_end.get_potential_energy()
 
-    plt.scatter([0, 1], [0, E_end - E_start], marker="s", color="k", label="DFT Relaxation")
+    ax[i].scatter([0, 1], [0, E_end - E_start], marker="s", color="k", label="DFT Relaxation", zorder=3)
 
     ### Singlepoints
 
@@ -101,18 +106,21 @@ for i, defect in enumerate(defects):
     E_singles = np.array(E_singles)
     E_singles -= E_start
 
-    plt.scatter(d_dft, E_singles, label="DFT Singlepoint\nfrom ACE Structures", color="k", marker="x", zorder=5, s=60, linewidth=2)
+    ax[i].scatter(d_dft, E_singles, label="DFT Singlepoint\nfrom ACE Structures", color="k", marker="x", zorder=5, linewidth=2)
 
 
 
 
-    plt.title(titles[i])
+    ax[i].set_title(titles[i] + " Dislocation Quadrupole")
     if normalise:
-        plt.xlabel("Reaction Coordinate")
+        ax[i].set_xlabel("Reaction Coordinate")
     else:
-        plt.xlabel("Integrated Displacement (Ang)")
+        ax[i].set_xlabel("Integrated Displacement (Ang)")
 
-    plt.ylabel("Energy (eV)")
-    plt.legend()
-    plt.savefig(f"../Test_Plots/{defect}_Migration.png")
-    plt.clf()
+    ax[i].set_ylabel("Energy (eV)")
+
+ax[2].axis("off")
+
+handles, labels = ax[1].get_legend_handles_labels()
+ax[2].legend(handles, labels, ncols=3)
+plt.savefig(f"../Test_Plots/Quadrupole_Migration.pdf")

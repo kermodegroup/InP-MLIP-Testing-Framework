@@ -7,10 +7,10 @@ dataset = read("../Dataset/InP_Dataset.xyz", index=":")
 ds_info = {}
 
 
-Nstruct = "Number of Structures"
-Nats = "Total Number of Atoms"
-Nforce = "Number of Force Observations"
-Nstress = "Number of Stress Observations"
+Nstruct = r"$N_\text{Structures}$"
+Nats = r"$N_\text{Atoms}$"
+Nforce = r"$N_\text{Forces}$"
+Nstress = r"$N_\text{Stresses}$"
 
 for image in dataset:
     config_type = image.info["config_type"]
@@ -24,7 +24,7 @@ for image in dataset:
 
     if config_type not in ds_info.keys():
         ds_info[config_type] = {
-            "Config Type" : config_type.replace("_", "\_"),
+            "Configuration Type" : config_type.replace("_", "\_"),
             Nstruct : 1,
             Nats : 1,
             Nforce : 3 * N,
@@ -38,7 +38,7 @@ for image in dataset:
 
 df = pandas.DataFrame(ds_info).T.sort_index()
 df.loc['Total'] = df.sum()
-df.at["Total", "Config Type"] =  "Total"
+df.at["Total", "Configuration Type"] =  "Total"
 
 str1 = r"""\\
 Total"""
@@ -54,5 +54,7 @@ formatters = {
     Nstress : lambda x: "" if x==0 else f"{x:,}"
 }
 
+colformat = "r|" + 4 * r"p{0.12\linewidth}"
+colformat = r"@{}r|rrrr@{}"
 
-print(df.to_latex(index=False, column_format="l|rrrr", formatters=formatters).replace(str1, str2))
+print(df.to_latex(index=False, column_format=colformat, formatters=formatters, multirow=True).replace(str1, str2))

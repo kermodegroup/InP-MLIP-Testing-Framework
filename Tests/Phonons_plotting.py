@@ -4,6 +4,10 @@ import numpy as np
 from ase.io import read
 from ase.phonons import Phonons
 from active_model import plot_models
+from matplotlib.gridspec import GridSpec
+import plot_config
+
+plot_config.half_plot()
 
 calc_names = plot_models[1:]
 
@@ -14,18 +18,30 @@ delta = 0.1
 mul = 8
 bulk = read("Misc_Reference/Phonon_bulk.xyz")
 
-fig, ax = plt.subplot_mosaic("AABC", figsize=(12, 6))
-ax, dosax, legax = ax.values()
+fig = plt.figure(figsize=(8, 6))
+
+maingrid = GridSpec(1, 2, width_ratios=[2, 1])
+
+leggrid = GridSpec(1, 1)
+
+maingrid.update(top=0.97, bottom=0.22, left=0.1, right=0.97)
+leggrid.update(top=0.16, bottom=0.00, left=0.1, right=0.97)
+
+ax, dosax = [plt.subplot(maingrid[i]) for i in range(2)]
+legax = plt.subplot(leggrid[0])
+
+# fig, ax = plt.subplot_mosaic("AABC", figsize=(8, 4))
+#ax, dosax, legax = ax.values()
 
 ax.set_ylim(0, emax)
-ax.set_ylabel("Frequency (THz)", fontsize=14)
-ax.tick_params(axis='both', which='major', labelsize=14)
+ax.set_ylabel("Frequency (THz)")
+ax.tick_params(axis='both', which='major')
 
 
 dosax.sharey(ax)
 # dosax.set_yticks([])
 # dosax.set_xticks([])
-dosax.set_xlabel("Density of States", fontsize=14)
+dosax.set_xlabel("Density of States")
 dosax.tick_params(labelleft=False, labelbottom=False)
 
 
@@ -75,7 +91,7 @@ xticklabels = [
 
 print(point_coords)
 
-ax.set_xticks(point_coords, xticklabels, fontsize=14)
+ax.set_xticks(point_coords, xticklabels)
 
 # DATA FROM Borcherds, Alfrey, Saunderson & Woods
 
@@ -196,7 +212,7 @@ x[G2_idx:L_idx] = np.linspace(G2, L, L_idx - G2_idx + 1)[1:]
 
 #ax.scatter(x, frequencies, marker="x", color="k")
 for i in range(4):
-    ax.errorbar(x, frequencies[:, i], yerr=freq_errs[:, i],
+    ax.errorbar(x, frequencies[:, i], yerr=freq_errs[:, i], zorder=3,
                 color="k", marker="x", linestyle="None", label="Experiment \n(Borcherds 1975)")
     # pass
 
@@ -214,7 +230,7 @@ z = zip(*unique)
 
 handles, labels = z
 
-legax.legend(handles, labels, fontsize=12)
+legax.legend(handles, labels, ncols=4, fontsize=14)
 
-plt.tight_layout()
-fig.savefig("../Test_Plots/Phonons.png")
+#plt.tight_layout()
+fig.savefig("../Test_Plots/Phonons.pdf")

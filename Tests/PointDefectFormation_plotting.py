@@ -3,9 +3,10 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from active_model import *
+from matplotlib.gridspec import GridSpec
+import plot_config
 
-plt.rcParams.update({'font.size': 14})
-plot_errs = False
+plot_config.half_plot()
 
 model_names = [model for model in plot_models if model != "DFT"]
 
@@ -55,11 +56,11 @@ for i, file in enumerate(files):
 
 defects = sorted([key for key in formation_energies.keys()])
 
-if plot_errs:
-    fig, ax = plt.subplots(nrows=2, figsize=(6, 9), sharex=True)
-else:
-    fig, ax = plt.subplots(figsize=(8, 6))
-    ax = [ax]
+fig = plt.figure(figsize=(8, 6))
+gs = GridSpec(2, 1, height_ratios=[5, 1])
+ax = [fig.add_subplot(gs[i]) for i in range(2)]
+
+#fig, ax = plt.subplots(ncols=2, figsize=(10, 6))
 
 dft_key = "DFT"
 
@@ -84,19 +85,12 @@ d = {
 
 defect_names = [d[defect] for defect in defects_list]
 
-if plot_errs:
-    ax[1].set_xticks(np.arange(len(defects_list)) * bar_sep,
-                     labels=defect_names, rotation=30, rotation_mode='anchor', ha="right")
-else:
-    ax[0].set_xticks(np.arange(len(defects_list)) * bar_sep,
-                     labels=defect_names, rotation=30, rotation_mode='anchor', ha="right")
+
+ax[0].set_xticks(np.arange(len(defects_list)) * bar_sep,
+                    labels=defect_names, rotation=30, rotation_mode='anchor', ha="right")
 
 
 ax[0].set_ylabel(r"Formation Energy (eV; $\mu_\text{In}=\mu_\text{P}$)")
-
-if plot_errs:
-    ax[1].set_ylabel("Energy Error (meV)")
-
 
 handles, labels = ax[0].get_legend_handles_labels()
 unique = [(h, l) for i, (h, l) in enumerate(
@@ -106,12 +100,12 @@ zip = zip(*unique)
 
 handles, labels = zip
 
-
-ax[0].legend(handles, labels, loc="best")
+ax[1].axis("off")
+ax[1].legend(handles, labels, loc="center", ncols=4)
 ax[0].set_box_aspect(1/2)
 
 ax[0].axhline(0, color="k")
 
-ax[0].set_title("Formation Energies of Various Point Defects")
+#ax[0].set_title("Formation Energies of Various Point Defects")
 plt.tight_layout()
-plt.savefig("../Test_Plots/PointDefects.png", dpi=200)
+plt.savefig("../Test_Plots/PointDefects.pdf")

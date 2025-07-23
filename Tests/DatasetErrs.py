@@ -7,6 +7,7 @@ import os
 from ase.units import GPa
 from Utils.jsondata import add_info
 from time import time
+import psutil
 
 data_dir = "../Test_Results"
 
@@ -215,9 +216,10 @@ data = {
 
 x = _setup()
 
+print(psutil.cpu_freq())
 t0 = time()
 config_types_rmses, conf_raw_data = test_calc(get_model(active_model_name), x)
 t1 = time() - t0
-
+print(psutil.cpu_freq())
 data["TT_Runtime"] = t1
 add_info(active_model_name, data)

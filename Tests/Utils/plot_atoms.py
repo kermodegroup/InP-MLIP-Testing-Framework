@@ -7,7 +7,7 @@ from matscipy.neighbours import neighbour_list
 
 
 
-def plot_atoms(ax, atoms, colours, labels, In_rad=0.8, P_rad=0.6, r_bond=3.0, w_bond=0.4, plot_bonds=True, x_lims=None, y_lims=None, supercell=None):
+def plot_atoms(ax, atoms, colours, labels, In_rad=0.8, P_rad=0.6, r_bond=3.0, w_bond=0.4, plot_bonds=True, x_lims=None, y_lims=None, supercell=None, lw=0.1):
     
     #atoms.wrap()
 
@@ -75,13 +75,13 @@ def plot_atoms(ax, atoms, colours, labels, In_rad=0.8, P_rad=0.6, r_bond=3.0, w_
             ]
 
             patches.extend([
-                mpatches.Polygon(rect1_coords, ec="k", fc=colours[idx], lw=0.5),
-                mpatches.Polygon(rect2_coords, ec="k", fc=colours[jdx], lw=0.5)
+                mpatches.Polygon(rect1_coords, ec="k", fc=colours[idx], lw=lw),
+                mpatches.Polygon(rect2_coords, ec="k", fc=colours[jdx], lw=lw)
             ])
 
 
     for i in range(len(atoms)):
-        patches.append(mpatches.Circle(p[i, :], radius=radii[i], ec="k", fc=colours[i], lw=0.5))
+        patches.append(mpatches.Circle(p[i, :], radius=radii[i], ec="k", fc=colours[i], lw=lw))
 
 
     for patch in patches:

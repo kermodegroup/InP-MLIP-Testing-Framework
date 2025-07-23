@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 from ase.io import read
+import plot_config
+
+plot_config.half_plot()
 
 calcs = [model for model in plot_models if model != "DFT"]
 
@@ -13,7 +16,7 @@ markers = [".", "x", "o", "s", "*", "+", "D", "^", "<", ">", "v", "H", "d"]
 with open("../Test_Results/DFT/EOS.json", "r") as f:
     d = json.load(f)
 
-fig, ax = plt.subplots(2, figsize=(10, 8), sharex=True)
+fig, ax = plt.subplots(2, figsize=(8, 10), sharex=True)
 
 ax[0].scatter(d["V_ZB"], d["E_ZB"], label="RSCAN DFT", color="k", marker=".")
 ax[1].scatter(d["V_WZ"], d["E_WZ"], label="RSCAN DFT", color="k", marker=".")
@@ -66,31 +69,31 @@ ax[1].set_ylim(-0.1, 6.3)
 plt.legend()
 
 plt.tight_layout()
-plt.savefig("../Test_Plots/EOS.png", dpi=200)
+plt.savefig("../Test_Plots/EOS.pdf")
 
 plt.clf()
 
 ## DFT
-zoomed_vol_lims = [23.5, 27]
-ylims = [-1, 44]
+zoomed_vol_lims = [24, 26.5]
+ylims = [-1, 40]
 
 with open("../Test_Results/DFT/EOS.json", "r") as f:
     d = json.load(f)
 
 fig, ax = plt.subplots(2, figsize=(8, 10), sharex=True)
 
-ax[0].scatter(d["V_ZB"], np.array(d["E_ZB"]) * 1000, label="RSCAN DFT", color="k", marker="x", zorder=50, s=50)
-ax[1].scatter(d["V_WZ"], np.array(d["E_WZ"]) * 1000, label="RSCAN DFT", color="k", marker="x", zorder=50, s=50)
+ax[0].scatter(d["V_ZB"], np.array(d["E_ZB"]) * 1000, label="RSCAN DFT", color="k", marker="x", zorder=3)
+ax[1].scatter(d["V_WZ"], np.array(d["E_WZ"]) * 1000, label="RSCAN DFT", color="k", marker="x", zorder=3)
 
 m = np.argmin(d["E_ZB"])
-ax[0].axvline(d["V_ZB"][m], color="k", alpha=0.6)
+#ax[0].axvline(d["V_ZB"][m], color="k", alpha=0.6)
 m = np.argmin(d["E_WZ"])
-ax[1].axvline(d["V_WZ"][m], color="k", alpha=0.6)
+#ax[1].axvline(d["V_WZ"][m], color="k", alpha=0.6)
 
 
 # LDA DFT
-ax[0].scatter(v_zb, Es_zb*1000, label="LDA DFT", color="k", marker=".", s=40)
-ax[1].scatter(v_wz, Es_wz*1000, label="LDA DFT", color="k", marker=".", s=40)
+ax[0].scatter(v_zb, Es_zb*1000, label="LDA DFT", color="k", marker=".", s=40, zorder=3)
+ax[1].scatter(v_wz, Es_wz*1000, label="LDA DFT", color="k", marker=".", s=40, zorder=3)
 
 
 for i, calc in enumerate(calcs):
@@ -102,9 +105,9 @@ for i, calc in enumerate(calcs):
     ax[1].plot(d["V_WZ"], np.array(d["E_WZ"]) * 1000, label=f"{calc}", color=f"C{i}")
 
     m = np.argmin(d["E_ZB"])
-    ax[0].axvline(d["V_ZB"][m], color=f"C{i}", alpha=0.6)
+    #ax[0].axvline(d["V_ZB"][m], color=f"C{i}", alpha=0.6)
     m = np.argmin(d["E_WZ"])
-    ax[1].axvline(d["V_WZ"][m], color=f"C{i}", alpha=0.6)
+    #ax[1].axvline(d["V_WZ"][m], color=f"C{i}", alpha=0.6)
 
 ax[0].set_xlim(*zoomed_vol_lims)
 ax[0].set_ylim(*ylims)
@@ -112,14 +115,14 @@ ax[1].set_xlim(*zoomed_vol_lims)
 ax[1].set_ylim(*ylims)
 
 ax[1].set_xlabel("Volume Per Atom ($Å^3$)")
-ax[0].set_ylabel("Relative Energy Per Atom (meV)")
-ax[1].set_ylabel("Relative Energy Per Atom (meV)")
+ax[0].set_ylabel("Relative Energy\nPer Atom (meV)")
+ax[1].set_ylabel("Relative Energy\nPer Atom (meV)")
 
 ax[0].set_title("Zincblende")
 ax[1].set_title("Wurtzite")
-fig.suptitle("Equation of State comparison of several potentials")
+#fig.suptitle("Equation of State comparison of several potentials", fontsize=22)
 
-ax[0].legend()
+ax[1].legend()
 plt.tight_layout()
-plt.savefig("../Test_Plots/EOS_Zoomed.png", dpi=200)
+plt.savefig("../Test_Plots/EOS_Zoomed.pdf")
 

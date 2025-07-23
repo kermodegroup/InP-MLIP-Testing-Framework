@@ -1,6 +1,7 @@
 from file_io import read
 from castep import castep, get_even_kpts
 import numpy as np
+import os
 
 bulk = read("Bulk/ZB_Bulk.xyz", index="-1")
 bulk.rattle(1e-1)
@@ -8,9 +9,11 @@ bulk.rattle(1e-1)
 a = bulk.cell[0, 0]
 
 encuts = [600, 750, 900, 1050, 1200]
-N_k = np.array([5, 6, 7, 8, 9])
+N_k = np.array([4, 6, 8])
 
 offsets = 0.5 / N_k
+
+os.chdir("DFT_Files")
 
 for encut in encuts:
     for i, N in enumerate(N_k):
@@ -28,6 +31,7 @@ for encut in encuts:
         except AttributeError:
             pass
 
+exit()
 ### Accurate Reference
 encut = 1500
 N = 12
